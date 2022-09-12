@@ -10,17 +10,12 @@ public class HitboxSpawn : MonoBehaviour
     {
         StartCoroutine(despawn());
         Debug.Log("instantiated box");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z +1.0f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
     }
 
     IEnumerator despawn()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(liveTime);
         Debug.Log("destorying Object");
         Destroy(this.gameObject);
     }
