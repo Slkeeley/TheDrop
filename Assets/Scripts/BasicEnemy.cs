@@ -37,6 +37,7 @@ public class BasicEnemy : MonoBehaviour
     void Start()
     {
         fists.SetActive(false);
+        isBlocking = false;
     }
 
     // Update is called once per frame
