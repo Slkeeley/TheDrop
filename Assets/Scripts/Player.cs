@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
     bool rightArmNext = true;
     bool canPunch = true; 
     bool canKick = true; 
-    public GameObject punchBox; 
-    public GameObject kickBox; 
     public GameObject leftArm; 
     public GameObject rightArm; 
     public GameObject Leg; 
