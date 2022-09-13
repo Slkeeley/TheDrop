@@ -24,6 +24,7 @@ public class BasicEnemy : MonoBehaviour
     public bool isBlocking;
     public float health;
     public Image healthBar;
+    public GameObject fists;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class BasicEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        fists.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,9 +48,22 @@ public class BasicEnemy : MonoBehaviour
         enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!enemyInSight && !enemyInAttackRange) patrol();   
-        if (!enemyInSight && enemyInAttackRange) chasePlayer();   
+        if (enemyInSight && !enemyInAttackRange) chasePlayer();   
         if (enemyInSight && enemyInAttackRange) attackPlayer();   
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="PlayerPunch")
+        {
+            health = health - 2;
+        }
+        if (other.tag == "PlayerKick")
+        {
+            health = health - 5;
+        }
+    }
+
 
     void patrol()
     {
@@ -75,12 +89,32 @@ public class BasicEnemy : MonoBehaviour
 
     void chasePlayer()
     {
-        //chase player
+        Debug.Log("Chasing Player");
+        transform.LookAt(player);
+        agent.SetDestination(player.position);
     }
 
     void attackPlayer()
     {
-        //attack player
+        Debug.Log("attacking player");
+        transform.LookAt(player);
+        agent.SetDestination(transform.position);
+
+        if(!alreadyAttacked)
+        {
+            alreadyAttacked = true;
+            fists.SetActive(true);
+            StartCoroutine(attackCoolDown());
+        }
+    }
+
+    IEnumerator attackCoolDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        fists.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        alreadyAttacked = false;
+
     }
 
     void Die()

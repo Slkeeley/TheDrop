@@ -94,7 +94,6 @@ public class Player : MonoBehaviour
         if(rightArmNext)
         {
             rightArm.SetActive(true);
-            Instantiate(punchBox, transform.position, Quaternion.identity);
             rightArmNext = false;
             leftArmNext = true;
             StartCoroutine(punchCoolDown());
@@ -102,7 +101,6 @@ public class Player : MonoBehaviour
         else
         {
             leftArm.SetActive(true);
-            Instantiate(punchBox, transform.position, Quaternion.identity);
             leftArmNext = false;
             rightArmNext = true;
             StartCoroutine(punchCoolDown());
@@ -119,7 +117,6 @@ public class Player : MonoBehaviour
     void Kick()
     {
         Leg.SetActive(true);
-        Instantiate(kickBox, transform.position, Quaternion.identity);
         StartCoroutine(despawnLeg());
         StartCoroutine(kickCoolDown());
     }

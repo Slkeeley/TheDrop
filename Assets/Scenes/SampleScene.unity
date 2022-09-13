@@ -244,8 +244,6 @@ MonoBehaviour:
   movementSpeed: 10
   money: 0
   clout: 20
-  punchBox: {fileID: 4805091607406761496, guid: 3a9a087333853324ea0362198e783686, type: 3}
-  kickBox: {fileID: 5167752312824290719, guid: 3e714e6c615874c41a68efb677831c7d, type: 3}
   leftArm: {fileID: 2051693717}
   rightArm: {fileID: 2133300764}
   Leg: {fileID: 1849770004}
@@ -1140,9 +1138,10 @@ GameObject:
   - component: {fileID: 1849770007}
   - component: {fileID: 1849770006}
   - component: {fileID: 1849770005}
+  - component: {fileID: 1849770009}
   m_Layer: 0
   m_Name: Leg
-  m_TagString: Untagged
+  m_TagString: PlayerKick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,6 +1224,22 @@ Transform:
   m_Father: {fileID: 197757744}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
+--- !u!54 &1849770009
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849770004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1951045460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,13 +1353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1951045466}
-  player: {fileID: 0}
+  player: {fileID: 197757744}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 50
   sightRange: 20
@@ -1356,6 +1371,7 @@ MonoBehaviour:
   isBlocking: 0
   health: 10
   healthBar: {fileID: 0}
+  fists: {fileID: 0}
 --- !u!195 &1951045466
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1390,9 +1406,10 @@ GameObject:
   - component: {fileID: 2051693720}
   - component: {fileID: 2051693719}
   - component: {fileID: 2051693718}
+  - component: {fileID: 2051693722}
   m_Layer: 0
   m_Name: LeftArm
-  m_TagString: Untagged
+  m_TagString: PlayerPunch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1475,6 +1492,22 @@ Transform:
   m_Father: {fileID: 197757744}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2051693722
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051693717}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2133300764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,9 +1520,10 @@ GameObject:
   - component: {fileID: 2133300767}
   - component: {fileID: 2133300766}
   - component: {fileID: 2133300765}
+  - component: {fileID: 2133300769}
   m_Layer: 0
   m_Name: RightArm
-  m_TagString: Untagged
+  m_TagString: PlayerPunch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1572,3 +1606,19 @@ Transform:
   m_Father: {fileID: 197757744}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2133300769
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133300764}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
