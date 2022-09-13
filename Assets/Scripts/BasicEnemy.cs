@@ -54,7 +54,8 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="PlayerPunch")
+
+        if (other.tag=="PlayerPunch"&& !isBlocking)
         {
             health = health - 2;
         }
@@ -104,7 +105,22 @@ public class BasicEnemy : MonoBehaviour
         {
             alreadyAttacked = true;
             fists.SetActive(true);
+            punch();
             StartCoroutine(attackCoolDown());
+        }
+    }
+
+    void punch()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+        {
+            Debug.Log(hit.transform.name);
+            Player player = hit.transform.GetComponent<Player>();
+            if(player!=null)
+            {
+                player.takePunch();
+            }
         }
     }
 

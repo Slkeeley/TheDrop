@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float movementSpeed=10;
     public int money=0;
     public int clout = 20;
+    public bool canBeDamaged = true;
 
     [Header("Attacks")]
     bool leftArmNext = false;
@@ -138,5 +139,16 @@ public class Player : MonoBehaviour
         healthText.text = "Clout: " + clout.ToString(); 
     }
 
-    
+    public void takePunch()
+    {
+        clout = clout - 2;
+        canBeDamaged = false;
+        StartCoroutine(invincibility());
+    }
+
+    IEnumerator invincibility()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canBeDamaged = true;
+    }
 }
