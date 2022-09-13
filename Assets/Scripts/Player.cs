@@ -6,22 +6,28 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Controller Variables")]
     public CharacterController controller;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-
+    [Header("Gameplay Variables")]
     public float movementSpeed=10;
     public int money=0;
     public int clout = 20;
 
+    [Header("Attacks")]
     bool leftArmNext = false;
     bool rightArmNext = true;
     bool canPunch = true; 
+    bool canKick = true; 
     public GameObject punchBox; 
+    public GameObject kickBox; 
     public GameObject leftArm; 
     public GameObject rightArm; 
+    public GameObject Leg; 
 
+    [Header("UI Elements")]
     public TMP_Text moneyText; 
     public TMP_Text healthText; 
     // Start is called before the first frame update
@@ -29,39 +35,43 @@ public class Player : MonoBehaviour
     {
         leftArm.SetActive(false);
         rightArm.SetActive(false);
+        Leg.SetActive(false);
         updateUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-            if (Input.GetButton("Fire1"))
-            {
-                if (canPunch)
-             {
-               
-                canPunch = false;
-                StartCoroutine(punchCooldown());
-                Punch();
-               }
-            }
-        
-        
-        if(Input.GetButton("Fire2"))
+        Move();//always check if the player is moving
+        if (Input.GetButton("Fire1"))//left click is for punch
         {
-            //kick
+            if (canPunch)//check if the punch attack is off cooldown
+            {
+
+                canKick = false;
+                Kick();
+            }
         }
 
-        updateUI(); 
+
+        if (Input.GetButton("Fire2"))//right click is for kick
+        {
+            if (canKick)//check if the punch attack is off cooldown
+            {
+
+                canPunch = false;
+                Punch();
+            }
+        }
+
     }
 
     private void LateUpdate()
     {
-        updateUI();
+        updateUI(); //Update the players UI every frame to quickly show any changes
     }
 
-    void Move()
+    void Move()//movement method for a 3D space
     {
         //Get Input Axes 
         float vertAxis = Input.GetAxis("Vertical") * movementSpeed;
@@ -81,7 +91,7 @@ public class Player : MonoBehaviour
             controller.Move(direction * movementSpeed * Time.deltaTime);
         }
     }
-    void Punch()
+    void Punch()//punch attack alternates between left and right arms
     {
         if(rightArmNext)
         {
@@ -89,7 +99,7 @@ public class Player : MonoBehaviour
             Instantiate(punchBox, transform.position, Quaternion.identity);
             rightArmNext = false;
             leftArmNext = true;
-            StartCoroutine(despawnFists());
+            StartCoroutine(punchCoolDown());
         }
         else
         {
@@ -97,26 +107,36 @@ public class Player : MonoBehaviour
             Instantiate(punchBox, transform.position, Quaternion.identity);
             leftArmNext = false;
             rightArmNext = true;
-            StartCoroutine(despawnFists());
+            StartCoroutine(punchCoolDown());
         }
     }
-    IEnumerator despawnFists()
+    IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
         yield return new WaitForSeconds(.5f);
+        canPunch = true;
         rightArm.SetActive(false);
         leftArm.SetActive(false);
     }
 
-    IEnumerator punchCooldown()
-    {
-        yield return new WaitForSeconds(0.5f);
-        canPunch = true; 
-    }
     void Kick()
     {
-
+        Leg.SetActive(true);
+        Instantiate(kickBox, transform.position, Quaternion.identity);
+        StartCoroutine(despawnLeg());
+        StartCoroutine(kickCoolDown());
     }
 
+    IEnumerator despawnLeg()//put the players fist away after the attack is over and allow the player to be able to punch again
+    {
+        yield return new WaitForSeconds(.5f);
+        Leg.SetActive(false);
+    }
+
+    IEnumerator kickCoolDown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canKick = true; 
+    }
     void updateUI()
     {
         moneyText.text = "Bread: " + money.ToString(); 

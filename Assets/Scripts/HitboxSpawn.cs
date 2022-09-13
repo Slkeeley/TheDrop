@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HitboxSpawn : MonoBehaviour
 {
-    public float liveTime=5f; 
+    public float liveTime;
+    public float Offset;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(despawn());
         Debug.Log("instantiated box");
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Offset);
     }
 
     IEnumerator despawn()
