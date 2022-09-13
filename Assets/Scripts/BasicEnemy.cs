@@ -16,6 +16,7 @@ public class BasicEnemy : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange, sightRange, attackRange;//
     public bool enemyInSight, enemyInAttackRange;//tell the monster to chase after a seen enemy and attack one if in range  
+   public bool dead = false;
 
     [Header("Object Variables")]
     bool alreadyAttacked = false;
@@ -26,10 +27,16 @@ public class BasicEnemy : MonoBehaviour
     public Image healthBar;
     public GameObject fists;
 
+    [Header("Visuals")]
+    private Color alpha;
+   public bool fading = false;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
         agent = GetComponent<NavMeshAgent>();
+        alpha = GetComponent<MeshRenderer>().material.color;
+        alpha.a = 0;
     }
 
 
@@ -43,21 +50,37 @@ public class BasicEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0) Die();
+        if (health <= 0)
+        {
+            fading = true;
+            dead = true;
+            Die();
+        }
 
-        enemyInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (fading) fadeAway();
 
-        if (!enemyInSight && !enemyInAttackRange) patrol();   
-        if (enemyInSight && !enemyInAttackRange) chasePlayer();   
-        if (enemyInSight && enemyInAttackRange) attackPlayer();   
+        if (dead && !fading)//destroy object once it has faded away
+        {
+            Destroy(this.gameObject);
+        }
+        if (!dead)//if the enemy is not dead move around
+        {
+            enemyInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+            if (!enemyInSight && !enemyInAttackRange) patrol();
+            if (enemyInSight && !enemyInAttackRange) chasePlayer();
+            if (enemyInSight && enemyInAttackRange) attackPlayer();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag=="PlayerPunch"&& !isBlocking)
+        if (other.tag=="PlayerPunch")
         {
+            Debug.Log("punched");
             health = health - 2;
         }
         if (other.tag == "PlayerKick")
@@ -134,8 +157,26 @@ public class BasicEnemy : MonoBehaviour
 
     }
 
-    void Die()
+    void Die()//falls to the ground and instantiates money
     {
-        //death function
+        Vector3 onGround = new Vector3(90, 0, 0);
+        transform.eulerAngles = onGround;
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+       
     }
+
+    void fadeAway()
+    {
+        Color objColor = GetComponent<Renderer>().material.color;
+        float fadeAmount = objColor.a - (0.5f * Time.deltaTime);
+
+        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
+        GetComponent<Renderer>().material.color = objColor;
+
+        if(objColor.a<=0)
+        {
+            fading = false;
+        }
+    }
+        
 }

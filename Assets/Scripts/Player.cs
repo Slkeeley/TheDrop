@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [Header("Controller Variables")]
     public CharacterController controller;
-    public float turnSmoothTime = 0.1f;
+    public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
 
     [Header("Gameplay Variables")]
@@ -47,8 +47,8 @@ public class Player : MonoBehaviour
             if (canPunch)//check if the punch attack is off cooldown
             {
 
-                canKick = false;
-                Kick();
+                canPunch = false;
+                Punch();
             }
         }
 
@@ -58,8 +58,8 @@ public class Player : MonoBehaviour
             if (canKick)//check if the punch attack is off cooldown
             {
 
-                canPunch = false;
-                Punch();
+                canKick = false;
+                Kick();
             }
         }
 

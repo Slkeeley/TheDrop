@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6821300019351987750}
   m_LocalRotation: {x: -0.2588186, y: -0, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 0, y: -0.25, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.12500018, z: 0.7165065}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.8556}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6821300019553647271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.25, z: 0.5}
+  m_LocalPosition: {x: -0.5, y: 0.25, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210,8 +210,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0002594, y: 1, z: 1.3159281}
-  m_Center: {x: 1.0001299, y: 0, z: 0.15796405}
+  m_Size: {x: 3.0002594, y: 1, z: 1.6522374}
+  m_Center: {x: 1.0001299, y: 0, z: 0.3261187}
 --- !u!54 &6821300019553647272
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6821300019601207342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.25, z: 0.5}
+  m_LocalPosition: {x: 0.5, y: 0.25, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -324,8 +324,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9977536, y: 1, z: 1.3141072}
-  m_Center: {x: -0.9988766, y: 0, z: 0.15705359}
+  m_Size: {x: 2.9977536, y: 1, z: 1.6518955}
+  m_Center: {x: -0.9988766, y: 0, z: 0.32594776}
 --- !u!54 &6821300019601207315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -380,7 +380,7 @@ Transform:
   - {fileID: 6821300019601207314}
   - {fileID: 6821300019351987754}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6821300020870901021
 MeshFilter:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6821300020870900992}
   turnSmoothTime: 0.1
-  movementSpeed: 10
+  movementSpeed: 5
   money: 0
   clout: 20
   canBeDamaged: 1
