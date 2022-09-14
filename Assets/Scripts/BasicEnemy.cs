@@ -26,6 +26,7 @@ public class BasicEnemy : MonoBehaviour
     public float health;
     public Image healthBar;
     public GameObject fists;
+    public GameObject money;
 
     [Header("Visuals")]
     private Color alpha;
@@ -50,21 +51,22 @@ public class BasicEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
-        {
-            fading = true;
-            dead = true;
-            Die();
-        }
-
-        if (fading) fadeAway();
-
-        if (dead && !fading)//destroy object once it has faded away
-        {
-            Destroy(this.gameObject);
-        }
         if (!dead)//if the enemy is not dead move around
         {
+            if (health <= 0)
+            {
+                fading = true;
+                dead = true;
+                Die();
+            }
+
+            // if (fading) fadeAway();
+
+       /*     if (dead && !fading)//destroy object once it has faded away
+            {
+                Destroy(this.gameObject);
+            }
+            */
             enemyInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -72,8 +74,8 @@ public class BasicEnemy : MonoBehaviour
             if (enemyInSight && !enemyInAttackRange) chasePlayer();
             if (enemyInSight && enemyInAttackRange) attackPlayer();
         }
-
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -162,9 +164,10 @@ public class BasicEnemy : MonoBehaviour
         Vector3 onGround = new Vector3(90, 0, 0);
         transform.eulerAngles = onGround;
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-       
+        GameObject.Instantiate(money, new Vector3(transform.position.x,transform.position.y+0.75f, transform.position.z), Quaternion.identity);
+        StartCoroutine(fadeOut()); 
     }
-
+/*
     void fadeAway()
     {
         Color objColor = GetComponent<Renderer>().material.color;
@@ -178,5 +181,11 @@ public class BasicEnemy : MonoBehaviour
             fading = false;
         }
     }
-        
+      */ 
+      
+    IEnumerator fadeOut()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
+    }
 }

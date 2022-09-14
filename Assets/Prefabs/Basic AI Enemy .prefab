@@ -246,9 +246,12 @@ MonoBehaviour:
   attackRange: 1
   enemyInSight: 0
   enemyInAttackRange: 0
+  dead: 0
   attackDelay: 1
   canBlock: 0
   isBlocking: 0
   health: 6
   healthBar: {fileID: 0}
   fists: {fileID: 4151487727098609780}
+  money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
+  fading: 0
