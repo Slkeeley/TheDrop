@@ -10,7 +10,7 @@ public class MoneyPickup : MonoBehaviour
     void Start()
     {
         //could put randomization of the cash value here
-        transform.position = new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z);        
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);        
     }
 
     private void OnTriggerEnter(Collider other)

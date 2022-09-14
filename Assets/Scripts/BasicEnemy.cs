@@ -164,7 +164,7 @@ public class BasicEnemy : MonoBehaviour
         Vector3 onGround = new Vector3(90, 0, 0);
         transform.eulerAngles = onGround;
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        GameObject.Instantiate(money, new Vector3(transform.position.x,transform.position.y+0.75f, transform.position.z), Quaternion.identity);
+        GameObject.Instantiate(money, new Vector3(transform.position.x,transform.position.y+0.5f, transform.position.z), Quaternion.identity);
         StartCoroutine(fadeOut()); 
     }
 /*
