@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     public int clout = 20;
     public bool canBeDamaged = true;
 
+    [Header("Inventory")]
+    public int sweatersHeld;
+    public int shoesHeld;
+    public int hatsHeld;
+
     [Header("Attacks")]
     bool leftArmNext = false;
     bool rightArmNext = true;
@@ -29,6 +34,9 @@ public class Player : MonoBehaviour
     [Header("UI Elements")]
     public TMP_Text moneyText; 
     public TMP_Text healthText; 
+    public TMP_Text sweaterText; 
+    public TMP_Text shoesText; 
+    public TMP_Text hatsText; 
     // Start is called before the first frame update
     void Start()
     {
@@ -137,6 +145,9 @@ public class Player : MonoBehaviour
     {
         moneyText.text = "Bread: " + money.ToString(); 
         healthText.text = "Clout: " + clout.ToString(); 
+        sweaterText.text = "Sweaters: " + sweatersHeld.ToString(); 
+        shoesText.text = "Shoes: " + shoesHeld.ToString(); 
+        hatsText.text = "Hats: " + hatsHeld.ToString(); 
     }
 
     public void takePunch()
