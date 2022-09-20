@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 43471466}
   - component: {fileID: 43471465}
   - component: {fileID: 43471464}
+  - component: {fileID: 43471468}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -221,6 +222,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43471468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43471463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2624a5db51b58414899e52cd50ed3da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEntered: 0
+  player: {fileID: 0}
+  canvas: {fileID: 700619862}
+  itemText: {fileID: 1232585063}
+  priceText: {fileID: 1634469955}
+  itemPriceMin: 50
+  itemPriceMax: 150
+  itemPriceCurr: 0
+  itemSold: 
+  openTime: 0
+  closeTime: 0
 --- !u!1 &112559899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1945,7 @@ GameObject:
   - component: {fileID: 1634469956}
   - component: {fileID: 1634469955}
   m_Layer: 0
-  m_Name: SweaterBuy (1)
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
