@@ -8,12 +8,15 @@ public class Store : MonoBehaviour
 {
     public bool playerEntered = false;
     bool canBuy= true;//boolean to make sure that the player can only buy one item at a time
+    public bool open; 
     public GameObject player;
     [Header("Store UI")]
-    public GameObject canvas;
+    public GameObject items;
     public TMP_Text sweaterText;
     public TMP_Text shoesText;
     public TMP_Text hatText;
+    public Slider storeOpen;
+    public Slider storeClosed;
 
     [Header("Store Prices")]
     public int sweaterPriceMin = 20; 
@@ -25,6 +28,7 @@ public class Store : MonoBehaviour
     private int sweaterPriceCurr;
     private int shoePriceCurr;
     private int hatPriceCurr;
+    public int itemsLeft;
 
     [Header("Store Times")]
     public float openTime; 
@@ -33,26 +37,43 @@ public class Store : MonoBehaviour
     private void Awake()
     {
         playerEntered = false;
-        canvas.SetActive(false);
+        items.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
     }
     // Start is called before the first frame update
     void Start()
-    {    
-        priceRandomizer(); 
+    {
+        storeOpen.maxValue = openTime;
+        storeClosed.maxValue = closeTime;
+        StartCoroutine(waitToOpen());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerEntered)
+        if (open)
         {
-            canvas.SetActive(true);
-            buyItems();
+            if (playerEntered)
+            {
+                items.SetActive(true);
+                buyItems();
+            }
+            else
+            {
+                items.SetActive(false);
+            }
+            storeOpen.value -= Time.deltaTime / openTime * openTime;
         }
         else
         {
-            canvas.SetActive(false);
+            items.SetActive(false);
+            storeClosed.value -= Time.deltaTime / closeTime * closeTime;
+        }
+
+
+        if(itemsLeft <=0)
+        {
+            open = false; 
         }
     }
 
@@ -60,6 +81,7 @@ public class Store : MonoBehaviour
     {
         if(other.tag=="Player")
         {
+            Debug.Log("Collided with player");
             playerEntered = true;
         }
     }
@@ -72,12 +94,13 @@ public class Store : MonoBehaviour
         }
     }
 
-     void priceRandomizer()//way to randomize prices of the items between drops
+     void Randomizer()//way to randomize prices of the items between drops
     {
         sweaterPriceCurr = Random.Range(sweaterPriceMin, sweaterPriceMax + 1);
         shoePriceCurr = Random.Range(shoePriceMin, shoePriceMax + 1);
         hatPriceCurr = Random.Range(hatPriceMin, hatPriceMax + 1);
         updatePrices();
+        open = true;
     }
 
     void updatePrices()//make sure that the display text shows the correct price of the item. 
@@ -126,7 +149,31 @@ public class Store : MonoBehaviour
     IEnumerator waitToBuy()
     {
         canBuy = false;
+        itemsLeft--;
         yield return new WaitForSeconds(0.5f);
         canBuy = true;
+    }
+
+    IEnumerator waitToOpen()//store is closed 
+    {
+        open = false;
+        storeClosed.value = closeTime;
+        storeOpen.value = 0;
+        Debug.Log("Store is closed, waiting to open up");
+        yield return new WaitForSeconds(closeTime);
+        open = true; 
+        Randomizer();
+        StartCoroutine(waitToClose());
+    }
+
+    IEnumerator waitToClose()
+    {
+  //    open = true;
+        storeClosed.value = 0;
+        storeOpen.value = openTime;
+        Debug.Log("Store is open, waiting to close down");
+        yield return new WaitForSeconds(openTime);
+        open = false; 
+        StartCoroutine(waitToOpen());
     }
 }
