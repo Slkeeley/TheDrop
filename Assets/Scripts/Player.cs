@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float movementSpeed=10;
     public int money=0;
     public int clout = 20;
+    public int MaxHealt = 100;
     public bool canBeDamaged = true;
 
     [Header("Inventory")]

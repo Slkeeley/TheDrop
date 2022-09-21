@@ -159,7 +159,6 @@ public class Store : MonoBehaviour
         open = false;
         storeClosed.value = closeTime;
         storeOpen.value = 0;
-        Debug.Log("Store is closed, waiting to open up");
         yield return new WaitForSeconds(closeTime);
         open = true; 
         Randomizer();
@@ -171,7 +170,6 @@ public class Store : MonoBehaviour
   //    open = true;
         storeClosed.value = 0;
         storeOpen.value = openTime;
-        Debug.Log("Store is open, waiting to close down");
         yield return new WaitForSeconds(openTime);
         open = false; 
         StartCoroutine(waitToOpen());

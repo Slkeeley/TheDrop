@@ -7,7 +7,7 @@ using TMPro;
 public class BuyerHouse : MonoBehaviour
 {
     public bool playerEntered = false;
-    bool open = true;
+  public  bool open = true;
     bool sold = false;//boolean to make sure that the player can only buy one item at a time
     public GameObject player;
     [Header("Store UI")]
@@ -71,6 +71,15 @@ public class BuyerHouse : MonoBehaviour
         }
     }
 
+    public void openHouse()
+    {
+        open = true;
+        sold = false;
+        randomizeItems();
+        updatePrices(); 
+    }
+
+
     void updatePrices()//make sure that the display text shows the correct price of the item. 
     {
         itemText.text = "Looking to buy a " + itemSold;
@@ -78,7 +87,7 @@ public class BuyerHouse : MonoBehaviour
 
     }
 
-    void randomizeItems()
+   void randomizeItems()
     {
         int itemNumber = Random.Range(1, 4);
         switch(itemNumber)
@@ -110,6 +119,7 @@ public class BuyerHouse : MonoBehaviour
                     {
                         player.GetComponent<Player>().sweatersHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
+                        player.GetComponent<Player>().clout = player.GetComponent<Player>().clout+10;
                         sold = true;
                     }
                 }
@@ -121,6 +131,7 @@ public class BuyerHouse : MonoBehaviour
                     {
                         player.GetComponent<Player>().shoesHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
+                        player.GetComponent<Player>().clout = player.GetComponent<Player>().clout + 10;
                         sold = true;
                     }
                 }
@@ -132,6 +143,7 @@ public class BuyerHouse : MonoBehaviour
                     {
                         player.GetComponent<Player>().hatsHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
+                        player.GetComponent<Player>().clout = player.GetComponent<Player>().clout + 10;
                         sold = true;
                     }
                 }
