@@ -106,6 +106,7 @@ public class BuyerHouse : MonoBehaviour
                 break;
         }
         itemPriceCurr = Random.Range(itemPriceMin, itemPriceMax+1);
+        itemPriceCurr = (itemPriceCurr / 10) * 10;
     }
 
     void playerSell()

@@ -99,8 +99,16 @@ public class Store : MonoBehaviour
         sweaterPriceCurr = Random.Range(sweaterPriceMin, sweaterPriceMax + 1);
         shoePriceCurr = Random.Range(shoePriceMin, shoePriceMax + 1);
         hatPriceCurr = Random.Range(hatPriceMin, hatPriceMax + 1);
+        roundToTens();
         updatePrices();
         open = true;
+    }
+
+    void roundToTens()
+    {
+        sweaterPriceCurr = (sweaterPriceCurr / 10) * 10;
+        shoePriceCurr = (shoePriceCurr / 10) * 10;
+        hatPriceCurr = (hatPriceCurr / 10) * 10;
     }
 
     void updatePrices()//make sure that the display text shows the correct price of the item. 
