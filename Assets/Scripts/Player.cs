@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     public int hatsHeld;
 
     [Header("Attacks")]
-    bool leftArmNext = false;
     bool rightArmNext = true;
     bool canPunch = true; 
     bool canKick = true; 
@@ -105,13 +104,11 @@ public class Player : MonoBehaviour
         {
             rightArm.SetActive(true);
             rightArmNext = false;
-            leftArmNext = true;
             StartCoroutine(punchCoolDown());
         }
         else
         {
             leftArm.SetActive(true);
-            leftArmNext = false;
             rightArmNext = true;
             StartCoroutine(punchCoolDown());
         }
@@ -154,6 +151,13 @@ public class Player : MonoBehaviour
     public void takePunch()
     {
         clout = clout - 2;
+        canBeDamaged = false;
+        StartCoroutine(invincibility());
+    }
+
+    public void takeProjDamage()
+    {
+        clout = clout - 5;
         canBeDamaged = false;
         StartCoroutine(invincibility());
     }

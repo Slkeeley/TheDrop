@@ -14,19 +14,17 @@ public class BasicEnemy : MonoBehaviour
     public LayerMask whatIsPlayer;
     public Vector3 walkPoint;//where will the enemy go to 
     bool walkPointSet;
-    public float walkPointRange, sightRange, attackRange;//
-    public bool enemyInSight, enemyInAttackRange;//tell the monster to chase after a seen enemy and attack one if in range  
+    public float walkPointRange, aggroRange, attackRange;//
+    public bool enemyInAggro, enemyInAttackRange;//tell the monster to chase after a seen enemy and attack one if in range  
    public bool dead = false;
 
     [Header("Object Variables")]
-    bool alreadyAttacked = false;
+    public bool alreadyAttacked = false;
     public float attackDelay;
-    public bool canBlock;//Booleans for later when the blocking mechanic is added
-    public bool isBlocking;
     public float health;
     public Image healthBar;
-    public GameObject fists;
     public GameObject money;
+    public int billsDropped; 
 
     [Header("Visuals")]
     private Color alpha;
@@ -44,8 +42,7 @@ public class BasicEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fists.SetActive(false);
-        isBlocking = false;
+      
     }
 
     // Update is called once per frame
@@ -67,12 +64,12 @@ public class BasicEnemy : MonoBehaviour
                 Destroy(this.gameObject);
             }
             */
-            enemyInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            if (!enemyInSight && !enemyInAttackRange) patrol();
-            if (enemyInSight && !enemyInAttackRange) chasePlayer();
-            if (enemyInSight && enemyInAttackRange) attackPlayer();
+            if (!enemyInAggro && !enemyInAttackRange) patrol();
+            if (enemyInAggro && !enemyInAttackRange) chasePlayer();
+           // if (enemyInSight && enemyInAttackRange) attackPlayer();
         }
     }
     
@@ -120,7 +117,7 @@ public class BasicEnemy : MonoBehaviour
         transform.LookAt(player);
         agent.SetDestination(player.position);
     }
-
+    /*
     void attackPlayer()
     {
         Debug.Log("attacking player");
@@ -130,8 +127,7 @@ public class BasicEnemy : MonoBehaviour
         if(!alreadyAttacked)
         {
             alreadyAttacked = true;
-            fists.SetActive(true);
-            punch();
+            //punch();
             StartCoroutine(attackCoolDown());
         }
     }
@@ -149,11 +145,10 @@ public class BasicEnemy : MonoBehaviour
             }
         }
     }
-
-    IEnumerator attackCoolDown()
+    */
+   public IEnumerator attackCoolDown()
     {
         yield return new WaitForSeconds(0.5f);
-        fists.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         alreadyAttacked = false;
 
@@ -164,7 +159,11 @@ public class BasicEnemy : MonoBehaviour
         Vector3 onGround = new Vector3(90, 0, 0);
         transform.eulerAngles = onGround;
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        GameObject.Instantiate(money, new Vector3(transform.position.x,transform.position.y+0.5f, transform.position.z), Quaternion.identity);
+        while (billsDropped > 0)
+        {
+            GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+            billsDropped--;
+        }
         StartCoroutine(fadeOut()); 
     }
 /*
