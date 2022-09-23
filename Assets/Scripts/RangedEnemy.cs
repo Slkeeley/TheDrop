@@ -5,55 +5,75 @@ using UnityEngine;
 public class RangedEnemy : BasicEnemy
 {
     public GameObject projectile;
-    public bool playerInLOS = false; 
-    public RangedEnemy()
-    {
-        
-    }
 
-    private void FixedUpdate()
+    void Update()
     {
-        checkLOS();
-        if (playerInLOS)
+        if (!dead)//if the enemy is not dead move around
         {
+            if (health <= 0)
+            {
+                fading = true;
+                dead = true;
+                Die();
+            }
+
+
+            enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
+            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            if (!enemyInAggro && !enemyInAttackRange) patrol();            
+            if (checkLOS()&&enemyInAggro && !enemyInAttackRange) chasePlayer();
             if (enemyInAggro && enemyInAttackRange) attackPlayer();
         }
     }
 
+
     void attackPlayer()
     {
-        Debug.Log("attacking player");
+        Debug.Log("attempting to attack player");
         transform.LookAt(player);
         agent.SetDestination(transform.position);
+         if (!alreadyAttacked)
+            {
+                alreadyAttacked = true;
+                throwItem();
+                StartCoroutine(attackCoolDown());
+            }
+        
+    }
 
-        if (!alreadyAttacked)
-        {
-            alreadyAttacked = true;
-            throwItem(); 
-            StartCoroutine(attackCoolDown());
-        }
+
+    void chasePlayer()
+    {
+        Debug.Log("Chasing Player");
+        transform.LookAt(player);
+        agent.SetDestination(player.position);
     }
 
     void throwItem()
     {
-        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z+0.75f), Quaternion.identity);
-        Debug.Log("Object Instantiated");
+        Debug.Log("projectile insantiated");
+        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
     }
 
-    void checkLOS()
+    bool checkLOS()
     {
+        transform.LookAt(player);
+        Debug.Log("checking los");
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
         {
             Debug.Log(hit.transform.name);
             if(hit.transform.GetComponent<Player>())
             {
-                playerInLOS = true; 
+                Debug.Log("sees player");
+                return true; 
             }
             else
             {
-                playerInLOS = false;
+                return false;
+                Debug.Log("does not see player");
             }
         }
+        return false; 
     }
 }

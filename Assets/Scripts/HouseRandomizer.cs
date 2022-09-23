@@ -17,7 +17,6 @@ public class HouseRandomizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(buyersActive);
         if(!buyersActive)//turn off all houses if buyers are not active
         {
             foreach (GameObject i in houses)
@@ -49,7 +48,6 @@ public class HouseRandomizer : MonoBehaviour
     IEnumerator waitToOpen()//store is closed 
     {
         buyersActive= false;
-        Debug.Log("homes are closed, waiting to open up");
         yield return new WaitForSeconds(10);
         buyersActive = true;
         chooseHouses(); 
@@ -58,8 +56,6 @@ public class HouseRandomizer : MonoBehaviour
 
     IEnumerator waitToClose()
     {
-
-        Debug.Log("Store is open, waiting to close down");
         yield return new WaitForSeconds(20);
         buyersActive = false;
         StartCoroutine(waitToOpen());

@@ -14,8 +14,8 @@ public class BasicEnemy : MonoBehaviour
     public LayerMask whatIsPlayer;
     public Vector3 walkPoint;//where will the enemy go to 
     bool walkPointSet;
-    public float walkPointRange, aggroRange, attackRange;//
-    public bool enemyInAggro, enemyInAttackRange;//tell the monster to chase after a seen enemy and attack one if in range  
+    public float walkPointRange, aggroRange, attackRange; 
+    public bool enemyInAggro, enemyInAttackRange;
    public bool dead = false;
 
     [Header("Object Variables")]
@@ -57,19 +57,12 @@ public class BasicEnemy : MonoBehaviour
                 Die();
             }
 
-            // if (fading) fadeAway();
 
-       /*     if (dead && !fading)//destroy object once it has faded away
-            {
-                Destroy(this.gameObject);
-            }
-            */
             enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
             if (!enemyInAggro && !enemyInAttackRange) patrol();
             if (enemyInAggro && !enemyInAttackRange) chasePlayer();
-           // if (enemyInSight && enemyInAttackRange) attackPlayer();
         }
     }
     
@@ -89,7 +82,7 @@ public class BasicEnemy : MonoBehaviour
     }
 
 
-    void patrol()
+   public void patrol()
     {
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
@@ -111,50 +104,22 @@ public class BasicEnemy : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
     }
 
-    void chasePlayer()
+  public  void chasePlayer()
     {
         Debug.Log("Chasing Player");
         transform.LookAt(player);
         agent.SetDestination(player.position);
     }
-    /*
-    void attackPlayer()
-    {
-        Debug.Log("attacking player");
-        transform.LookAt(player);
-        agent.SetDestination(transform.position);
 
-        if(!alreadyAttacked)
-        {
-            alreadyAttacked = true;
-            //punch();
-            StartCoroutine(attackCoolDown());
-        }
-    }
-
-    void punch()
-    {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
-        {
-            Debug.Log(hit.transform.name);
-            Player player = hit.transform.GetComponent<Player>();
-            if(player!=null)
-            {
-                player.takePunch();
-            }
-        }
-    }
-    */
    public IEnumerator attackCoolDown()
     {
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Beginning attack delay");
+        yield return new WaitForSeconds(attackDelay);
         alreadyAttacked = false;
 
     }
 
-    void Die()//falls to the ground and instantiates money
+  public void Die()//falls to the ground and instantiates money
     {
         Vector3 onGround = new Vector3(90, 0, 0);
         transform.eulerAngles = onGround;
@@ -166,22 +131,7 @@ public class BasicEnemy : MonoBehaviour
         }
         StartCoroutine(fadeOut()); 
     }
-/*
-    void fadeAway()
-    {
-        Color objColor = GetComponent<Renderer>().material.color;
-        float fadeAmount = objColor.a - (0.5f * Time.deltaTime);
 
-        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-        GetComponent<Renderer>().material.color = objColor;
-
-        if(objColor.a<=0)
-        {
-            fading = false;
-        }
-    }
-      */ 
-      
     IEnumerator fadeOut()
     {
         yield return new WaitForSeconds(2f);
