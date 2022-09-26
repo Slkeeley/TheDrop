@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float speed=12;
+    public float speed=15;
     public float activeTime=4;
     Transform playerPos;
-    Vector3 target; 
+    Vector3 target;
+    Rigidbody rb;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>(); 
+    }
+
     void Start()
     {
         playerPos = GameObject.Find("Player").transform;//find the object named player
@@ -20,7 +26,10 @@ public class EnemyProjectile : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (transform.position == target) Destroy(this.gameObject);
+        if (transform.position == target)
+        {
+            rb.useGravity = true; 
+        }
     }
 
     private void OnTriggerEnter(Collider other)

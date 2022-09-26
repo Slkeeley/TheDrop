@@ -86,6 +86,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
+        transform.LookAt(walkPoint);
         Vector3 distToPoint = transform.position - walkPoint;
         if(distToPoint.magnitude <1.0f)
         {
@@ -104,7 +105,7 @@ public class BasicEnemy : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
     }
 
-  public  void chasePlayer()
+    void chasePlayer()
     {
         Debug.Log("Chasing Player");
         transform.LookAt(player);

@@ -22,7 +22,8 @@ public class RangedEnemy : BasicEnemy
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
             if (!enemyInAggro && !enemyInAttackRange) patrol();            
             if (checkLOS()&&enemyInAggro && !enemyInAttackRange) chasePlayer();
-            if (enemyInAggro && enemyInAttackRange) attackPlayer();
+            if (checkLOS()&&enemyInAggro && enemyInAttackRange) attackPlayer();
+            if (!checkLOS()) patrol(); 
         }
     }
 
@@ -52,7 +53,7 @@ public class RangedEnemy : BasicEnemy
     void throwItem()
     {
         Debug.Log("projectile insantiated");
-        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
     }
 
     bool checkLOS()
