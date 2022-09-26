@@ -6,7 +6,7 @@ public class HouseRandomizer : MonoBehaviour
 {
     public GameObject[] houses;
     public bool buyersActive;
-    public int maxHouses;
+    public int housesBuying;
     
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class HouseRandomizer : MonoBehaviour
 
     void chooseHouses()
     {
-        for (int i = 0; i < maxHouses; i++)
+        for (int i = 0; i < housesBuying; i++)
         {
             int houseSelected = Random.Range(0, houses.Length);
 

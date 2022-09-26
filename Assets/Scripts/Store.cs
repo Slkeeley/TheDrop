@@ -15,8 +15,8 @@ public class Store : MonoBehaviour
     public TMP_Text sweaterText;
     public TMP_Text shoesText;
     public TMP_Text hatText;
-    public Slider storeOpen;
-    public Slider storeClosed;
+    public GameObject waitingCube; 
+    public GameObject openCube; 
 
     [Header("Store Prices")]
     public int sweaterPriceMin = 20; 
@@ -29,28 +29,27 @@ public class Store : MonoBehaviour
     private int shoePriceCurr;
     private int hatPriceCurr;
     public int itemsLeft;
+    public int itemsMax;
 
     [Header("Store Times")]
     public float openTime; 
     public float closeTime;
+    public float waitingTime; 
 
     private void Awake()
     {
         playerEntered = false;
         items.SetActive(false);
+        openCube.SetActive(false);
+        waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        storeOpen.maxValue = openTime;
-        storeClosed.maxValue = closeTime;
-        StartCoroutine(waitToOpen());
-    }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(open);
         if (open)
         {
             if (playerEntered)
@@ -62,12 +61,13 @@ public class Store : MonoBehaviour
             {
                 items.SetActive(false);
             }
-            storeOpen.value -= Time.deltaTime / openTime * openTime;
+            openCube.SetActive(true);
+            waitingCube.SetActive(false);
         }
         else
         {
             items.SetActive(false);
-            storeClosed.value -= Time.deltaTime / closeTime * closeTime;
+            openCube.SetActive(false);
         }
 
 
@@ -79,11 +79,7 @@ public class Store : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag=="Player")
-        {
-            Debug.Log("Collided with player");
-            playerEntered = true;
-        }
+        if (other.tag == "Player") playerEntered = true; 
     }
 
     private void OnTriggerExit(Collider other)
@@ -94,14 +90,13 @@ public class Store : MonoBehaviour
         }
     }
 
-     void Randomizer()//way to randomize prices of the items between drops
+    public void Randomizer()//way to randomize prices of the items between drops
     {
         sweaterPriceCurr = Random.Range(sweaterPriceMin, sweaterPriceMax + 1);
         shoePriceCurr = Random.Range(shoePriceMin, shoePriceMax + 1);
         hatPriceCurr = Random.Range(hatPriceMin, hatPriceMax + 1);
         roundToTens();
         updatePrices();
-        open = true;
     }
 
     void roundToTens()
@@ -154,6 +149,21 @@ public class Store : MonoBehaviour
         }
     }
 
+    public void beginOpening()
+    {
+        itemsLeft = itemsMax;
+        Randomizer();
+        StartCoroutine(waitToOpen());
+    }
+
+    IEnumerator waitToOpen()//store is closed 
+    {
+        Debug.Log("store is waiting to open");
+        waitingCube.SetActive(true);
+        yield return new WaitForSeconds(waitingTime);
+        open = true; 
+    }
+
     IEnumerator waitToBuy()
     {
         canBuy = false;
@@ -162,24 +172,4 @@ public class Store : MonoBehaviour
         canBuy = true;
     }
 
-    IEnumerator waitToOpen()//store is closed 
-    {
-        open = false;
-        storeClosed.value = closeTime;
-        storeOpen.value = 0;
-        yield return new WaitForSeconds(closeTime);
-        open = true; 
-        Randomizer();
-        StartCoroutine(waitToClose());
-    }
-
-    IEnumerator waitToClose()
-    {
-  //    open = true;
-        storeClosed.value = 0;
-        storeOpen.value = openTime;
-        yield return new WaitForSeconds(openTime);
-        open = false; 
-        StartCoroutine(waitToOpen());
-    }
 }
