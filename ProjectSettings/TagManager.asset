@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerKick
   - PlayerPunch
+  - Crowbar
   layers:
   - Default
   - TransparentFX

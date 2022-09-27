@@ -72,12 +72,16 @@ public class BasicEnemy : MonoBehaviour
 
         if (other.tag=="PlayerPunch")
         {
-            Debug.Log("punched");
             health = health - 2;
         }
         if (other.tag == "PlayerKick")
         {
             health = health - 5;
+        }
+        if(other.tag=="Crowbar")
+        {
+            Debug.Log("collided with crobar");
+            health = health - 10;
         }
     }
 

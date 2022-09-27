@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
+    public Animator animator;
 
     [Header("Gameplay Variables")]
     public float movementSpeed=10;
@@ -29,7 +30,12 @@ public class Player : MonoBehaviour
     bool canKick = true; 
     public GameObject leftArm; 
     public GameObject rightArm; 
-    public GameObject Leg; 
+    public GameObject Leg;
+    public bool hasCrowbar = false;
+    bool crowbarOnCooldown = false; 
+    bool spinning = false; 
+    public GameObject Crowbar;
+    public float crowBarCooldown; 
 
     [Header("UI Elements")]
     public TMP_Text moneyText; 
@@ -72,6 +78,19 @@ public class Player : MonoBehaviour
             }
         }
 
+        if(Input.GetKey(KeyCode.Q))
+        {
+            //CrowbarAttack
+            if(hasCrowbar && !crowbarOnCooldown)
+            {
+                crowBarAttack(); 
+            }
+        }
+
+        if (spinning)
+        { 
+            transform.Rotate(0f, 2.8f, 0f);
+        }
     }
 
     private void LateUpdate()
@@ -139,6 +158,25 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         canKick = true; 
+    }
+
+    void crowBarAttack()
+    {
+        Crowbar.SetActive(true);
+        spinning = true;
+        movementSpeed = 0; 
+        crowbarOnCooldown = true;
+        StartCoroutine(crowbarAttackCooldown());
+    }
+
+    IEnumerator crowbarAttackCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Crowbar.SetActive(false);
+        spinning = false;
+        movementSpeed = 10;
+        yield return new WaitForSeconds(crowBarCooldown);
+        crowbarOnCooldown = false; 
     }
     void updateUI()
     {
