@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class StoreRandomization : MonoBehaviour
 {
-    public GameObject[] stores;
-    public bool dropsActive=false;
-    public int totalDrops;
-    float timeOpen; 
-    // Start is called before the first frame update
+    public GameObject[] stores;//array of all store locations in the level
+    public bool dropsActive=false;//are the stores opening?
+    public int totalDrops;//how many stores are open at a time
+    public float timeOpen; //how long do the stores stay open
+    public float timeClosed; //how long do the stores stay closed
+
+
     void Start()
     {
-        StartCoroutine(waitToOpen());
+        StartCoroutine(waitToOpen());//begin opening stores at the start of the level
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!dropsActive)//turn off all houses if buyers are not active
+        if (!dropsActive)//turn off all stores if drops are not active
         {
             foreach (GameObject i in stores)
             {
@@ -27,7 +29,7 @@ public class StoreRandomization : MonoBehaviour
     }
 
 
-    void chooseStore()
+    void chooseStore()//function to determine what stores are open
     {
         for (int i = 0; i < totalDrops; i++)
         {
@@ -45,18 +47,18 @@ public class StoreRandomization : MonoBehaviour
     }
 
 
-    IEnumerator waitToOpen()//store is closed 
+    IEnumerator waitToOpen()//stores is closed, but waiting to open 
     {
         dropsActive = false;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(timeClosed);
         dropsActive = true;
         chooseStore();
         StartCoroutine(waitToClose());
     }
 
-    IEnumerator waitToClose()
+    IEnumerator waitToClose()//stores are open, but waitind to close 
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(timeOpen);
         dropsActive = false;
         StartCoroutine(waitToOpen());
     }

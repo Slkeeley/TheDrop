@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Bruiser : BasicEnemy
 {
-    public GameObject fists;
-    // Start is called before the first frame update
+    public GameObject fists;//show visually that the enemy is trying to attack
+
+
     void Start()
     {
-        fists.SetActive(false);
+        fists.SetActive(false);//make sure that the fists are put away on instantiation
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (enemyInAggro && enemyInAttackRange) attackPlayer();
+        if (enemyInAggro && enemyInAttackRange) attackPlayer();//attack is in child script as a unique behavior
     }
 
-    void attackPlayer()
+    void attackPlayer()//look at the player and punch them if it isnt on cooldown
     {
-        Debug.Log("attacking player");
         transform.LookAt(player);
         agent.SetDestination(transform.position);
 
@@ -32,7 +32,7 @@ public class Bruiser : BasicEnemy
         }
     }
 
-    void punch()
+    void punch()//fire a raycast to determine if the player was hit by an enemies punch
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
@@ -41,12 +41,15 @@ public class Bruiser : BasicEnemy
             Player player = hit.transform.GetComponent<Player>();
             if (player != null)
             {
-                player.takePunch();
+                if (player.canBeDamaged)//check if the player can be damaged so they do not take too much damage at once 
+                {
+                    player.takePunch();
+                }
             }
         }
     }
 
-    IEnumerator showFists()
+    IEnumerator showFists()//show the fists for a short time to demonstrate that the enemy is trying to attack
     {
         fists.SetActive(true);
         yield return new WaitForSeconds(0.5f);

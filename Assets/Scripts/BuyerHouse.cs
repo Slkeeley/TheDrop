@@ -6,23 +6,23 @@ using TMPro;
 
 public class BuyerHouse : MonoBehaviour
 {
-    public bool playerEntered = false;
-  public  bool open = true;
+    public bool playerEntered = false;//is the player in front of the house
+    public bool open = true;//is the house offering to buy something?
     bool sold = false;//boolean to make sure that the player can only buy one item at a time
     public GameObject player;
-    [Header("Store UI")]
+    [Header("Store UI")]//the canvas that shows what the house is trying to by and for how much
     public GameObject canvas;
     public TMP_Text itemText;
     public TMP_Text priceText;
 
-    [Header("Selling")]
+    [Header("Selling")]//data that determines what is being bought and for how much
     public int itemPriceMin = 50;
     public int itemPriceMax = 150;
     public int itemPriceCurr;
     public string itemSold; 
 
 
-    [Header("Open Times")]
+    [Header("Open Times")]//how long is the house open for
     public float openTime;
     public float closeTime;
 
@@ -31,31 +31,24 @@ public class BuyerHouse : MonoBehaviour
         player = GameObject.FindObjectOfType<Player>().gameObject;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        randomizeItems();
-        updatePrices();
-    }
-
     // Update is called once per frame
     void Update()
     {
        if(open && !sold)
         {
-            canvas.SetActive(true);
+            canvas.SetActive(true);//if the house is open and still looking to buy keep the UI element ups
             if (playerEntered)//only be able to sell to the player if the house is open, not already sold to, and if the player is next to it 
             {
                 playerSell();
             }
         }
-       if(!open || sold)
+       if(!open || sold)//if the house is closed or the item was sold to the house get rid of the canvas
         {
             canvas.SetActive(false);
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)//player has entered if they stay by the house
     {
         if (other.tag == "Player")
         {
@@ -63,7 +56,7 @@ public class BuyerHouse : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//if the player leaves the front of the house they have no longer entered
     {
         if (other.tag == "Player")
         {
@@ -71,7 +64,7 @@ public class BuyerHouse : MonoBehaviour
         }
     }
 
-    public void openHouse()
+    public void openHouse()//function to reset what is being bought and when the house is open
     {
         open = true;
         sold = false;
@@ -87,7 +80,7 @@ public class BuyerHouse : MonoBehaviour
 
     }
 
-   void randomizeItems()
+   void randomizeItems()//determine what item is being bought and what they will pay for it
     {
         int itemNumber = Random.Range(1, 4);
         switch(itemNumber)
@@ -105,11 +98,11 @@ public class BuyerHouse : MonoBehaviour
                 itemSold = "Sweater";
                 break;
         }
-        itemPriceCurr = Random.Range(itemPriceMin, itemPriceMax+1);
-        itemPriceCurr = (itemPriceCurr / 10) * 10;
+        itemPriceCurr = Random.Range(itemPriceMin, itemPriceMax+1);//randomize the price of the item
+        itemPriceCurr = (itemPriceCurr / 10) * 10;//round the randomized price to the nearest 10 for simpler calculations
     }
 
-    void playerSell()
+    void playerSell()//if the player is able to, they can sell items to the house
     {
         switch(itemSold)
         {

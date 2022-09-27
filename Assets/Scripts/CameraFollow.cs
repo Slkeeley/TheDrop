@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    public float offsetDistance = 5.0f;
-    // Update is called once per frame
+    public float offsetDistance = 5.0f;//distance to place the camera in a more aethestecically pleasing positon
+
     void LateUpdate()
     {
-           transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z-offsetDistance);
+           transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z-offsetDistance);//check where the player currently is at the end of the frame and move the camera above them 
     }
 }

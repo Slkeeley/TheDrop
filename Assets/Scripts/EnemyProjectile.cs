@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float speed=15;
-    public float activeTime=4;
-    Transform playerPos;
-    Vector3 target;
+    public float speed=15;//how fast does the projectile move
+    public float activeTime=4;//how long until the projectile disappears from the scene
+    Transform playerPos;//where is the player located at the time of the throw?
+    Vector3 target;//where is the projectile being thrown
     Rigidbody rb;
-    // Start is called before the first frame update
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>(); //make sure the projectile is attached to its rigidbodies for collision detection. 
     }
 
     void Start()
     {
         playerPos = GameObject.Find("Player").transform;//find the object named player
-        target = new Vector3(playerPos.position.x, playerPos.position.y, playerPos.position.z);
-        StartCoroutine(destroyProj());
+        target = new Vector3(playerPos.position.x, playerPos.position.y, playerPos.position.z);//the target is the player's current position at time of instantiations
+        StartCoroutine(destroyProj());//begin destroying object
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (transform.position == target)
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);//go to the target 
+        if (transform.position == target)//if projectile reaches target tell it to fall to the ground
         {
             rb.useGravity = true; 
         }
@@ -34,12 +34,12 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Player")
+        if(other.tag=="Player")//if player is hit tell player to be damaged
         {
             other.GetComponent<Player>().takeProjDamage();
             Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        Destroy(this.gameObject); //if projectile collided with anything that isn't the player tell it to be destroyed
     }
 
     IEnumerator destroyProj()

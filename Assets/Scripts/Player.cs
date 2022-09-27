@@ -6,25 +6,24 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [Header("Controller Variables")]
+    [Header("Controller Variables")]//variables for player movement
     public CharacterController controller;
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
-    public Animator animator;
+    public float movementSpeed = 10;
 
-    [Header("Gameplay Variables")]
-    public float movementSpeed=10;
+    [Header("Gameplay Variables")]//variables for player-game interaction
     public int money=0;
     public float clout = 100;
     public float MaxHealth = 100;
     public bool canBeDamaged = true;
 
-    [Header("Inventory")]
+    [Header("Inventory")]//how much of each item does the player own
     public int sweatersHeld;
     public int shoesHeld;
     public int hatsHeld;
 
-    [Header("Attacks")]
+    [Header("Attacks")]//data for player attacks, cooldown, models, 
     bool rightArmNext = true;
     bool canPunch = true; 
     bool canKick = true; 
@@ -37,15 +36,15 @@ public class Player : MonoBehaviour
     public GameObject Crowbar;
     public float crowBarCooldown; 
 
-    [Header("UI Elements")]
+    [Header("UI Elements")]//data for player UI s
     public TMP_Text moneyText; 
     public TMP_Text healthText; 
     public TMP_Text sweaterText; 
     public TMP_Text shoesText; 
     public TMP_Text hatsText;
     public Image healthBar;
-    // Start is called before the first frame update
-    void Start()
+
+    void Start()//put the players weapons away and make sure that the UI reflects default values
     {
         leftArm.SetActive(false);
         rightArm.SetActive(false);
@@ -53,44 +52,12 @@ public class Player : MonoBehaviour
         updateUI();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Move();//always check if the player is moving
-        if (Input.GetButton("Fire1"))//left click is for punch
-        {
-            if (canPunch)//check if the punch attack is off cooldown
-            {
-
-                canPunch = false;
-                Punch();
-            }
-        }
-
-
-        if (Input.GetButton("Fire2"))//right click is for kick
-        {
-            if (canKick)//check if the punch attack is off cooldown
-            {
-
-                canKick = false;
-                Kick();
-            }
-        }
-
-        if(Input.GetKey(KeyCode.Q))
-        {
-            //CrowbarAttack
-            if(hasCrowbar && !crowbarOnCooldown)
-            {
-                crowBarAttack(); 
-            }
-        }
-
-        if (spinning)
-        { 
-            transform.Rotate(0f, 2.8f, 0f);
-        }
+        attackInputs();//always check if the player is trying to attack;
+        if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
     }
 
     private void LateUpdate()
@@ -118,15 +85,47 @@ public class Player : MonoBehaviour
             controller.Move(direction * movementSpeed * Time.deltaTime);
         }
     }
+
+    void attackInputs()//attack methods 
+    {
+        if (Input.GetButton("Fire1"))//left click is for punch
+        {
+            if (canPunch)//check if the punch attack is off cooldown
+            {
+
+                canPunch = false;
+                Punch();
+            }
+        }
+
+
+        if (Input.GetButton("Fire2"))//right click is for kick
+        {
+            if (canKick)//check if the punch attack is off cooldown
+            {
+
+                canKick = false;
+                Kick();
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Q))//Q is to use the crowbar attack if the player has one
+        {
+            if (hasCrowbar && !crowbarOnCooldown)
+            {
+                crowBarAttack();
+            }
+        }
+    }
     void Punch()//punch attack alternates between left and right arms
     {
-        if(rightArmNext)
+        if(rightArmNext)//punch with right arm 
         {
             rightArm.SetActive(true);
             rightArmNext = false;
             StartCoroutine(punchCoolDown());
         }
-        else
+        else//punch with left arm
         {
             leftArm.SetActive(true);
             rightArmNext = true;
@@ -141,26 +140,26 @@ public class Player : MonoBehaviour
         leftArm.SetActive(false);
     }
 
-    void Kick()
+    void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way
     {
         Leg.SetActive(true);
         StartCoroutine(despawnLeg());
         StartCoroutine(kickCoolDown());
     }
 
-    IEnumerator despawnLeg()//put the players fist away after the attack is over and allow the player to be able to punch again
+    IEnumerator despawnLeg()//put the players leg away after the attack is over, but the attack is over before they can choose to attack again
     {
         yield return new WaitForSeconds(.5f);
         Leg.SetActive(false);
     }
 
-    IEnumerator kickCoolDown()
+    IEnumerator kickCoolDown()//slightly longer cooldown for kick attack since it is strongers
     {
         yield return new WaitForSeconds(1.0f);
         canKick = true; 
     }
 
-    void crowBarAttack()
+    void crowBarAttack()//brings out the crowbar model and has the character spin around hitting everythign around it for half a second
     {
         Crowbar.SetActive(true);
         spinning = true;
@@ -169,18 +168,18 @@ public class Player : MonoBehaviour
         StartCoroutine(crowbarAttackCooldown());
     }
 
-    IEnumerator crowbarAttackCooldown()
+    IEnumerator crowbarAttackCooldown()//cooldown for crowbar attack
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);//the crowbar attack ast for half a second, after that passes put everything away
         Crowbar.SetActive(false);
         spinning = false;
         movementSpeed = 10;
-        yield return new WaitForSeconds(crowBarCooldown);
+        yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
         crowbarOnCooldown = false; 
     }
-    void updateUI()
+
+    void updateUI()//change all parts UI display depending on the players current situations
     {
-        Debug.Log("updating UI");
         moneyText.text = "Bread: " + money.ToString(); 
         healthText.text = "Clout: " + clout.ToString(); 
         sweaterText.text = "Sweaters: " + sweatersHeld.ToString(); 
@@ -189,21 +188,21 @@ public class Player : MonoBehaviour
         healthBar.fillAmount = Mathf.Clamp(clout / MaxHealth, 0, 1f);
     }
 
-    public void takePunch()
+    public void takePunch()//method for player to take damage from an enemy punching them 
     {
         clout = clout - 2;
         canBeDamaged = false;
         StartCoroutine(invincibility());
     }
 
-    public void takeProjDamage()
+    public void takeProjDamage()//method for the player to take damage from an enemy projectile
     {
         clout = clout - 5;
         canBeDamaged = false;
         StartCoroutine(invincibility());
     }
 
-    IEnumerator invincibility()
+    IEnumerator invincibility()//short cooldown to make sure that the player doesn't take a ton of damage at once
     {
         yield return new WaitForSeconds(0.5f);
         canBeDamaged = true;

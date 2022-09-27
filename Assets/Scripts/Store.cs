@@ -6,11 +6,13 @@ using TMPro;
 
 public class Store : MonoBehaviour
 {
-    public bool playerEntered = false;
+    public bool playerEntered = false;//is the player in front of the store?
     bool canBuy= true;//boolean to make sure that the player can only buy one item at a time
-    public bool open; 
+    public bool open; //is the store open and selling items
     public GameObject player;
-    [Header("Store UI")]
+
+
+    [Header("Store UI")]//display what items aare being sold and for hwow much
     public GameObject items;
     public TMP_Text sweaterText;
     public TMP_Text shoesText;
@@ -18,7 +20,7 @@ public class Store : MonoBehaviour
     public GameObject waitingCube; 
     public GameObject openCube; 
 
-    [Header("Store Prices")]
+    [Header("Store Prices")]//prices for each item should be within different ranges
     public int sweaterPriceMin = 20; 
     public int sweaterPriceMax = 50;
     public int shoePriceMin = 40;
@@ -31,12 +33,12 @@ public class Store : MonoBehaviour
     public int itemsLeft;
     public int itemsMax;
 
-    [Header("Store Times")]
+    [Header("Store Times")]//how long is the store open or waiting to open
     public float openTime; 
-    public float closeTime;
+    //public float closeTime;
     public float waitingTime; 
 
-    private void Awake()
+    private void Awake()//turn off everything before opening
     {
         playerEntered = false;
         items.SetActive(false);
@@ -44,13 +46,10 @@ public class Store : MonoBehaviour
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
     }
-    // Start is called before the first frame update
 
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log(open);
-        if (open)
+        if (open)//if open show items and their prices
         {
             if (playerEntered)
             {
@@ -64,25 +63,22 @@ public class Store : MonoBehaviour
             openCube.SetActive(true);
             waitingCube.SetActive(false);
         }
-        else
+        else//if the store is not open do not show items and show that the store is closed
         {
             items.SetActive(false);
             openCube.SetActive(false);
         }
 
 
-        if(itemsLeft <=0)
-        {
-            open = false; 
-        }
+        if (itemsLeft <= 0) open = false; //if all of the stores inventory has been bought shut it down
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)//if the player remains in front of the store they have entered
     {
         if (other.tag == "Player") playerEntered = true; 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//if a player moves away from the store they hav not entered
     {
         if (other.tag == "Player")
         {
@@ -99,7 +95,7 @@ public class Store : MonoBehaviour
         updatePrices();
     }
 
-    void roundToTens()
+    void roundToTens()//round all prices to the nearest 10 to simplify calculation
     {
         sweaterPriceCurr = (sweaterPriceCurr / 10) * 10;
         shoePriceCurr = (shoePriceCurr / 10) * 10;
@@ -113,7 +109,7 @@ public class Store : MonoBehaviour
         hatText.text = "Press 3 to buy a hat for $" + hatPriceCurr.ToString();
     }
 
-    void buyItems()
+    void buyItems()//if player is able to let them buy items
     {
         if (canBuy)
         {
@@ -149,22 +145,21 @@ public class Store : MonoBehaviour
         }
     }
 
-    public void beginOpening()
+    public void beginOpening()//function to tell the player that the drop is about to happen
     {
         itemsLeft = itemsMax;
         Randomizer();
         StartCoroutine(waitToOpen());
     }
 
-    IEnumerator waitToOpen()//store is closed 
+    IEnumerator waitToOpen()//store is closed but waiting to begin opening up
     {
-        Debug.Log("store is waiting to open");
         waitingCube.SetActive(true);
         yield return new WaitForSeconds(waitingTime);
         open = true; 
     }
 
-    IEnumerator waitToBuy()
+    IEnumerator waitToBuy()//short cooldown to prevent players from buying more than one item at a time
     {
         canBuy = false;
         itemsLeft--;

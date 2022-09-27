@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class BasicEnemy : MonoBehaviour
 {
 
-    [Header("AI Variables")]
-    public NavMeshAgent agent; //allows emu to move
+    [Header("AI Variables")]//variables for the enemy to be able to use the NavMesh
+    public NavMeshAgent agent; //allows enemy to move
     public Transform player;//What enemy is the monster targetting
     public LayerMask whatIsGround;//What is legal for the enemy to walk on
     public LayerMask whatIsPlayer;
@@ -18,19 +18,18 @@ public class BasicEnemy : MonoBehaviour
     public bool enemyInAggro, enemyInAttackRange;
    public bool dead = false;
 
-    [Header("Object Variables")]
+    [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
     public float attackDelay;
     public float health;
-    public Image healthBar;
     public GameObject money;
     public int billsDropped; 
 
-    [Header("Visuals")]
+    [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
    public bool fading = false;
 
-    private void Awake()
+    private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
         agent = GetComponent<NavMeshAgent>();
@@ -39,14 +38,7 @@ public class BasicEnemy : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-
-    // Update is called once per frame
-    void Update()
+    void Update()//check if the enemy is dead and allow it to move around the map
     {
         if (!dead)//if the enemy is not dead move around
         {
@@ -54,6 +46,7 @@ public class BasicEnemy : MonoBehaviour
             {
                 fading = true;
                 dead = true;
+                agent.speed = 0;
                 Die();
             }
 
@@ -67,7 +60,7 @@ public class BasicEnemy : MonoBehaviour
     }
     
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {
 
         if (other.tag=="PlayerPunch")
@@ -86,7 +79,7 @@ public class BasicEnemy : MonoBehaviour
     }
 
 
-   public void patrol()
+   public void patrol()//move to a predetermined point on the map
     {
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
@@ -99,7 +92,7 @@ public class BasicEnemy : MonoBehaviour
 
     }
 
-    void setWalkPoint()
+    void setWalkPoint()//if there is no point to wak to select a random point
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -109,16 +102,14 @@ public class BasicEnemy : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
     }
 
-    void chasePlayer()
+    public void chasePlayer()//move towards the player if they are close enough
     {
-        Debug.Log("Chasing Player");
         transform.LookAt(player);
         agent.SetDestination(player.position);
     }
 
-   public IEnumerator attackCoolDown()
+   public IEnumerator attackCoolDown()//cooldown to make sure that the enemy isn't constantly attacking
     {
-        Debug.Log("Beginning attack delay");
         yield return new WaitForSeconds(attackDelay);
         alreadyAttacked = false;
 

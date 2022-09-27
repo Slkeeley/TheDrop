@@ -5,15 +5,14 @@ using UnityEngine;
 public class MoneyPickup : MonoBehaviour
 {
 
-    public int cashValue; 
-    // Start is called before the first frame update
+    public int cashValue; //how much is this bill worth
+
     void Start()
     {
-        //could put randomization of the cash value here
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);        
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z); //insantiate in the position that the parent enemy died in        
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//once the bill is touched by a player it is collected
     {
         if(other.tag=="Player")
         {

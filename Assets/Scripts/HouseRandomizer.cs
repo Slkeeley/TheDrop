@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class HouseRandomizer : MonoBehaviour
 {
-    public GameObject[] houses;
-    public bool buyersActive;
-    public int housesBuying;
+    public GameObject[] houses;//how many houses are in the level
+    public bool buyersActive;//are the houses currently buying itemss
+    public int housesBuying;//how many houses are offering to buy items at a time
     
-    // Start is called before the first frame update
+
     void Start()
     {
-        StartCoroutine(waitToOpen());
+        StartCoroutine(waitToOpen());//begin by waiting to open the houses
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!buyersActive)//turn off all houses if buyers are not active
@@ -27,7 +26,7 @@ public class HouseRandomizer : MonoBehaviour
     }
 
 
-    void chooseHouses()
+    void chooseHouses()//choose what houses out of the many are trying to buy items at a time
     {
         for (int i = 0; i < housesBuying; i++)
         {
@@ -45,7 +44,7 @@ public class HouseRandomizer : MonoBehaviour
     }
 
 
-    IEnumerator waitToOpen()//store is closed 
+    IEnumerator waitToOpen()//house is closed waiting to open
     {
         buyersActive= false;
         yield return new WaitForSeconds(10);
@@ -54,7 +53,7 @@ public class HouseRandomizer : MonoBehaviour
         StartCoroutine(waitToClose());
     }
 
-    IEnumerator waitToClose()
+    IEnumerator waitToClose()//houses are active and waiting to close back down
     {
         yield return new WaitForSeconds(20);
         buyersActive = false;

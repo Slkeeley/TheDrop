@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
-    [Header("Win Conditions")]
+    [Header("Win Conditions")]//how much of each thing does a player need to beat the level 
     public int moneyThreshold;
    /* public int sweaterThreshold; 
     public int shoesThreshold; 
@@ -13,17 +13,17 @@ public class GameControl : MonoBehaviour
     public int enemiesNeeded;
     public int cloutThreshold;
     */
-    [Header("Data")]
+    [Header("Data")]//where is the player currently at in terms of progress
     public GameObject player;
     public int playerMoney;
-    public GameObject winText; 
+    public GameObject winText; //placeholder, this will appear once a player has won
  /*   public int sweatersSold;
     public int shoesSold;
     public int hatsSold;
     public int enemiesDefeated;
     public int cloutTotal;*/
-    // Start is called before the first frame update
-    void Start()
+
+  void Start()
     {
         player = GameObject.FindObjectOfType<Player>().gameObject;
         winText.SetActive(false);
@@ -34,13 +34,13 @@ public class GameControl : MonoBehaviour
     void Update()
     {
         linkData();
-        if(playerMoney>=moneyThreshold)
+        if(playerMoney>=moneyThreshold)//if the player has enough of something they win
         {
             winText.SetActive(true);
         }
     }
 
-    void linkData()
+    void linkData()//make sure that this object is tracking the player's data
     {
         playerMoney = player.GetComponent<Player>().money;
     }
