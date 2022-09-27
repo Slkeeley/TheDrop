@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     [Header("Gameplay Variables")]
     public float movementSpeed=10;
     public int money=0;
-    public int clout = 20;
-    public int MaxHealt = 100;
+    public float clout = 100;
+    public float MaxHealth = 100;
     public bool canBeDamaged = true;
 
     [Header("Inventory")]
@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
     public TMP_Text healthText; 
     public TMP_Text sweaterText; 
     public TMP_Text shoesText; 
-    public TMP_Text hatsText; 
+    public TMP_Text hatsText;
+    public Image healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -141,11 +142,13 @@ public class Player : MonoBehaviour
     }
     void updateUI()
     {
+        Debug.Log("updating UI");
         moneyText.text = "Bread: " + money.ToString(); 
         healthText.text = "Clout: " + clout.ToString(); 
         sweaterText.text = "Sweaters: " + sweatersHeld.ToString(); 
         shoesText.text = "Shoes: " + shoesHeld.ToString(); 
-        hatsText.text = "Hats: " + hatsHeld.ToString(); 
+        hatsText.text = "Hats: " + hatsHeld.ToString();
+        healthBar.fillAmount = Mathf.Clamp(clout / MaxHealth, 0, 1f);
     }
 
     public void takePunch()
