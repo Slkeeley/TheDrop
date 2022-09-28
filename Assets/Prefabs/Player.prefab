@@ -1120,7 +1120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6821300020870900992}
   turnSmoothTime: 0.1
-  animator: {fileID: 0}
   movementSpeed: 5
   money: 0
   clout: 80
@@ -1135,6 +1134,8 @@ MonoBehaviour:
   hasCrowbar: 0
   Crowbar: {fileID: 4290894290949582431}
   crowBarCooldown: 5
+  brick: {fileID: 4194070924308276971, guid: 3ba024f145bc4e544a6db033a1e6afb2, type: 3}
+  hasBrick: 0
   moneyText: {fileID: 7988597914530388618}
   healthText: {fileID: 1570211957922189105}
   sweaterText: {fileID: 7439832704110352597}

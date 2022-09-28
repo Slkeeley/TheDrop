@@ -24,17 +24,19 @@ public class Player : MonoBehaviour
     public int hatsHeld;
 
     [Header("Attacks")]//data for player attacks, cooldown, models, 
-    bool rightArmNext = true;
+    bool rightArmNext = true;//punch attacks
     bool canPunch = true; 
-    bool canKick = true; 
     public GameObject leftArm; 
-    public GameObject rightArm; 
+    public GameObject rightArm;
+    bool canKick = true;//kick attack
     public GameObject Leg;
-    public bool hasCrowbar = false;
+    public bool hasCrowbar = false;//crowbar attack
     bool crowbarOnCooldown = false; 
     bool spinning = false; 
     public GameObject Crowbar;
-    public float crowBarCooldown; 
+    public float crowBarCooldown;
+    public GameObject brick;//brick attack
+    public bool hasBrick = false; 
 
     [Header("UI Elements")]//data for player UI s
     public TMP_Text moneyText; 
@@ -116,6 +118,11 @@ public class Player : MonoBehaviour
                 crowBarAttack();
             }
         }
+
+        if(Input.GetKey(KeyCode.E))
+        {
+            if (hasBrick) throwBrick(); 
+        }
     }
     void Punch()//punch attack alternates between left and right arms
     {
@@ -177,6 +184,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
         crowbarOnCooldown = false; 
     }
+
+    void throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
+    {
+        GameObject.Instantiate(brick, new Vector3(transform.position.x, transform.position.y+0.25f, transform.position.z+1f), Quaternion.identity);
+        hasBrick = false; 
+    }
+
 
     void updateUI()//change all parts UI display depending on the players current situations
     {
