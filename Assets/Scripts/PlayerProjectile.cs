@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     public float speed = 15;//how fast does the projectile move
-    public float activeTime = 4;//how long until the projectile disappears from the scene
+    public float activeTime = 4; 
+    public int throwForce; 
     bool active = true;
     Rigidbody rb;
 
@@ -15,10 +16,9 @@ public class PlayerProjectile : MonoBehaviour
     }
 
     void Start()
-    { 
-        StartCoroutine(stopProj());//begin destroying object
-        rb.AddForce(transform.forward * 1000);
-        checkGround();
+    {
+        rb.AddRelativeForce(Vector3.forward * throwForce);
+        StartCoroutine(stopProj());
     }
 
 
@@ -31,22 +31,10 @@ public class PlayerProjectile : MonoBehaviour
         }
         Debug.Log("collided");
     }
-
+    
     IEnumerator stopProj()
     {
         yield return new WaitForSeconds(activeTime);
-        active = false; 
-    }
-
-
-    bool checkGround()
-    {
-        RaycastHit hit;
-        Debug.Log("checking ground");
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 10f))
-        {
-            Debug.Log(hit.transform.name);
-        }
-        return true; 
+        GetComponent<BoxCollider>().isTrigger = true; 
     }
 }
