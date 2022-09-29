@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public GameObject Crowbar;
     public float crowBarCooldown;
     public GameObject brick;//brick attack
+    public Transform brickThrowLocation;//position that the brick should spawn in
     public bool hasBrick = false; 
 
     [Header("UI Elements")]//data for player UI s
@@ -187,7 +188,7 @@ public class Player : MonoBehaviour
 
     void throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
     {
-        GameObject.Instantiate(brick, new Vector3(transform.position.x, transform.position.y+0.25f, transform.position.z+1f), Quaternion.identity);
+        GameObject.Instantiate(brick, brickThrowLocation.position, this.transform.rotation);
         hasBrick = false; 
     }
 

@@ -423,6 +423,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4273695825132487712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777220743169843428}
+  m_Layer: 7
+  m_Name: BrickSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1777220743169843428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273695825132487712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6821300020870900994}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4290894290949582431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1052,7 @@ Transform:
   - {fileID: 6821300019351987754}
   - {fileID: 2101820838234793050}
   - {fileID: 2675948953446372045}
+  - {fileID: 1777220743169843428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1135,6 +1167,7 @@ MonoBehaviour:
   Crowbar: {fileID: 4290894290949582431}
   crowBarCooldown: 5
   brick: {fileID: 4194070924308276971, guid: 3ba024f145bc4e544a6db033a1e6afb2, type: 3}
+  brickThrowLocation: {fileID: 1777220743169843428}
   hasBrick: 0
   moneyText: {fileID: 7988597914530388618}
   healthText: {fileID: 1570211957922189105}
