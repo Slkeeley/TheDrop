@@ -17,11 +17,13 @@ public class GameControl : MonoBehaviour
     public GameObject player;
     public int playerMoney;
     public GameObject winText; //placeholder, this will appear once a player has won
- /*   public int sweatersSold;
-    public int shoesSold;
-    public int hatsSold;
-    public int enemiesDefeated;
-    public int cloutTotal;*/
+                               /*   public int sweatersSold;
+                                  public int shoesSold;
+                                  public int hatsSold;
+                                  public int enemiesDefeated;
+                                  public int cloutTotal;*/
+    public int enemiesInPlay;
+    public int maxEnenmies; 
 
   void Start()
     {
