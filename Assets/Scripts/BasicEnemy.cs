@@ -136,9 +136,8 @@ public class BasicEnemy : MonoBehaviour
 
   public void Die()//falls to the ground and instantiates money
     {
-        Vector3 onGround = new Vector3(90, 0, 0);
-        transform.eulerAngles = onGround;
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
+        transform.rotation = Quaternion.Euler(90, 0, 0);
         while (billsDropped > 0)
         {
             GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
@@ -150,7 +149,7 @@ public class BasicEnemy : MonoBehaviour
 
     IEnumerator fadeOut()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);
     }
 }

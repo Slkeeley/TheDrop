@@ -51,12 +51,10 @@ public class Bruiser : BasicEnemy
         switch (behavior)
         {
             case 0:
-                Debug.Log("has chosen to fight");
                 fight = true; 
                 break;
             case 1:
                 fight = false;
-                Debug.Log("has chosen to flee");
                 break;
             default:
                 break;

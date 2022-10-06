@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (clout <= 0) SceneManager.LoadScene("DeathScreenTemp");
         Move();//always check if the player is moving
         attackInputs();//always check if the player is trying to attack;
         if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack

@@ -26,7 +26,7 @@ public class Store : MonoBehaviour
     public int shoePriceMin = 40;
     public int shoePriceMax = 80;
     public int hatPriceMin = 10; 
-    public int hatPriceMax = 30;
+    public int hatPriceMax = 40;
     private int sweaterPriceCurr;
     private int shoePriceCurr;
     private int hatPriceCurr;

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class GameControl : MonoBehaviour
         if(playerMoney>=moneyThreshold)//if the player has enough of something they win
         {
             winText.SetActive(true);
+         SceneManager.LoadScene("VictoryScreenTemp");
         }
     }
 
