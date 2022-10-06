@@ -47,7 +47,7 @@ public class HouseRandomizer : MonoBehaviour
     IEnumerator waitToOpen()//house is closed waiting to open
     {
         buyersActive= false;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         buyersActive = true;
         chooseHouses(); 
         StartCoroutine(waitToClose());

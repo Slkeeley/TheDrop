@@ -156,7 +156,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 0
   money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
-  billsDropped: 1
+  billsDropped: 5
   isBlocking: 0
   fading: 0
   fists: {fileID: 7295980459363618937}

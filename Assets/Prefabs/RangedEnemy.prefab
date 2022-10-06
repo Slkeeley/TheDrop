@@ -153,12 +153,12 @@ MonoBehaviour:
   alreadyAttacked: 0
   attackDelay: 2
   health: 5
-  healthBar: {fileID: 0}
+  maxHealth: 0
   money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
-  billsDropped: 2
+  billsDropped: 10
+  isBlocking: 0
   fading: 0
   projectile: {fileID: 4194070924308276971, guid: d25f530a7ad189741aa01919c09672a3, type: 3}
-  playerInLOS: 0
 --- !u!1 &5780739777092147071
 GameObject:
   m_ObjectHideFlags: 0
