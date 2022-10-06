@@ -8,30 +8,30 @@ public class EnemySpawn : MonoBehaviour
     public GameObject controller;
     bool onCooldown = false;
     public float spawnCooldown; 
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        controller = GameObject.Find("GameWatcher").gameObject;
+        controller = GameObject.Find("GameWatcher").gameObject;//find the object with our game controller script
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!onCooldown && controller.GetComponent<GameControl>().enemiesInPlay < controller.GetComponent<GameControl>().maxEnenmies)
+        if(!onCooldown && GameControl.enemiesInPlay < controller.GetComponent<GameControl>().maxEnenmies)//if more enemies can still spawn, bring in a new enemy
         {
             spawnEnemy();
         }
     }
 
-    void spawnEnemy()
+    void spawnEnemy()//add a new enemy to the map from whatever is slotted into this object
     {
         GameObject.Instantiate(enemy);
-        controller.GetComponent<GameControl>().enemiesInPlay++;
+        GameControl.enemiesInPlay++;
         onCooldown = true;
         StartCoroutine(cooldown());
     }
 
-    IEnumerator cooldown()
+    IEnumerator cooldown()//make sure that enemies are not constantly spawning 
     {
         yield return new WaitForSeconds(spawnCooldown);
         onCooldown = false; 

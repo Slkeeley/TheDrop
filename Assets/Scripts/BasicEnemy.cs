@@ -22,8 +22,11 @@ public class BasicEnemy : MonoBehaviour
     public bool alreadyAttacked = false;
     public float attackDelay;
     public float health;
+    public float maxHealth;
     public GameObject money;
-    public int billsDropped; 
+    public int billsDropped;
+    public bool isBlocking;
+    bool canBeDamaged = true;
 
     [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
@@ -35,6 +38,7 @@ public class BasicEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         alpha = GetComponent<MeshRenderer>().material.color;
         alpha.a = 0;
+        maxHealth = health;
     }
 
 
@@ -62,19 +66,27 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {
-
-        if (other.tag=="PlayerPunch")
+        if (canBeDamaged)
         {
-            health = health - 2;
-        }
-        if (other.tag == "PlayerKick")
-        {
-            health = health - 5;
-        }
-        if(other.tag=="Crowbar")
-        {
-            Debug.Log("collided with crobar");
-            health = health - 10;
+            if (other.tag == "PlayerPunch")
+            {
+                if (!isBlocking)
+                {
+                    health = health - 2;
+                    StartCoroutine(damaged());
+                }
+                else return;
+            }
+            if (other.tag == "PlayerKick")
+            {
+                health = health - 5;
+                StartCoroutine(damaged());
+            }
+            if (other.tag == "Crowbar")
+            {
+                Debug.Log("collided with crobar");
+                health = health - 10;
+            }
         }
     }
 
@@ -115,6 +127,13 @@ public class BasicEnemy : MonoBehaviour
 
     }
 
+    IEnumerator damaged()
+    {
+        canBeDamaged = false;
+        yield return new WaitForSeconds(0.5f);
+        canBeDamaged = true; 
+    }
+
   public void Die()//falls to the ground and instantiates money
     {
         Vector3 onGround = new Vector3(90, 0, 0);
@@ -125,6 +144,7 @@ public class BasicEnemy : MonoBehaviour
             GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
             billsDropped--;
         }
+        GameControl.enemiesInPlay--;
         StartCoroutine(fadeOut()); 
     }
 

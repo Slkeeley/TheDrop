@@ -66,6 +66,12 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         updateUI(); //Update the players UI every frame to quickly show any changes
+        if (transform.position.y != 1.0f)
+        {
+            Vector3 groundCheck = new Vector3(transform.position.x, 1.0f, transform.position.z);
+            transform.position = groundCheck;
+        }
+  
     }
 
     void Move()//movement method for a 3D space
@@ -81,8 +87,8 @@ public class Player : MonoBehaviour
         {
             //rotate the player in the direction they are trying to move 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+           // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             //move the player with speed independent of frame rate
             controller.Move(direction * movementSpeed * Time.deltaTime);

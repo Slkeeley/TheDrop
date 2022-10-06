@@ -22,12 +22,13 @@ public class GameControl : MonoBehaviour
                                   public int hatsSold;
                                   public int enemiesDefeated;
                                   public int cloutTotal;*/
-    public int enemiesInPlay;
+    public static int enemiesInPlay;
     public int maxEnenmies; 
 
   void Start()
     {
         player = GameObject.FindObjectOfType<Player>().gameObject;
+        enemiesInPlay = 0; 
         winText.SetActive(false);
         linkData(); 
     }
