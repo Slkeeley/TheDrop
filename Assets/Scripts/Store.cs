@@ -10,6 +10,7 @@ public class Store : MonoBehaviour
     bool canBuy= true;//boolean to make sure that the player can only buy one item at a time
     public bool open; //is the store open and selling items
     public GameObject player;
+    public Transform south;
 
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
@@ -45,6 +46,11 @@ public class Store : MonoBehaviour
         openCube.SetActive(false);
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
+        south = GameObject.Find("South").transform;
+    }
+    private void Start()
+    {
+        items.transform.LookAt(south.position);
     }
 
     void Update()
