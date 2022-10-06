@@ -16,15 +16,11 @@ public class BuyerHouse : MonoBehaviour
     public TMP_Text priceText;
 
     [Header("Selling")]//data that determines what is being bought and for how much
-    public int itemPriceMin = 50;
-    public int itemPriceMax = 150;
+    public int itemPriceMin = 40;
+    public int itemPriceMax = 120;
     public int itemPriceCurr;
     public string itemSold; 
 
-
-    [Header("Open Times")]//how long is the house open for
-    public float openTime;
-    public float closeTime;
 
     private void Awake()
     {

@@ -829,6 +829,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 8273075921731392639}
     m_Modifications:
+    - target: {fileID: 2889534060967794496, guid: 20d97d08e3b3a3e499c56acd4594e287, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e81e8154914505548ad2aec89c6fac95, type: 2}
     - target: {fileID: 3703512765188639365, guid: 20d97d08e3b3a3e499c56acd4594e287, type: 3}
       propertyPath: m_Name
       value: Building_2Collider
