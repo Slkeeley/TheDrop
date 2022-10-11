@@ -471,10 +471,10 @@ MonoBehaviour:
   playerEntered: 0
   open: 0
   player: {fileID: 0}
+  south: {fileID: 0}
   items: {fileID: 8273075920763539102}
-  sweaterText: {fileID: 8273075921971382288}
-  shoesText: {fileID: 8273075920883850336}
-  hatText: {fileID: 8273075920777032188}
+  item1Text: {fileID: 0}
+  item2Text: {fileID: 0}
   waitingCube: {fileID: 8779420640259281712}
   openCube: {fileID: 7997996670922094479}
   sweaterPriceMin: 20
@@ -483,10 +483,22 @@ MonoBehaviour:
   shoePriceMax: 80
   hatPriceMin: 10
   hatPriceMax: 30
+  crowBarPrice: 0
+  brickPrice: 0
   itemsLeft: 5
   itemsMax: 5
+  itemsSold:
+  - {fileID: 11400000, guid: 130edbe37be187847b11f0e3d1cbce68, type: 2}
+  - {fileID: 11400000, guid: 1f7ca7c4be031864d8937a9465791964, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   openTime: 20
   waitingTime: 5
+  crowBarSold: 0
+  crowBarChance: 0
+  brickSold: 0
+  brickChance: 0
 --- !u!1 &8273075921971382286
 GameObject:
   m_ObjectHideFlags: 0

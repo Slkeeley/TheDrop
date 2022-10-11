@@ -719,9 +719,9 @@ MonoBehaviour:
   - {fileID: 1401345406}
   - {fileID: 113141894}
   dropsActive: 0
-  totalDrops: 1
+  totalDrops: 2
   timeOpen: 20
-  timeClosed: 10
+  timeClosed: 5
 --- !u!4 &792079722
 Transform:
   m_ObjectHideFlags: 0

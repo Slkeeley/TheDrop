@@ -15,30 +15,25 @@ public class Store : MonoBehaviour
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
     public GameObject items;
-    public TMP_Text sweaterText;
-    public TMP_Text shoesText;
-    public TMP_Text hatText;
+    public TMP_Text item1Text;
+    public TMP_Text item2Text;
     public GameObject waitingCube; 
     public GameObject openCube; 
 
     [Header("Store Prices")]//prices for each item should be within different ranges
-    public int sweaterPriceMin = 20; 
-    public int sweaterPriceMax = 50;
-    public int shoePriceMin = 40;
-    public int shoePriceMax = 80;
-    public int hatPriceMin = 10; 
-    public int hatPriceMax = 40;
-    private int sweaterPriceCurr;
-    private int shoePriceCurr;
-    private int hatPriceCurr;
     public int itemsLeft;
     public int itemsMax;
+    private string item1Txt; 
+    private string item2txt;
+    public StoreItem[] itemsSold;
+    public StoreItem item1; 
+    public StoreItem item2; 
 
     [Header("Store States")]//how long is the store open or waiting to open
     public float openTime; 
     //public float closeTime;
     public float waitingTime;
-    public bool crowBarSold = false; 
+    public bool crowBarSold = false;
     public int crowBarChance; 
     public bool brickSold = false;
     public int brickChance;
@@ -51,6 +46,7 @@ public class Store : MonoBehaviour
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
         south = GameObject.Find("South").transform;
+        //itemRandomizer(); 
     }
     private void Start()
     {
@@ -95,8 +91,8 @@ public class Store : MonoBehaviour
             playerEntered = false;
         }
     }
-
-    public void Randomizer()//way to randomize prices of the items between drops
+    /*
+    public void PriceRandomizer()//way to randomize prices of the items between drops
     {
 
 
@@ -113,55 +109,58 @@ public class Store : MonoBehaviour
         shoePriceCurr = (shoePriceCurr / 10) * 10;
         hatPriceCurr = (hatPriceCurr / 10) * 10;
     }
-
+    */
     void updatePrices()//make sure that the display text shows the correct price of the item. 
     {
-        sweaterText.text = "Press 1 to buy sweater for $" + sweaterPriceCurr.ToString();
-        shoesText.text = "Press 2 to buy shoes for $" + shoePriceCurr.ToString();
-        hatText.text = "Press 3 to buy a hat for $" + hatPriceCurr.ToString();
+        item1Text.text = "Press 1 to buy a " + item1.itemName + " for $" + item1.priceCurr.ToString(); 
+        item2Text.text = "Press 2 to buy a " + item2.itemName + " for $" +item2.priceCurr.ToString();
     }
 
     void buyItems()//if player is able to let them buy items
     {
         if (canBuy)
         {
-            if (Input.GetKey(KeyCode.Alpha1))//player buys sweater
+            if (Input.GetKey(KeyCode.Alpha1))//player buys item1 1
             {
-                if (player.GetComponent<Player>().money >= sweaterPriceCurr)
+                if (player.GetComponent<Player>().money >= item1.priceCurr)
                 {
-                    player.GetComponent<Player>().money = player.GetComponent<Player>().money - sweaterPriceCurr;
+                    player.GetComponent<Player>().money = player.GetComponent<Player>().money - item1.priceCurr;
                     player.GetComponent<Player>().sweatersHeld++;
                     StartCoroutine(waitToBuy());
                 }
             }
 
-            if (Input.GetKey(KeyCode.Alpha2))//player buys shoess
+            if (Input.GetKey(KeyCode.Alpha2))//player buys item 2
             {
-                if (player.GetComponent<Player>().money >= shoePriceCurr)
+                if (player.GetComponent<Player>().money >= item2.priceCurr)
                 {
-                    player.GetComponent<Player>().money = player.GetComponent<Player>().money - shoePriceCurr;
+                    player.GetComponent<Player>().money = player.GetComponent<Player>().money - item2.priceCurr;
                     player.GetComponent<Player>().shoesHeld++;
                     StartCoroutine(waitToBuy());
                 }
             }
 
-            if (Input.GetKey(KeyCode.Alpha3))//player buys a hat
-            {
-                if (player.GetComponent<Player>().money >= hatPriceCurr)
-                {
-                    player.GetComponent<Player>().money = player.GetComponent<Player>().money - hatPriceCurr;
-                    player.GetComponent<Player>().hatsHeld++;
-                    StartCoroutine(waitToBuy());
-                }
-            }
+            
         }
     }
 
     public void beginOpening()//function to tell the player that the drop is about to happen
     {
+        Debug.Log("beginning to open");
         itemsLeft = itemsMax;
-        Randomizer();
+        itemRandomizer();
         StartCoroutine(waitToOpen());
+    }
+
+    void itemRandomizer()
+    {
+        int leftItem = Random.Range(0, itemsSold.Length);
+        int rightItem = Random.Range(0, itemsSold.Length);
+        item1 = itemsSold[leftItem];
+        item2 = itemsSold[rightItem];
+        item1.PriceRandomizer(); 
+        item2.PriceRandomizer();
+        updatePrices(); 
     }
 
     IEnumerator waitToOpen()//store is closed but waiting to begin opening up
