@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priceMin: 80
   priceMax: 80
-  priceCurr: 0
+  priceCurr: 80
   itemName: Crowbar

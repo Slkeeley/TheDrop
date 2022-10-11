@@ -345,6 +345,7 @@ MonoBehaviour:
   open: 0
   player: {fileID: 0}
   south: {fileID: 0}
+  streetLocation: {fileID: 0}
   items: {fileID: 8273075920763539102}
   item1Text: {fileID: 8273075921971382288}
   item2Text: {fileID: 8273075920777032188}
@@ -361,10 +362,8 @@ MonoBehaviour:
   item1: {fileID: 0}
   item2: {fileID: 0}
   openTime: 20
-  waitingTime: 5
-  crowBarSold: 0
+  waitingTime: 15
   crowBarChance: 100
-  brickSold: 0
   brickChance: 100
 --- !u!1 &8273075921971382286
 GameObject:

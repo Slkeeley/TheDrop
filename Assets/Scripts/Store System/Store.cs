@@ -11,7 +11,7 @@ public class Store : MonoBehaviour
     public bool open; //is the store open and selling items
     public GameObject player;
     public Transform south;
-
+    public GameObject streetLocation; 
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
     public GameObject items;
@@ -30,7 +30,6 @@ public class Store : MonoBehaviour
     public StoreItem item2; 
 
     [Header("Store States")]//how long is the store open or waiting to open
-    public float openTime; 
     public float waitingTime;
     public int crowBarChance; 
     public int brickChance;
@@ -206,6 +205,9 @@ public class Store : MonoBehaviour
     IEnumerator waitToOpen()//store is closed but waiting to begin opening up
     {
         waitingCube.SetActive(true);
+        waitingTime = GetComponentInParent<StoreRandomization>().timeOpen / 3;
+        player.GetComponent<Player>().dropText.text = "The next drop is happening on " + streetLocation.name + " in " + waitingTime.ToString() + " seconds";
+        player.GetComponent<Player>().dropAnnouncement();
         yield return new WaitForSeconds(waitingTime);
         open = true; 
     }

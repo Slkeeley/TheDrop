@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
-    public float movementSpeed = 10;
+    public float movementSpeed = 15;
 
     [Header("Gameplay Variables")]//variables for player-game interaction
     public int money=0;
@@ -48,6 +48,9 @@ public class Player : MonoBehaviour
     public TMP_Text hatsText;
     public Image healthBar;
     public GameObject moneyEffect;
+    public TMP_Text currLocationText; 
+    public TMP_Text dropText;
+    public Image phone; 
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
@@ -232,8 +235,33 @@ public class Player : MonoBehaviour
         canBeDamaged = true;
     }
 
-    public void moneyUp()
+    public void moneyUp()//instantiates the money effect 
     {
         GameObject.Instantiate(moneyEffect, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
+    }
+
+
+    public void dropAnnouncement()
+    {
+        StartCoroutine(phoneVibrate());
+        StartCoroutine(hideDropText());
+    }
+
+    IEnumerator phoneVibrate()//slightly rotate the phone object when a drop is announced
+    {
+        phone.rectTransform.Rotate(0, 0, -15);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 30);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, -30);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 15);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 0);
+    }
+    IEnumerator hideDropText()//change the drop text shortly after the announcement 
+    {
+        yield return new WaitForSeconds(5f);
+        dropText.text = "";
     }
 }
