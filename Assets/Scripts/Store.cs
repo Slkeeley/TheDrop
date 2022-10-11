@@ -34,10 +34,14 @@ public class Store : MonoBehaviour
     public int itemsLeft;
     public int itemsMax;
 
-    [Header("Store Times")]//how long is the store open or waiting to open
+    [Header("Store States")]//how long is the store open or waiting to open
     public float openTime; 
     //public float closeTime;
-    public float waitingTime; 
+    public float waitingTime;
+    public bool crowBarSold = false; 
+    public int crowBarChance; 
+    public bool brickSold = false;
+    public int brickChance;
 
     private void Awake()//turn off everything before opening
     {
@@ -94,6 +98,8 @@ public class Store : MonoBehaviour
 
     public void Randomizer()//way to randomize prices of the items between drops
     {
+
+
         sweaterPriceCurr = Random.Range(sweaterPriceMin, sweaterPriceMax + 1);
         shoePriceCurr = Random.Range(shoePriceMin, shoePriceMax + 1);
         hatPriceCurr = Random.Range(hatPriceMin, hatPriceMax + 1);

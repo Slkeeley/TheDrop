@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public TMP_Text shoesText; 
     public TMP_Text hatsText;
     public Image healthBar;
+    public GameObject moneyEffect;
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
@@ -229,5 +230,10 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         canBeDamaged = true;
+    }
+
+    public void moneyUp()
+    {
+        GameObject.Instantiate(moneyEffect, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
     }
 }

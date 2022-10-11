@@ -1175,6 +1175,7 @@ MonoBehaviour:
   shoesText: {fileID: 3933639464490693586}
   hatsText: {fileID: 6884576233112997740}
   healthBar: {fileID: 875497170230469904}
+  moneyEffect: {fileID: 4165332761293404274, guid: 5d7ad0442b919194591f29887575e8b3, type: 3}
 --- !u!1 &6821300021035772520
 GameObject:
   m_ObjectHideFlags: 0
