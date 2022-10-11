@@ -363,9 +363,9 @@ MonoBehaviour:
   openTime: 20
   waitingTime: 5
   crowBarSold: 0
-  crowBarChance: 0
+  crowBarChance: 100
   brickSold: 0
-  brickChance: 0
+  brickChance: 100
 --- !u!1 &8273075921971382286
 GameObject:
   m_ObjectHideFlags: 0

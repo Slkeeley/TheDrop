@@ -20,7 +20,7 @@ public class Store : MonoBehaviour
     public GameObject waitingCube; 
     public GameObject openCube; 
 
-    [Header("Store Prices")]//prices for each item should be within different ranges
+    [Header("Store Items")]//prices for each item should be within different ranges
     public int itemsLeft;
     public int itemsMax;
     private string item1Txt; 
@@ -31,11 +31,8 @@ public class Store : MonoBehaviour
 
     [Header("Store States")]//how long is the store open or waiting to open
     public float openTime; 
-    //public float closeTime;
     public float waitingTime;
-    public bool crowBarSold = false;
     public int crowBarChance; 
-    public bool brickSold = false;
     public int brickChance;
 
     private void Awake()//turn off everything before opening
@@ -46,7 +43,6 @@ public class Store : MonoBehaviour
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
         south = GameObject.Find("South").transform;
-        //itemRandomizer(); 
     }
     private void Start()
     {
@@ -91,25 +87,7 @@ public class Store : MonoBehaviour
             playerEntered = false;
         }
     }
-    /*
-    public void PriceRandomizer()//way to randomize prices of the items between drops
-    {
-
-
-        sweaterPriceCurr = Random.Range(sweaterPriceMin, sweaterPriceMax + 1);
-        shoePriceCurr = Random.Range(shoePriceMin, shoePriceMax + 1);
-        hatPriceCurr = Random.Range(hatPriceMin, hatPriceMax + 1);
-        roundToTens();
-        updatePrices();
-    }
-
-    void roundToTens()//round all prices to the nearest 10 to simplify calculation
-    {
-        sweaterPriceCurr = (sweaterPriceCurr / 10) * 10;
-        shoePriceCurr = (shoePriceCurr / 10) * 10;
-        hatPriceCurr = (hatPriceCurr / 10) * 10;
-    }
-    */
+   
     void updatePrices()//make sure that the display text shows the correct price of the item. 
     {
         item1Text.text = "Press 1 to buy a " + item1.itemName + " for $" + item1.priceCurr.ToString(); 
@@ -125,7 +103,7 @@ public class Store : MonoBehaviour
                 if (player.GetComponent<Player>().money >= item1.priceCurr)
                 {
                     player.GetComponent<Player>().money = player.GetComponent<Player>().money - item1.priceCurr;
-                    player.GetComponent<Player>().sweatersHeld++;
+                    giveItem1();
                     StartCoroutine(waitToBuy());
                 }
             }
@@ -135,7 +113,7 @@ public class Store : MonoBehaviour
                 if (player.GetComponent<Player>().money >= item2.priceCurr)
                 {
                     player.GetComponent<Player>().money = player.GetComponent<Player>().money - item2.priceCurr;
-                    player.GetComponent<Player>().shoesHeld++;
+                    giveItem2(); 
                     StartCoroutine(waitToBuy());
                 }
             }
@@ -152,15 +130,77 @@ public class Store : MonoBehaviour
         StartCoroutine(waitToOpen());
     }
 
-    void itemRandomizer()
+    void itemRandomizer()//way to randomize what two items are present in the store. 
     {
-        int leftItem = Random.Range(0, itemsSold.Length);
-        int rightItem = Random.Range(0, itemsSold.Length);
+        int leftItem = Random.Range(0, 3);
+        int rightItem = Random.Range(0, 3);
         item1 = itemsSold[leftItem];
         item2 = itemsSold[rightItem];
         item1.PriceRandomizer(); 
         item2.PriceRandomizer();
+        if (crowbarSpawn())
+        {
+            item1 = itemsSold[3];
+        }
+        if (brickSpawn())
+        {
+            item2 = itemsSold[4];
+        }
         updatePrices(); 
+    }
+
+    bool crowbarSpawn()//does the crowbar appear in the store
+    {
+        if (StoreRandomization.crowBarSold) return false; 
+        int spawn = Random.Range(1, 101);
+        if (spawn <= crowBarChance) return true;
+        else return false; 
+    }
+    bool brickSpawn()//does the brick appear in the store
+    {
+        if (StoreRandomization.brickSold) return false; 
+        int spawn = Random.Range(1, 101);
+        if (spawn <= brickChance) return true;
+        else return false;
+    }
+
+    void giveItem1()//give the left item to the player if they have purchased it
+    {
+        switch (item1.itemName)
+        {
+            case "Sweater":
+                player.GetComponent<Player>().sweatersHeld++; 
+                break;
+            case "Shoes":
+                player.GetComponent<Player>().shoesHeld++;
+                break;
+            case "Hat":
+                player.GetComponent<Player>().hatsHeld++;
+                break;
+            case "Crowbar":
+                player.GetComponent<Player>().hasCrowbar = true;
+                StoreRandomization.crowBarSold = true; 
+                break;
+        }
+    }
+    void giveItem2()//give the right item to the player if they have purchased it
+    {
+        switch (item2.itemName)
+        {
+            case "Sweater":
+                player.GetComponent<Player>().sweatersHeld++;
+                break;
+            case "Shoes":
+                player.GetComponent<Player>().shoesHeld++;
+                break;
+            case "Hat":
+                player.GetComponent<Player>().hatsHeld++;
+                break;
+            case "Brick":
+                player.GetComponent<Player>().hasBrick = true;
+                StoreRandomization.brickSold= true;
+                break;
+        }
     }
 
     IEnumerator waitToOpen()//store is closed but waiting to begin opening up

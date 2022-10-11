@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6821300020870900995, guid: 3665cc203701f37489ef7283f11abf48, type: 3}
+      propertyPath: money
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6821300020870901022, guid: 3665cc203701f37489ef7283f11abf48, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1020,6 +1024,14 @@ PrefabInstance:
     - target: {fileID: 8273075921731392635, guid: 9955d18c0c4705947b64f0a40990af16, type: 3}
       propertyPath: m_Name
       value: Store_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273075921731392638, guid: 9955d18c0c4705947b64f0a40990af16, type: 3}
+      propertyPath: brickChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273075921731392638, guid: 9955d18c0c4705947b64f0a40990af16, type: 3}
+      propertyPath: crowBarChance
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8273075921731392639, guid: 9955d18c0c4705947b64f0a40990af16, type: 3}
       propertyPath: m_RootOrder

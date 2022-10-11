@@ -9,10 +9,14 @@ public class StoreRandomization : MonoBehaviour
     public int totalDrops;//how many stores are open at a time
     public float timeOpen; //how long do the stores stay open
     public float timeClosed; //how long do the stores stay closed
+    public static bool crowBarSold = false; 
+    public static bool brickSold = false; 
 
 
     void Start()
     {
+        crowBarSold = false;
+        brickSold = false;
         StartCoroutine(waitToOpen());//begin opening stores at the start of the level
     }
 
