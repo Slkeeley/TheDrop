@@ -5,7 +5,8 @@ using UnityEngine;
 public class HouseRandomizer : MonoBehaviour
 {
     public GameObject[] houses;//how many houses are in the level
-    public GameObject phone; 
+    public GameObject phone;
+    public GameObject GameUI;
     public bool buyersActive;//are the houses currently buying itemss
     public int housesBuying;//how many houses are offering to buy items at a time
     public float timeClosed; 
@@ -38,7 +39,7 @@ public class HouseRandomizer : MonoBehaviour
             {
                 houses[houseSelected].GetComponent<BuyerHouse>().openHouse();
                 phone.GetComponent<Phone>().messages[i].text = "Looking to buy a " + houses[houseSelected].GetComponent<BuyerHouse>().itemSold + " for $" + houses[houseSelected].GetComponent<BuyerHouse>().itemPriceCurr + " on " + houses[houseSelected].GetComponent<BuyerHouse>().streetLocation.name;
-
+                GameUI.GetComponent<GameUI>().msgNotifications++;
             }
             else//if the house was already selected keep iterating
             {
