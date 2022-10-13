@@ -35,7 +35,9 @@ public class BasicEnemy : MonoBehaviour
    public bool fading = false;
     MeshRenderer mr; 
     public Material skin; 
-    public Material damagedMat; 
+    public Material damagedMat;
+    public GameObject bar;
+    public Image healthBar;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
@@ -45,6 +47,7 @@ public class BasicEnemy : MonoBehaviour
         mr.material = skin;
         alpha.a = 0;
         maxHealth = health;
+        bar.SetActive(false);
     }
 
    
@@ -79,7 +82,6 @@ public class BasicEnemy : MonoBehaviour
                 if (!isBlocking)
                 {
                     health = health - 2;
-                    mr.material = damagedMat;
                 //    knockbackDir = transform.position - other.transform.position;
                 //    rb.AddForce(knockbackDir * -1f);
                     StartCoroutine(damaged());
@@ -146,8 +148,14 @@ public class BasicEnemy : MonoBehaviour
     IEnumerator damaged()
     {
         canBeDamaged = false;
-        yield return new WaitForSeconds(0.5f);
-    //    rb.AddForce(knockbackDir*0);
+        mr.material = damagedMat;
+        bar.SetActive(true);
+        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
+        yield return new WaitForSeconds(0.25f);
+        mr.material = skin;
+        //    rb.AddForce(knockbackDir*0);
+        yield return new WaitForSeconds(0.25f);
+        bar.SetActive(false);
         canBeDamaged = true; 
     }
 
