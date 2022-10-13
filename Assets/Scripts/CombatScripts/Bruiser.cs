@@ -14,6 +14,7 @@ public class Bruiser : BasicEnemy
     {
         fists.SetActive(false);//make sure that the fists are put away on instantiation
         blockPos.SetActive(false);//make sure that the enemy does not show they are blocking at the start of the game. 
+        
         fightOrFlight();
     }
 
