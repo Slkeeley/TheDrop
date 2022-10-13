@@ -10,6 +10,7 @@ public class Store : MonoBehaviour
     bool canBuy= true;//boolean to make sure that the player can only buy one item at a time
     public bool open; //is the store open and selling items
     public GameObject player;
+    public GameObject UI;
     public Transform south;
     public GameObject streetLocation; 
 
@@ -41,6 +42,7 @@ public class Store : MonoBehaviour
         openCube.SetActive(false);
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
+        UI = GameObject.FindObjectOfType<GameUI>().gameObject;
         south = GameObject.Find("South").transform;
     }
     private void Start()
@@ -206,8 +208,8 @@ public class Store : MonoBehaviour
     {
         waitingCube.SetActive(true);
         waitingTime = GetComponentInParent<StoreRandomization>().timeOpen / 3;
-        player.GetComponent<Player>().dropText.text = "The next drop is happening on " + streetLocation.name + " in " + waitingTime.ToString() + " seconds";
-        player.GetComponent<Player>().dropAnnouncement();
+        UI.GetComponent<GameUI>().dropText.text = "The next drop is happening on " + streetLocation.name + " in " + waitingTime.ToString() + " seconds";
+        UI.GetComponent<GameUI>().dropAnnouncement();
         yield return new WaitForSeconds(waitingTime);
         open = true; 
     }

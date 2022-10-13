@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     bool canPunch = true; 
     public GameObject leftArm; 
     public GameObject rightArm;
+    //kick attack
     bool canKick = true;//kick attack
     public GameObject Leg;
     public bool hasCrowbar = false;//crowbar attack
@@ -38,26 +39,21 @@ public class Player : MonoBehaviour
     public float crowBarCooldown;
     public GameObject brick;//brick attack
     public Transform brickThrowLocation;//position that the brick should spawn in
-    public bool hasBrick = false; 
+    public bool hasBrick = false;
+    public bool isBlocking = false;
+    bool canBlock = true; 
+    public GameObject blockUp; 
 
     [Header("UI Elements")]//data for player UI s
-    public TMP_Text moneyText; 
-    public TMP_Text healthText; 
-    public TMP_Text sweaterText; 
-    public TMP_Text shoesText; 
-    public TMP_Text hatsText;
-    public Image healthBar;
     public GameObject moneyEffect;
-    public TMP_Text currLocationText; 
-    public TMP_Text dropText;
-    public Image phone; 
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
         leftArm.SetActive(false);
         rightArm.SetActive(false);
         Leg.SetActive(false);
-        updateUI();
+        blockUp.SetActive(false);
+
     }
 
 
@@ -65,19 +61,17 @@ public class Player : MonoBehaviour
     {
         if (clout <= 0) SceneManager.LoadScene("DeathScreenTemp");
         Move();//always check if the player is moving
-        attackInputs();//always check if the player is trying to attack;
+        attackInputs();//always check if the player is trying to attack; 
         if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        updateUI(); //Update the players UI every frame to quickly show any changes
         if (transform.position.y != 1.0f)
         {
             Vector3 groundCheck = new Vector3(transform.position.x, 1.0f, transform.position.z);
             transform.position = groundCheck;
-        }
-  
+        } 
     }
 
     void Move()//movement method for a 3D space
@@ -136,7 +130,19 @@ public class Player : MonoBehaviour
         {
             if (hasBrick) throwBrick(); 
         }
+
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            Debug.Log("mouse 2");
+            if(canBlock)
+            {
+                canBlock = false;
+                block();
+            }
+        }
     }
+
+
     void Punch()//punch attack alternates between left and right arms
     {
         if(rightArmNext)//punch with right arm 
@@ -204,15 +210,20 @@ public class Player : MonoBehaviour
         hasBrick = false; 
     }
 
-
-    void updateUI()//change all parts UI display depending on the players current situations
+    void block()
     {
-        moneyText.text = "Bread: " + money.ToString(); 
-        healthText.text = "Clout: " + clout.ToString(); 
-        sweaterText.text = "Sweaters: " + sweatersHeld.ToString(); 
-        shoesText.text = "Shoes: " + shoesHeld.ToString(); 
-        hatsText.text = "Hats: " + hatsHeld.ToString();
-        healthBar.fillAmount = Mathf.Clamp(clout / MaxHealth, 0, 1f);
+        blockUp.SetActive(true);
+        isBlocking = true;
+        StartCoroutine(blockCooldown());
+    }
+
+    IEnumerator blockCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        blockUp.SetActive(false);
+        isBlocking = false;
+        yield return new WaitForSeconds(1.0f);
+        canBlock = true; 
     }
 
     public void takePunch()//method for player to take damage from an enemy punching them 
@@ -241,27 +252,4 @@ public class Player : MonoBehaviour
     }
 
 
-    public void dropAnnouncement()
-    {
-        StartCoroutine(phoneVibrate());
-        StartCoroutine(hideDropText());
-    }
-
-    IEnumerator phoneVibrate()//slightly rotate the phone object when a drop is announced
-    {
-        phone.rectTransform.Rotate(0, 0, -15);
-        yield return new WaitForSeconds(.1f);
-        phone.rectTransform.Rotate(0, 0, 30);
-        yield return new WaitForSeconds(.1f);
-        phone.rectTransform.Rotate(0, 0, -30);
-        yield return new WaitForSeconds(.1f);
-        phone.rectTransform.Rotate(0, 0, 15);
-        yield return new WaitForSeconds(.1f);
-        phone.rectTransform.Rotate(0, 0, 0);
-    }
-    IEnumerator hideDropText()//change the drop text shortly after the announcement 
-    {
-        yield return new WaitForSeconds(5f);
-        dropText.text = "";
-    }
 }

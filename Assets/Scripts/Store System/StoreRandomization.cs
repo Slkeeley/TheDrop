@@ -5,6 +5,7 @@ using UnityEngine;
 public class StoreRandomization : MonoBehaviour
 {
     public GameObject[] stores;//array of all store locations in the level
+    public GameObject GameUI;
     public bool dropsActive=false;//are the stores opening?
     public int totalDrops;//how many stores are open at a time
     public float timeOpen; //how long do the stores stay open
@@ -42,6 +43,7 @@ public class StoreRandomization : MonoBehaviour
             if (stores[storeSelected].GetComponent<Store>().open == false)//if the house was not already selected open it up 
             {
                 stores[storeSelected].GetComponent<Store>().beginOpening();
+                GameUI.GetComponent<GameUI>().socialNotifications++;
             }
             else//if the house was already selected keep iterating
             {

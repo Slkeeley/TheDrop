@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Street : MonoBehaviour
 {
+    GameObject gameUI;
+
+    private void Start()
+    {
+        gameUI = GameObject.FindObjectOfType<GameUI>().gameObject;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.tag=="Player")
         {
             Debug.Log("Collided");
-            other.GetComponent<Player>().currLocationText.text = this.name;
+            gameUI.GetComponent<GameUI>().currLocationText.text = this.name;
         }
     }
 }

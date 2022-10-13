@@ -1,0 +1,89 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class GameUI : MonoBehaviour
+{
+    [Header("Player Attachment")]
+    public GameObject player;
+    Player playerScript;
+
+    [Header("Status")]//data for player UI s
+    public TMP_Text moneyText;
+    public TMP_Text healthText;
+    public TMP_Text sweaterText;
+    public TMP_Text shoesText;
+    public TMP_Text hatsText;
+    public Image healthBar;
+
+    [Header("Notification System")]
+    public TMP_Text currLocationText;
+    public TMP_Text dropText;
+    public Image phone;
+    public GameObject messages;
+    public GameObject DMS;
+    public int msgNotifications;
+    public int socialNotifications;
+    public TMP_Text messagesText; 
+    public TMP_Text dmText; 
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
+
+    }
+
+    // Update is called once per frame
+    void LateUpdate()
+    {
+        updateUI(); //Update the players UI every frame to quickly show any changes
+        if (msgNotifications > 0) messages.SetActive(true);
+        else messages.SetActive(false);
+
+        if (socialNotifications > 0) DMS.SetActive(true);
+        else DMS.SetActive(false);
+    }
+
+    void updateUI()//change all parts UI display depending on the players current situations
+    {
+        moneyText.text = "Bread: " + playerScript.money.ToString();
+        healthText.text = "Clout: " + playerScript.clout.ToString();
+        sweaterText.text = "Sweaters: " + playerScript.sweatersHeld.ToString();
+        shoesText.text = "Shoes: " + playerScript.shoesHeld.ToString();
+        hatsText.text = "Hats: " + playerScript.hatsHeld.ToString();
+        healthBar.fillAmount = Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f);
+
+        messagesText.text = msgNotifications.ToString();
+        dmText.text = socialNotifications.ToString();
+    }
+
+
+    public void dropAnnouncement()//Accessed from another script to notify the player's phone 
+    {
+        StartCoroutine(phoneVibrate());
+        StartCoroutine(hideDropText());
+    }
+
+    IEnumerator phoneVibrate()//slightly rotate the phone object when a drop is announced
+    {
+        phone.rectTransform.Rotate(0, 0, -15);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 30);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, -30);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 15);
+        yield return new WaitForSeconds(.1f);
+        phone.rectTransform.Rotate(0, 0, 0);
+    }
+    IEnumerator hideDropText()//change the drop text shortly after the announcement 
+    {
+        yield return new WaitForSeconds(5f);
+        dropText.text = "";
+    }
+}
