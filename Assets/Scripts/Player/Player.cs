@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     bool canPunch = true; 
     public GameObject leftArm; 
     public GameObject rightArm;
+    //kick attack
     bool canKick = true;//kick attack
     public GameObject Leg;
     public bool hasCrowbar = false;//crowbar attack
@@ -38,7 +39,10 @@ public class Player : MonoBehaviour
     public float crowBarCooldown;
     public GameObject brick;//brick attack
     public Transform brickThrowLocation;//position that the brick should spawn in
-    public bool hasBrick = false; 
+    public bool hasBrick = false;
+    public bool isBlocking = false;
+    bool canBlock = true; 
+    public GameObject blockUp; 
 
     [Header("UI Elements")]//data for player UI s
     public TMP_Text moneyText; 
@@ -57,6 +61,7 @@ public class Player : MonoBehaviour
         leftArm.SetActive(false);
         rightArm.SetActive(false);
         Leg.SetActive(false);
+        blockUp.SetActive(false);
         updateUI();
     }
 
@@ -65,7 +70,7 @@ public class Player : MonoBehaviour
     {
         if (clout <= 0) SceneManager.LoadScene("DeathScreenTemp");
         Move();//always check if the player is moving
-        attackInputs();//always check if the player is trying to attack;
+        attackInputs();//always check if the player is trying to attack; 
         if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
     }
 
@@ -136,7 +141,19 @@ public class Player : MonoBehaviour
         {
             if (hasBrick) throwBrick(); 
         }
+
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            Debug.Log("mouse 2");
+            if(canBlock)
+            {
+                canBlock = false;
+                block();
+            }
+        }
     }
+
+
     void Punch()//punch attack alternates between left and right arms
     {
         if(rightArmNext)//punch with right arm 
@@ -204,6 +221,21 @@ public class Player : MonoBehaviour
         hasBrick = false; 
     }
 
+    void block()
+    {
+        blockUp.SetActive(true);
+        isBlocking = true;
+        StartCoroutine(blockCooldown());
+    }
+
+    IEnumerator blockCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        blockUp.SetActive(false);
+        isBlocking = false;
+        yield return new WaitForSeconds(1.0f);
+        canBlock = true; 
+    }
 
     void updateUI()//change all parts UI display depending on the players current situations
     {

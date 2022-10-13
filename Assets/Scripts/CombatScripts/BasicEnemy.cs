@@ -17,6 +17,8 @@ public class BasicEnemy : MonoBehaviour
     public float walkPointRange, aggroRange, attackRange; 
     public bool enemyInAggro, enemyInAttackRange;
    public bool dead = false;
+  //  Rigidbody rb;
+  //  Vector3 knockbackDir; 
 
     [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
@@ -31,17 +33,21 @@ public class BasicEnemy : MonoBehaviour
     [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
    public bool fading = false;
+    MeshRenderer mr; 
+    public Material skin; 
+    public Material damagedMat; 
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
-        agent = GetComponent<NavMeshAgent>();
-        alpha = GetComponent<MeshRenderer>().material.color;
+       //  rb = GetComponent<Rigidbody>();
+        mr = GetComponent<MeshRenderer>();
+        mr.material = skin;
         alpha.a = 0;
         maxHealth = health;
     }
 
-
+   
     void Update()//check if the enemy is dead and allow it to move around the map
     {
         if (!dead)//if the enemy is not dead move around
@@ -73,19 +79,29 @@ public class BasicEnemy : MonoBehaviour
                 if (!isBlocking)
                 {
                     health = health - 2;
+                    mr.material = damagedMat;
+                //    knockbackDir = transform.position - other.transform.position;
+                //    rb.AddForce(knockbackDir * -1f);
                     StartCoroutine(damaged());
+                    
                 }
                 else return;
             }
             if (other.tag == "PlayerKick")
             {
                 health = health - 5;
+             //   knockbackDir = transform.position - other.transform.position;
+             //   rb.AddForce(knockbackDir * -200f);
                 StartCoroutine(damaged());
             }
             if (other.tag == "Crowbar")
             {
                 Debug.Log("collided with crobar");
                 health = health - 10;
+            }
+            if(other.tag=="brick")
+            {
+                health = 0;
             }
         }
     }
@@ -131,6 +147,7 @@ public class BasicEnemy : MonoBehaviour
     {
         canBeDamaged = false;
         yield return new WaitForSeconds(0.5f);
+    //    rb.AddForce(knockbackDir*0);
         canBeDamaged = true; 
     }
 
