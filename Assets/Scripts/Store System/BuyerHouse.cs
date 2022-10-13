@@ -11,6 +11,7 @@ public class BuyerHouse : MonoBehaviour
     bool sold = false;//boolean to make sure that the player can only buy one item at a time
     public GameObject player;
     public Transform south;
+    public GameObject streetLocation; 
    
     [Header("Store UI")]//the canvas that shows what the house is trying to by and for how much
     public GameObject canvas;

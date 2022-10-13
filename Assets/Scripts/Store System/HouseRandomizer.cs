@@ -5,9 +5,11 @@ using UnityEngine;
 public class HouseRandomizer : MonoBehaviour
 {
     public GameObject[] houses;//how many houses are in the level
+    public GameObject phone; 
     public bool buyersActive;//are the houses currently buying itemss
     public int housesBuying;//how many houses are offering to buy items at a time
-    
+    public float timeClosed; 
+    public float timeOpen; 
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class HouseRandomizer : MonoBehaviour
             if (houses[houseSelected].GetComponent<BuyerHouse>().open == false)//if the house was not already selected open it up 
             {
                 houses[houseSelected].GetComponent<BuyerHouse>().openHouse();
+                phone.GetComponent<Phone>().messages[i].text = "Looking to buy a " + houses[houseSelected].GetComponent<BuyerHouse>().itemSold + " for $" + houses[houseSelected].GetComponent<BuyerHouse>().itemPriceCurr + " on " + houses[houseSelected].GetComponent<BuyerHouse>().streetLocation.name;
+
             }
             else//if the house was already selected keep iterating
             {
@@ -47,7 +51,7 @@ public class HouseRandomizer : MonoBehaviour
     IEnumerator waitToOpen()//house is closed waiting to open
     {
         buyersActive= false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeClosed);
         buyersActive = true;
         chooseHouses(); 
         StartCoroutine(waitToClose());
@@ -55,7 +59,7 @@ public class HouseRandomizer : MonoBehaviour
 
     IEnumerator waitToClose()//houses are active and waiting to close back down
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(timeOpen);
         buyersActive = false;
         StartCoroutine(waitToOpen());
     }
