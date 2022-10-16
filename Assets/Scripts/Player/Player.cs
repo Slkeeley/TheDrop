@@ -34,15 +34,20 @@ public class Player : MonoBehaviour
     public GameObject Leg;
     public bool hasCrowbar = false;//crowbar attack
     bool crowbarOnCooldown = false; 
-    bool spinning = false; 
     public GameObject Crowbar;
     public float crowBarCooldown;
     public GameObject brick;//brick attack
     public Transform brickThrowLocation;//position that the brick should spawn in
     public bool hasBrick = false;
-    public bool isBlocking = false;
     bool canBlock = true; 
-    public GameObject blockUp; 
+    public GameObject blockUp;
+
+    [Header("Attack Statuses")]
+    public bool isPunching;
+    public bool isKicking;
+    public bool isBlocking=false;
+    bool spinning = false;
+
 
     [Header("UI Elements")]//data for player UI s
     public GameObject moneyEffect;
@@ -67,6 +72,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        readAttacks();
         if (transform.position.y != 1.0f)
         {
             Vector3 groundCheck = new Vector3(transform.position.x, 1.0f, transform.position.z);
@@ -101,7 +107,6 @@ public class Player : MonoBehaviour
         {
             if (canPunch)//check if the punch attack is off cooldown
             {
-
                 canPunch = false;
                 Punch();
             }
@@ -141,8 +146,47 @@ public class Player : MonoBehaviour
             }
         }
     }
+ 
+    void readAttacks()
+    {
+        if(isPunching)
+        {
+            isKicking = false;
+            isBlocking = false;
+            Leg.SetActive(false);
+            blockUp.SetActive(false);
+        }
 
+        if(isKicking)
+        {
+            isPunching = false;
+            isBlocking = false;
+            leftArm.SetActive(false);
+            rightArm.SetActive(false);
+            blockUp.SetActive(false);
+        }
 
+        if(isBlocking)
+        {
+            isPunching = false;
+            isKicking = false;
+            leftArm.SetActive(false);
+            rightArm.SetActive(false);
+            Leg.SetActive(false);
+        }
+
+        if(spinning)
+        {
+            isPunching = false;
+            isKicking = false;
+            isBlocking = false;
+            leftArm.SetActive(false);
+            rightArm.SetActive(false);
+            blockUp.SetActive(false);
+            Leg.SetActive(false);
+        }
+    }
+    
     void Punch()//punch attack alternates between left and right arms
     {
         if(rightArmNext)//punch with right arm 
@@ -162,6 +206,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         canPunch = true;
+        isPunching = false;
         rightArm.SetActive(false);
         leftArm.SetActive(false);
     }
@@ -175,6 +220,7 @@ public class Player : MonoBehaviour
 
     IEnumerator despawnLeg()//put the players leg away after the attack is over, but the attack is over before they can choose to attack again
     {
+        isKicking = true;
         yield return new WaitForSeconds(.5f);
         Leg.SetActive(false);
     }
@@ -182,7 +228,8 @@ public class Player : MonoBehaviour
     IEnumerator kickCoolDown()//slightly longer cooldown for kick attack since it is strongers
     {
         yield return new WaitForSeconds(1.0f);
-        canKick = true; 
+        canKick = true;
+        isKicking = false; 
     }
 
     void crowBarAttack()//brings out the crowbar model and has the character spin around hitting everythign around it for half a second

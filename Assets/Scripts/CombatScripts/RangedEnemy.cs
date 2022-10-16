@@ -50,11 +50,9 @@ public class RangedEnemy : BasicEnemy
     bool checkLOS()//fire a raycast to determine if there is an object between the player and this enemy, returns false if player is not hit
     {
         transform.LookAt(player);
-        Debug.Log("checking los");
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
         {
-            Debug.Log(hit.transform.name);
             if(hit.transform.GetComponent<Player>())
             {
                 return true; 

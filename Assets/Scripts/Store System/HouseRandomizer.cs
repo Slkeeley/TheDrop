@@ -62,6 +62,7 @@ public class HouseRandomizer : MonoBehaviour
     {
         yield return new WaitForSeconds(timeOpen);
         buyersActive = false;
+        GameUI.GetComponent<GameUI>().msgNotifications = 0;
         StartCoroutine(waitToOpen());
     }
 }

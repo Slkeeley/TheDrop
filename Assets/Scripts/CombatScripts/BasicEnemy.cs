@@ -17,8 +17,8 @@ public class BasicEnemy : MonoBehaviour
     public float walkPointRange, aggroRange, attackRange; 
     public bool enemyInAggro, enemyInAttackRange;
    public bool dead = false;
-  //  Rigidbody rb;
-  //  Vector3 knockbackDir; 
+    Rigidbody rb;
+    Vector3 knockbackDir; 
 
     [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
@@ -42,7 +42,7 @@ public class BasicEnemy : MonoBehaviour
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
-       //  rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         mr = GetComponent<MeshRenderer>();
         mr.material = skin;
         alpha.a = 0;
@@ -82,8 +82,9 @@ public class BasicEnemy : MonoBehaviour
                 if (!isBlocking)
                 {
                     health = health - 2;
-                //    knockbackDir = transform.position - other.transform.position;
-                //    rb.AddForce(knockbackDir * -1f);
+                    rb.isKinematic = false;
+                    knockbackDir = transform.position - other.transform.position;
+                    rb.AddForce(knockbackDir * -2000f);
                     StartCoroutine(damaged());
                     
                 }
@@ -92,8 +93,9 @@ public class BasicEnemy : MonoBehaviour
             if (other.tag == "PlayerKick")
             {
                 health = health - 5;
-             //   knockbackDir = transform.position - other.transform.position;
-             //   rb.AddForce(knockbackDir * -200f);
+                rb.isKinematic = false;
+                knockbackDir = transform.position - other.transform.position;
+                rb.AddForce(knockbackDir * -2000f);
                 StartCoroutine(damaged());
             }
             if (other.tag == "Crowbar")
@@ -153,7 +155,7 @@ public class BasicEnemy : MonoBehaviour
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
         yield return new WaitForSeconds(0.25f);
         mr.material = skin;
-        //    rb.AddForce(knockbackDir*0);
+        rb.isKinematic = true;
         yield return new WaitForSeconds(0.25f);
         bar.SetActive(false);
         canBeDamaged = true; 
