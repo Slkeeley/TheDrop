@@ -25,7 +25,7 @@ public class EnemySpawn : MonoBehaviour
 
     void spawnEnemy()//add a new enemy to the map from whatever is slotted into this object
     {
-        GameObject.Instantiate(enemy, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject.Instantiate(enemy, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         GameControl.enemiesInPlay++;
         onCooldown = true;
         StartCoroutine(cooldown());

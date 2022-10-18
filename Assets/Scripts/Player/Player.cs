@@ -147,9 +147,9 @@ public class Player : MonoBehaviour
         }
     }
  
-    void readAttacks()
+    void readAttacks()//script for "animation" Canceling player attacks 
     {
-        if(isPunching)
+        if(isPunching)//punch attack
         {
             isKicking = false;
             isBlocking = false;
@@ -186,7 +186,17 @@ public class Player : MonoBehaviour
             Leg.SetActive(false);
         }
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="Car")
+        {
+            clout = clout - 20;
+        }
+    }
+
+
+    //ATTACK METHODS
     void Punch()//punch attack alternates between left and right arms
     {
         if(rightArmNext)//punch with right arm 
@@ -272,6 +282,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         canBlock = true; 
     }
+
+    //GAME INTERACTION 
 
     public void takePunch()//method for player to take damage from an enemy punching them 
     {

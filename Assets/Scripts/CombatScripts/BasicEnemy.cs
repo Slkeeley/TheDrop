@@ -103,7 +103,7 @@ public class BasicEnemy : MonoBehaviour
                 Debug.Log("collided with crobar");
                 health = health - 10;
             }
-            if(other.tag=="brick")
+            if(other.tag=="brick"||other.tag=="Car")
             {
                 health = 0;
             }
