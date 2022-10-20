@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     [Header("Controller Variables")]//variables for player movement
     public CharacterController controller;
+    public Animator am; 
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
     public float movementSpeed = 15;
@@ -52,13 +53,17 @@ public class Player : MonoBehaviour
     [Header("UI Elements")]//data for player UI s
     public GameObject moneyEffect;
 
+    private void Awake()
+    {
+        am = GetComponent<Animator>();
+    }
+
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
         leftArm.SetActive(false);
         rightArm.SetActive(false);
         Leg.SetActive(false);
         blockUp.SetActive(false);
-
     }
 
 
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour
         readAttacks();
         if (transform.position.y != 1.0f)
         {
-            Vector3 groundCheck = new Vector3(transform.position.x, 1.0f, transform.position.z);
+            Vector3 groundCheck = new Vector3(transform.position.x, 0f, transform.position.z);
             transform.position = groundCheck;
         } 
     }
@@ -89,7 +94,7 @@ public class Player : MonoBehaviour
        //detect what direction the player is trying to move
         Vector3 direction = new Vector3(horizontalAxis, 0f, vertAxis).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.01f)
         {
             //rotate the player in the direction they are trying to move 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -97,7 +102,17 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             //move the player with speed independent of frame rate
-            controller.Move(direction * movementSpeed * Time.deltaTime);
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                controller.Move(direction *(movementSpeed*2)* Time.deltaTime);
+            }
+            else controller.Move(direction * movementSpeed * Time.deltaTime);
+            am.SetBool("Running", true);
+            
+        }
+        else
+        {
+            am.SetBool("Running", false);
         }
     }
 
