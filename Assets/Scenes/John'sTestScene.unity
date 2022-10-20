@@ -407,8 +407,10 @@ MonoBehaviour:
   brick: {fileID: 4194070924308276971, guid: 3ba024f145bc4e544a6db033a1e6afb2, type: 3}
   brickThrowLocation: {fileID: 0}
   hasBrick: 0
-  isBlocking: 0
   blockUp: {fileID: 0}
+  isPunching: 0
+  isKicking: 0
+  isBlocking: 0
   moneyEffect: {fileID: 4165332761293404274, guid: 5d7ad0442b919194591f29887575e8b3, type: 3}
 --- !u!143 &336401229
 CharacterController:
@@ -1357,8 +1359,10 @@ MonoBehaviour:
   brick: {fileID: 4194070924308276971, guid: 3ba024f145bc4e544a6db033a1e6afb2, type: 3}
   brickThrowLocation: {fileID: 0}
   hasBrick: 0
-  isBlocking: 0
   blockUp: {fileID: 0}
+  isPunching: 0
+  isKicking: 0
+  isBlocking: 0
   moneyEffect: {fileID: 4165332761293404274, guid: 5d7ad0442b919194591f29887575e8b3, type: 3}
 --- !u!143 &1443952180
 CharacterController:
