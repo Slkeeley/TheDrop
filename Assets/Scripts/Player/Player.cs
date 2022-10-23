@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
     public float movementSpeed = 15;
+    float defaultSpeed = 15;
 
     [Header("Gameplay Variables")]//variables for player-game interaction
     public int money=0;
@@ -41,7 +42,6 @@ public class Player : MonoBehaviour
     public Transform brickThrowLocation;//position that the brick should spawn in
     public bool hasBrick = false;
     bool canBlock = true; 
-    public GameObject blockUp;
 
     [Header("Attack Statuses")]
     public bool isPunching;
@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
+        defaultSpeed = movementSpeed;
         leftArm.SetActive(false);
         rightArm.SetActive(false);
         Leg.SetActive(false);
-        blockUp.SetActive(false);
     }
 
 
@@ -82,7 +82,9 @@ public class Player : MonoBehaviour
         {
             Vector3 groundCheck = new Vector3(transform.position.x, 0f, transform.position.z);
             transform.position = groundCheck;
-        } 
+        }
+        if (movementSpeed == 0) am.SetBool("Moving", false);
+
     }
 
     void Move()//movement method for a 3D space
@@ -101,18 +103,28 @@ public class Player : MonoBehaviour
            // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
+            am.SetBool("Moving", true);
             //move the player with speed independent of frame rate
-            if(Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                controller.Move(direction *(movementSpeed*2)* Time.deltaTime);
+                controller.Move(direction * (movementSpeed * 3) * Time.deltaTime);
+                am.SetBool("Running", true);
+                am.SetBool("Walking", false);
             }
-            else controller.Move(direction * movementSpeed * Time.deltaTime);
-            am.SetBool("Running", true);
+            else
+            {
+                controller.Move(direction * movementSpeed * Time.deltaTime);
+                am.SetBool("Walking", true);
+                am.SetBool("Running", false);
+            }
+ 
             
         }
         else
         {
+            am.SetBool("Moving", false);
             am.SetBool("Running", false);
+            am.SetBool("Walking", false);
         }
     }
 
@@ -169,7 +181,6 @@ public class Player : MonoBehaviour
             isKicking = false;
             isBlocking = false;
             Leg.SetActive(false);
-            blockUp.SetActive(false);
         }
 
         if(isKicking)
@@ -178,7 +189,6 @@ public class Player : MonoBehaviour
             isBlocking = false;
             leftArm.SetActive(false);
             rightArm.SetActive(false);
-            blockUp.SetActive(false);
         }
 
         if(isBlocking)
@@ -197,7 +207,6 @@ public class Player : MonoBehaviour
             isBlocking = false;
             leftArm.SetActive(false);
             rightArm.SetActive(false);
-            blockUp.SetActive(false);
             Leg.SetActive(false);
         }
     }
@@ -229,6 +238,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
+  //      StartCoroutine(movementPause());
         yield return new WaitForSeconds(.5f);
         canPunch = true;
         isPunching = false;
@@ -239,6 +249,8 @@ public class Player : MonoBehaviour
     void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way
     {
         Leg.SetActive(true);
+        am.SetBool("Kicking",true);
+        StartCoroutine(movementPause());
         StartCoroutine(despawnLeg());
         StartCoroutine(kickCoolDown());
     }
@@ -252,9 +264,12 @@ public class Player : MonoBehaviour
 
     IEnumerator kickCoolDown()//slightly longer cooldown for kick attack since it is strongers
     {
+        
         yield return new WaitForSeconds(1.0f);
+        am.SetBool("Kicking", false);
         canKick = true;
         isKicking = false; 
+      
     }
 
     void crowBarAttack()//brings out the crowbar model and has the character spin around hitting everythign around it for half a second
@@ -284,15 +299,16 @@ public class Player : MonoBehaviour
 
     void block()
     {
-        blockUp.SetActive(true);
         isBlocking = true;
+        am.SetBool("Blocking", true);
+        StartCoroutine(movementPause());
         StartCoroutine(blockCooldown());
     }
 
     IEnumerator blockCooldown()
     {
         yield return new WaitForSeconds(1.0f);
-        blockUp.SetActive(false);
+        am.SetBool("Blocking", false);
         isBlocking = false;
         yield return new WaitForSeconds(1.0f);
         canBlock = true; 
@@ -325,5 +341,14 @@ public class Player : MonoBehaviour
         GameObject.Instantiate(moneyEffect, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
     }
 
+
+    IEnumerator movementPause()
+    {
+        movementSpeed = 0;
+        am.SetBool("Moving", false);
+        yield return new WaitForSeconds(.25f);
+        movementSpeed = defaultSpeed;
+
+    }
 
 }

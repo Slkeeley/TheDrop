@@ -128,3 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cashValue: 1
+  player: {fileID: 0}
+  grabRadius: 15
