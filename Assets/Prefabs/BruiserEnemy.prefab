@@ -402,8 +402,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 50
-  aggroRange: 20
+  walkPointRange: 20
+  aggroRange: 10
   attackRange: 1
   enemyInAggro: 0
   enemyInAttackRange: 0
