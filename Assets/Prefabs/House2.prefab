@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 954504946752631788}
   - component: {fileID: 954504946752631791}
   - component: {fileID: 954504946752631787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +63,8 @@ MonoBehaviour:
   playerEntered: 0
   open: 1
   player: {fileID: 0}
+  south: {fileID: 0}
+  streetLocation: {fileID: 0}
   canvas: {fileID: 954504947110444497}
   itemText: {fileID: 954504947639754976}
   priceText: {fileID: 954504948311157188}
@@ -455,6 +457,7 @@ GameObject:
   - component: {fileID: 7291739018625117592}
   - component: {fileID: 7166509200260436494}
   - component: {fileID: 2565594462275302620}
+  - component: {fileID: 7113370074125606342}
   m_Layer: 0
   m_Name: BuildingTwo_Unity1
   m_TagString: Untagged
@@ -541,3 +544,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7986441763133513821, guid: 444a908dce2901840853fe63b122d79c, type: 3}
+--- !u!114 &7113370074125606342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649344445688745931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037e6c7d1523770418437073fae624d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intersecting: 0

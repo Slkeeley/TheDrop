@@ -344,6 +344,7 @@ MonoBehaviour:
   playerEntered: 0
   open: 0
   player: {fileID: 0}
+  UI: {fileID: 0}
   south: {fileID: 0}
   streetLocation: {fileID: 0}
   items: {fileID: 8273075920763539102}
@@ -361,7 +362,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2be2292fd0d8b674fb059f68b5d72518, type: 2}
   item1: {fileID: 0}
   item2: {fileID: 0}
-  openTime: 20
   waitingTime: 15
   crowBarChance: 100
   brickChance: 100
@@ -767,6 +767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_1Collider
       objectReference: {fileID: 0}
+    - target: {fileID: 7054064288409415809, guid: 3cf05f8404b20cf45bb26d1ca183036d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8929890922914368326, guid: 3cf05f8404b20cf45bb26d1ca183036d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -774,6 +778,24 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cf05f8404b20cf45bb26d1ca183036d, type: 3}
+--- !u!1 &3846462173126116429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054064288409415809, guid: 3cf05f8404b20cf45bb26d1ca183036d, type: 3}
+  m_PrefabInstance: {fileID: 6090118967643452620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5528189987799545923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846462173126116429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037e6c7d1523770418437073fae624d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intersecting: 0
 --- !u!4 &7327577269501620828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3545663707702838928, guid: 3cf05f8404b20cf45bb26d1ca183036d, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 382313104505499591}
   - component: {fileID: 219488475291848785}
   - component: {fileID: 4892487188365145731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: normalHouse2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &382313104505499591
 MeshFilter:

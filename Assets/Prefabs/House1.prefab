@@ -64,6 +64,7 @@ MonoBehaviour:
   open: 1
   player: {fileID: 0}
   south: {fileID: 0}
+  streetLocation: {fileID: 0}
   canvas: {fileID: 954504947110444497}
   itemText: {fileID: 954504947639754976}
   priceText: {fileID: 954504948311157188}
@@ -474,7 +475,8 @@ GameObject:
   - component: {fileID: 3220334799037371463}
   - component: {fileID: 5111897359568722916}
   - component: {fileID: 89225598232629541}
-  m_Layer: 0
+  - component: {fileID: 8998849958257542729}
+  m_Layer: 8
   m_Name: BuildingOne_Unity_Building1_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,3 +562,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6179465105194246858, guid: d17090f2ed575254a882296904efc9c1, type: 3}
+--- !u!114 &8998849958257542729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699476026813800483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037e6c7d1523770418437073fae624d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intersecting: 0

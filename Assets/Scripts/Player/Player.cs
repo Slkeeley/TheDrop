@@ -223,7 +223,6 @@ public class Player : MonoBehaviour
             punchHitbox.SetActive(true);
             rightArmNext = false;
             am.SetBool("Right", true);
-            Debug.Log("Right");
             StartCoroutine(punchCoolDown());
         }
         else//punch with left arm
@@ -232,7 +231,6 @@ public class Player : MonoBehaviour
             rightArmNext = true;
             am.SetBool("Left", true);
             StartCoroutine(punchCoolDown());
-            Debug.Log("Left");
         }
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again

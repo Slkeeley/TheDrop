@@ -47,6 +47,7 @@ public class BuyerHouse : MonoBehaviour
         {
             canvas.SetActive(false);
         }
+
     }
 
     private void OnTriggerStay(Collider other)//player has entered if they stay by the house
