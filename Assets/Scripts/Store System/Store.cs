@@ -43,7 +43,7 @@ public class Store : MonoBehaviour
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
         UI = GameObject.FindObjectOfType<GameUI>().gameObject;
-        south = GameObject.Find("South").transform;
+        south = GameObject.Find("MainCamera").transform;
     }
     private void Start()
     {

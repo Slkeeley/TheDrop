@@ -32,7 +32,6 @@ public class MoneyPickup : MonoBehaviour
     {
         if(other.tag=="Player")
         {
-            Debug.Log("Collided with Player");
             other.GetComponent<Player>().money = other.GetComponent<Player>().money + cashValue;//increase the players money pool by however much this pickup is worth
             other.GetComponent<Player>().moneyUp();
             Destroy(this.gameObject);

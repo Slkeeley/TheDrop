@@ -29,8 +29,7 @@ public class Player : MonoBehaviour
     [Header("Attacks")]//data for player attacks, cooldown, models, 
     bool rightArmNext = true;//punch attacks
     bool canPunch = true; 
-    public GameObject leftArm; 
-    public GameObject rightArm;
+    public GameObject punchHitbox; 
     //kick attack
     bool canKick = true;//kick attack
     public GameObject Leg;
@@ -61,8 +60,7 @@ public class Player : MonoBehaviour
     void Start()//put the players weapons away and make sure that the UI reflects default values
     {
         defaultSpeed = movementSpeed;
-        leftArm.SetActive(false);
-        rightArm.SetActive(false);
+        punchHitbox.SetActive(false);
         Leg.SetActive(false);
     }
 
@@ -187,16 +185,14 @@ public class Player : MonoBehaviour
         {
             isPunching = false;
             isBlocking = false;
-            leftArm.SetActive(false);
-            rightArm.SetActive(false);
+            punchHitbox.SetActive(false);
         }
 
         if(isBlocking)
         {
             isPunching = false;
             isKicking = false;
-            leftArm.SetActive(false);
-            rightArm.SetActive(false);
+            punchHitbox.SetActive(false);
             Leg.SetActive(false);
         }
 
@@ -205,8 +201,7 @@ public class Player : MonoBehaviour
             isPunching = false;
             isKicking = false;
             isBlocking = false;
-            leftArm.SetActive(false);
-            rightArm.SetActive(false);
+            punchHitbox.SetActive(false);
             Leg.SetActive(false);
         }
     }
@@ -225,25 +220,30 @@ public class Player : MonoBehaviour
     {
         if(rightArmNext)//punch with right arm 
         {
-            rightArm.SetActive(true);
+            punchHitbox.SetActive(true);
             rightArmNext = false;
+            am.SetBool("Right", true);
+            Debug.Log("Right");
             StartCoroutine(punchCoolDown());
         }
         else//punch with left arm
         {
-            leftArm.SetActive(true);
+            punchHitbox.SetActive(true);
             rightArmNext = true;
+            am.SetBool("Left", true);
             StartCoroutine(punchCoolDown());
+            Debug.Log("Left");
         }
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
   //      StartCoroutine(movementPause());
         yield return new WaitForSeconds(.5f);
+        am.SetBool("Left", false);
+        am.SetBool("Right", false);
         canPunch = true;
         isPunching = false;
-        rightArm.SetActive(false);
-        leftArm.SetActive(false);
+        punchHitbox.SetActive(false);
     }
 
     void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way

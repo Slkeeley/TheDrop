@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 5767874051123397975}
   - component: {fileID: 7548555008029798607}
   - component: {fileID: 7385523521217865331}
+  - component: {fileID: -3215741576702680011}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -685,6 +686,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-3215741576702680011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462393758542708647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80420a4f1a5c34741a43a88dd999025d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moneyText: {fileID: 0}
+  healthText: {fileID: 0}
+  sweaterText: {fileID: 0}
+  shoesText: {fileID: 0}
+  hatsText: {fileID: 0}
+  healthBar: {fileID: 0}
+  currLocationText: {fileID: 0}
+  dropText: {fileID: 0}
+  phone: {fileID: 0}
+  messages: {fileID: 0}
+  DMS: {fileID: 0}
+  msgNotifications: 0
+  socialNotifications: 0
+  messagesText: {fileID: 0}
+  dmText: {fileID: 0}
 --- !u!1 &3062330432077093272
 GameObject:
   m_ObjectHideFlags: 0
