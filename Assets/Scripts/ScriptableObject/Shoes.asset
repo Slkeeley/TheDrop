@@ -16,3 +16,5 @@ MonoBehaviour:
   priceMax: 80
   priceCurr: 0
   itemName: Shoes
+  itemImage: {fileID: 21300000, guid: 89ab538264af2bf4fb02716dcc89f52c, type: 3}
+  resellListingImage: {fileID: 21300000, guid: 89ab538264af2bf4fb02716dcc89f52c, type: 3}

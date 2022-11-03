@@ -14,14 +14,16 @@ public class BuyerHouse : MonoBehaviour
    
     [Header("Store UI")]//the canvas that shows what the house is trying to by and for how much
     public GameObject canvas;
-    public TMP_Text itemText;
     public TMP_Text priceText;
+    public Image desiredItem; 
 
     [Header("Selling")]//data that determines what is being bought and for how much
     public int itemPriceMin = 40;
     public int itemPriceMax = 120;
     public int itemPriceCurr;
-    public string itemSold; 
+    public StoreItem[] potentialItems; 
+    public StoreItem itemSold;
+    public string item;
 
 
     private void Awake()
@@ -74,7 +76,7 @@ public class BuyerHouse : MonoBehaviour
 
     void updatePrices()//make sure that the display text shows the correct price of the item. 
     {
-        itemText.text = "Looking to buy a " + itemSold;
+        desiredItem.GetComponent<Image>().sprite = itemSold.resellListingImage;
         priceText.text = "Press SPACE to sell for $" + itemPriceCurr.ToString();
 
     }
@@ -85,16 +87,16 @@ public class BuyerHouse : MonoBehaviour
         switch(itemNumber)
         {
             case 1:
-                itemSold = "Sweater";
+                itemSold = potentialItems[0];
+                item = "Sweater";
                 break;
             case 2:
-                itemSold = "Shoes";
+                itemSold = potentialItems[1];
+                item = "Shoes";
                 break;
             case 3:
-                itemSold = "Hat";
-                break;
-            default:
-                itemSold = "Sweater";
+                itemSold = potentialItems[2];
+                item = "Hat";
                 break;
         }
         itemPriceCurr = Random.Range(itemPriceMin, itemPriceMax+1);//randomize the price of the item
@@ -103,7 +105,7 @@ public class BuyerHouse : MonoBehaviour
 
     void playerSell()//if the player is able to, they can sell items to the house
     {
-        switch(itemSold)
+        switch(item)
         {
             case "Sweater":
                 if (Input.GetKey(KeyCode.Space))

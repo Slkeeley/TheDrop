@@ -17,6 +17,8 @@ public class Store : MonoBehaviour
     public GameObject items;
     public TMP_Text item1Text;
     public TMP_Text item2Text;
+    public Image item1Image; 
+    public Image item2Image; 
     public GameObject waitingCube; 
     public GameObject openCube; 
 
@@ -83,10 +85,12 @@ public class Store : MonoBehaviour
         }
     }
    
-    void updatePrices()//make sure that the display text shows the correct price of the item. 
+    void updateItems()//make sure that the display text shows the correct price of the item. 
     {
-        item1Text.text = "Press 1 to buy a " + item1.itemName + " for $" + item1.priceCurr.ToString(); 
-        item2Text.text = "Press 2 to buy a " + item2.itemName + " for $" +item2.priceCurr.ToString();
+        item1Image.GetComponent<Image>().sprite = item1.itemImage;
+        item2Image.GetComponent<Image>().sprite = item2.itemImage;
+        item1Text.text = "$" + item1.priceCurr.ToString(); 
+        item2Text.text =  "$" +item2.priceCurr.ToString();
     }
 
     void buyItems()//if player is able to let them buy items
@@ -141,7 +145,7 @@ public class Store : MonoBehaviour
         {
             item2 = itemsSold[4];
         }
-        updatePrices(); 
+        updateItems(); 
     }
 
     bool crowbarSpawn()//does the crowbar appear in the store

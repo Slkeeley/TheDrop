@@ -16,3 +16,5 @@ MonoBehaviour:
   priceMax: 40
   priceCurr: 0
   itemName: Hat
+  itemImage: {fileID: 21300000, guid: 05c28d9237bdfcb4589c25f54983cfe8, type: 3}
+  resellListingImage: {fileID: 21300000, guid: 05c28d9237bdfcb4589c25f54983cfe8, type: 3}
