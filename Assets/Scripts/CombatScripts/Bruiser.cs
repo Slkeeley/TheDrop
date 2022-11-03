@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Bruiser : BasicEnemy
 {
-    public GameObject fists;//show visually that the enemy is trying to attack
-    public GameObject blockPos;//show visually that the enemy is trying to attack
     public bool defensive = false;
     public bool blockOnCooldown = false;
     bool fight;
 
     void Start()
     {
-        fists.SetActive(false);//make sure that the fists are put away on instantiation
-        blockPos.SetActive(false);//make sure that the enemy does not show they are blocking at the start of the game. 
         fightOrFlight();
     }
 
@@ -70,8 +66,11 @@ public class Bruiser : BasicEnemy
     void attackPlayer()//look at the player and punch them if it isnt on cooldown
     {
         transform.LookAt(player);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
         agent.SetDestination(transform.position);
- 
+        am.SetBool("Moving", false);
+        am.SetBool("Running", false);
+        am.SetBool("Walking", false);
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
@@ -83,7 +82,9 @@ public class Bruiser : BasicEnemy
 
     void punch()//fire a raycast to determine if the player was hit by an enemies punch
     {
+        am.SetBool("Right", true);
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
         {
             Player player = hit.transform.GetComponent<Player>();
@@ -99,15 +100,15 @@ public class Bruiser : BasicEnemy
 
     IEnumerator showFists()//show the fists for a short time to demonstrate that the enemy is trying to attack
     {
-        fists.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        fists.SetActive(false); 
+        am.SetBool("Right", false);
     }
 
 
     void block()//show visually that this enemy is blocking
     {
-        blockPos.SetActive(true);
+        am.SetBool("Moving", false);
+        am.SetBool("Blocking", true);
         transform.LookAt(player);
         agent.SetDestination(transform.position);
         isBlocking = true;
@@ -115,7 +116,8 @@ public class Bruiser : BasicEnemy
 
     void blockDown()
     {
-        blockPos.SetActive(false);
+        am.SetBool("Moving", true);
+        am.SetBool("Blocking", false);
         isBlocking = false;
     }
 

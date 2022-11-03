@@ -220,14 +220,14 @@ public class Player : MonoBehaviour
     {
         if(rightArmNext)//punch with right arm 
         {
-            punchHitbox.SetActive(true);
+
             rightArmNext = false;
             am.SetBool("Right", true);
             StartCoroutine(punchCoolDown());
         }
         else//punch with left arm
         {
-            punchHitbox.SetActive(true);
+
             rightArmNext = true;
             am.SetBool("Left", true);
             StartCoroutine(punchCoolDown());
@@ -235,34 +235,35 @@ public class Player : MonoBehaviour
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
-  //      StartCoroutine(movementPause());
-        yield return new WaitForSeconds(.5f);
+
+        yield return new WaitForSeconds(.25f);
+        punchHitbox.SetActive(true);
+        yield return new WaitForSeconds(.25f);
+        punchHitbox.SetActive(false);
+        yield return new WaitForSeconds(.25f);
         am.SetBool("Left", false);
         am.SetBool("Right", false);
         canPunch = true;
         isPunching = false;
-        punchHitbox.SetActive(false);
+       
     }
 
     void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way
     {
-        Leg.SetActive(true);
+      
         am.SetBool("Kicking",true);
         StartCoroutine(movementPause());
-        StartCoroutine(despawnLeg());
         StartCoroutine(kickCoolDown());
     }
 
-    IEnumerator despawnLeg()//put the players leg away after the attack is over, but the attack is over before they can choose to attack again
-    {
-        isKicking = true;
-        yield return new WaitForSeconds(.5f);
-        Leg.SetActive(false);
-    }
 
     IEnumerator kickCoolDown()//slightly longer cooldown for kick attack since it is strongers
     {
-        
+        yield return new WaitForSeconds(.25f);
+        isKicking = true;
+        Leg.SetActive(true);
+        yield return new WaitForSeconds(.25f);
+        Leg.SetActive(false);
         yield return new WaitForSeconds(1.0f);
         am.SetBool("Kicking", false);
         canKick = true;

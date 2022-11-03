@@ -37,12 +37,14 @@ public class BasicEnemy : MonoBehaviour
     public Material damagedMat;
     public GameObject bar;
     public Image healthBar;
+    public Animator am;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
-        mr = GetComponent<MeshRenderer>();
-        mr.material = skin;
+        am = GetComponent<Animator>();
+        //   mr = GetComponent<MeshRenderer>();
+       // mr.material = skin;
         alpha.a = 0;
         maxHealth = health;
         bar.SetActive(false);
@@ -114,6 +116,9 @@ public class BasicEnemy : MonoBehaviour
 
    public void patrol()//move to a predetermined point on the map
     {
+        am.SetBool("Moving", true);
+        am.SetBool("Running", false);
+        am.SetBool("Walking", true);
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
@@ -139,6 +144,9 @@ public class BasicEnemy : MonoBehaviour
     {
         transform.LookAt(player);
         agent.SetDestination(player.position);
+        am.SetBool("Moving", true);
+        am.SetBool("Walking", false);
+        am.SetBool("Running", true);
     }
 
    public IEnumerator attackCoolDown()//cooldown to make sure that the enemy isn't constantly attacking
@@ -151,11 +159,11 @@ public class BasicEnemy : MonoBehaviour
     IEnumerator damaged()
     {
         canBeDamaged = false;
-        mr.material = damagedMat;
+    //    mr.material = damagedMat;
         bar.SetActive(true);
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
         yield return new WaitForSeconds(0.25f);
-        mr.material = skin;
+     //   mr.material = skin;
         yield return new WaitForSeconds(0.25f);
         bar.SetActive(false);
         canBeDamaged = true; 

@@ -31,8 +31,12 @@ public class RangedEnemy : BasicEnemy
     void attackPlayer()//face the player and throw the weapon at them 
     {
         transform.LookAt(player);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
         agent.SetDestination(transform.position);
-         if (!alreadyAttacked)
+        am.SetBool("Moving", false);
+        am.SetBool("Running", false);
+        am.SetBool("Walking", false);
+        if (!alreadyAttacked)
             {
                 alreadyAttacked = true;
                 throwItem();
@@ -44,6 +48,7 @@ public class RangedEnemy : BasicEnemy
 
     void throwItem()//instantiate the projectile weapon
     {
+        //throw animation here
         GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
     }
 

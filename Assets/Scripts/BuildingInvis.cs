@@ -15,7 +15,7 @@ public class BuildingInvis : MonoBehaviour
     {
         rd = GetComponent<Renderer>();
         ogColor = rd.material.color;
-        transColor = new Color(ogColor.r, ogColor.g, ogColor.b, 0f);
+        transColor = new Color(ogColor.r, ogColor.g, ogColor.b, 0.3f);
         camera = GameObject.Find("MainCamera").transform;
     }
 
@@ -40,13 +40,13 @@ public class BuildingInvis : MonoBehaviour
         Vector3 distToPoint = transform.position - camera.position;
         if (distToPoint.magnitude < invisRadius)
         {
-            rd.material.SetFloat("_Mode", 3);
+   //         rd.material.SetFloat("_Mode", 3);
             intersecting = true;
 
         }
         else
         {
-            rd.material.SetFloat("_Mode", 0);
+     //       rd.material.SetFloat("_Mode", 0);
             intersecting = false;
         }
     }
