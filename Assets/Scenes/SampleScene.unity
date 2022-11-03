@@ -333,6 +333,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!1 &292431001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3079559866961515261, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
+  m_PrefabInstance: {fileID: 372263638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &306543834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5340782471637060984, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
+  m_PrefabInstance: {fileID: 372263638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &312811548 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 283707823523039873, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
@@ -580,6 +596,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &532893928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4119445853355412215, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
+  m_PrefabInstance: {fileID: 372263638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &551211287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2462393758542708647, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
@@ -604,8 +625,10 @@ MonoBehaviour:
   shoesText: {fileID: 1698475576}
   hatsText: {fileID: 130036026}
   healthBar: {fileID: 1654931294}
-  healthImage: {fileID: 0}
+  healthImage: {fileID: 306543834}
   moneyMeter: {fileID: 312811548}
+  crowBar: {fileID: 292431001}
+  brick: {fileID: 532893928}
   currLocationText: {fileID: 852502276}
   dropText: {fileID: 648195450}
   phone: {fileID: 772456163}
