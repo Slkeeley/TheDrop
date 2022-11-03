@@ -17,6 +17,7 @@ public class GameUI : MonoBehaviour
     public TMP_Text shoesText;
     public TMP_Text hatsText;
     public Image healthBar;
+    public Image healthImage;
     public Image moneyMeter;
 
     [Header("Notification System")]
@@ -59,7 +60,8 @@ public class GameUI : MonoBehaviour
         hatsText.text = "Hats: " + playerScript.hatsHeld.ToString();
         healthBar.fillAmount = Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f);
         moneyMeter.fillAmount = Mathf.Clamp(playerScript.money / 500, 0, 1f);
-
+        float hatPos = -500 - (Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f) * -500);
+        healthImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, hatPos);
         messagesText.text = msgNotifications.ToString();
         dmText.text = socialNotifications.ToString();
     }

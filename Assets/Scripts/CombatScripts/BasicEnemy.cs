@@ -37,6 +37,7 @@ public class BasicEnemy : MonoBehaviour
     public Material damagedMat;
     public GameObject bar;
     public Image healthBar;
+    public Image healthImage;
     public Animator am;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
@@ -72,14 +73,6 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if(transform.rotation.x != 0 || transform.rotation.z != 0)
-        {
-            Debug.Log("rotation is off");
-           
-        }
-    }
 
     private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {

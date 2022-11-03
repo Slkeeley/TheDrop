@@ -333,6 +333,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &312811548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 283707823523039873, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
+  m_PrefabInstance: {fileID: 372263638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &325165902 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3416308609578598282, guid: 9955d18c0c4705947b64f0a40990af16, type: 3}
@@ -593,6 +604,8 @@ MonoBehaviour:
   shoesText: {fileID: 1698475576}
   hatsText: {fileID: 130036026}
   healthBar: {fileID: 1654931294}
+  healthImage: {fileID: 0}
+  moneyMeter: {fileID: 312811548}
   currLocationText: {fileID: 852502276}
   dropText: {fileID: 648195450}
   phone: {fileID: 772456163}
@@ -2609,6 +2622,10 @@ PrefabInstance:
     - target: {fileID: 6255161405774278075, guid: cb2ae0999aaa3454eb35ce3b4b5b3722, type: 3}
       propertyPath: m_Name
       value: GameWatcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255161405774278075, guid: cb2ae0999aaa3454eb35ce3b4b5b3722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
