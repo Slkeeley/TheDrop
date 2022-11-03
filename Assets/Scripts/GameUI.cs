@@ -17,6 +17,7 @@ public class GameUI : MonoBehaviour
     public TMP_Text shoesText;
     public TMP_Text hatsText;
     public Image healthBar;
+    public Image moneyMeter;
 
     [Header("Notification System")]
     public TMP_Text currLocationText;
@@ -57,6 +58,7 @@ public class GameUI : MonoBehaviour
         shoesText.text = "Shoes: " + playerScript.shoesHeld.ToString();
         hatsText.text = "Hats: " + playerScript.hatsHeld.ToString();
         healthBar.fillAmount = Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f);
+        moneyMeter.fillAmount = Mathf.Clamp(playerScript.money / 500, 0, 1f);
 
         messagesText.text = msgNotifications.ToString();
         dmText.text = socialNotifications.ToString();

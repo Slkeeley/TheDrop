@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     float defaultSpeed = 15;
 
     [Header("Gameplay Variables")]//variables for player-game interaction
-    public int money=0;
+    public float money=0;
     public float clout = 100;
     public float MaxHealth = 100;
     public bool canBeDamaged = true;

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour
 {
     [Header("Win Conditions")]//how much of each thing does a player need to beat the level 
-    public int moneyThreshold;
+    public float moneyThreshold;
    /* public int sweaterThreshold; 
     public int shoesThreshold; 
     public int hatsThreshold;
@@ -16,7 +16,7 @@ public class GameControl : MonoBehaviour
     */
     [Header("Data")]//where is the player currently at in terms of progress
     public GameObject player;
-    public int playerMoney;
+    public float playerMoney;
     public GameObject winText; //placeholder, this will appear once a player has won
                                /*   public int sweatersSold;
                                   public int shoesSold;
