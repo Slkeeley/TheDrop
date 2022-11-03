@@ -19,6 +19,8 @@ public class GameUI : MonoBehaviour
     public Image healthBar;
     public Image healthImage;
     public Image moneyMeter;
+    public GameObject crowBar;
+    public GameObject brick;
 
     [Header("Notification System")]
     public TMP_Text currLocationText;
@@ -49,7 +51,14 @@ public class GameUI : MonoBehaviour
 
         if (socialNotifications > 0) DMS.SetActive(true);
         else DMS.SetActive(false);
+
+        if (player.GetComponent<Player>().hasCrowbar) crowBar.SetActive(true);//if the player has the crowbar show them that they can use it 
+        else crowBar.SetActive(false);
+
+        if (player.GetComponent<Player>().hasBrick) brick.SetActive(true);//if the player has the brick show them they can use it 
+        else brick.SetActive(false);
     }
+
 
     void updateUI()//change all parts UI display depending on the players current situations
     {
