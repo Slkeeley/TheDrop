@@ -11,7 +11,6 @@ public class Store : MonoBehaviour
     public bool open; //is the store open and selling items
     public GameObject player;
     public GameObject UI;
-    public Transform south;
     public GameObject streetLocation; 
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
@@ -43,11 +42,6 @@ public class Store : MonoBehaviour
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
         UI = GameObject.FindObjectOfType<GameUI>().gameObject;
-        south = GameObject.Find("MainCamera").transform;
-    }
-    private void Start()
-    {
-        items.transform.LookAt(south.position);
     }
 
     void Update()

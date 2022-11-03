@@ -13,6 +13,6 @@ public class SceneSelector : MonoBehaviour
 
     public void toFeedback()
     {
-        Application.OpenURL("https://forms.gle/5R2zrJeEjW9v1ms19");
+        Application.OpenURL("https://forms.gle/zSoBa5fP9Ncf6eu19");
     }
 }

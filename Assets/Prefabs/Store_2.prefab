@@ -787,6 +787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intersecting: 0
+  invisRadius: 10
+  rd: {fileID: 0}
 --- !u!4 &6902968286649667591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5168282386814125939, guid: 20d97d08e3b3a3e499c56acd4594e287, type: 3}
