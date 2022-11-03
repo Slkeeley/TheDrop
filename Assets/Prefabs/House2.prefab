@@ -557,3 +557,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intersecting: 0
+  invisRadius: 10
+  rd: {fileID: 0}

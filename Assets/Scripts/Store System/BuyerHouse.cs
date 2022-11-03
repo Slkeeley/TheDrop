@@ -10,7 +10,6 @@ public class BuyerHouse : MonoBehaviour
     public bool open = true;//is the house offering to buy something?
     bool sold = false;//boolean to make sure that the player can only buy one item at a time
     public GameObject player;
-    public Transform south;
     public GameObject streetLocation; 
    
     [Header("Store UI")]//the canvas that shows what the house is trying to by and for how much
@@ -28,7 +27,6 @@ public class BuyerHouse : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindObjectOfType<Player>().gameObject;
-        south = GameObject.Find("South").transform;
     }
 
     // Update is called once per frame
@@ -36,8 +34,7 @@ public class BuyerHouse : MonoBehaviour
     {
        if(open && !sold)
         {
-            canvas.SetActive(true);//if the house is open and still looking to buy keep the UI element ups
-            canvas.transform.LookAt(south.position);
+            canvas.SetActive(true);
             if (playerEntered)//only be able to sell to the player if the house is open, not already sold to, and if the player is next to it 
             {
                 playerSell();

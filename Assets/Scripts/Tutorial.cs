@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
                     tutorialText.text = "After stacking your bread you can spend it at stores like this one when drops happen";
                     break;
                 case 4:
-                    tutorialText.text = "Press M to open your messages, now find that buyer and sell to them";
+                    tutorialText.text = "Press M to open your messages, now find those buyers and sell to them";
                     break;
             }
 

@@ -60,7 +60,11 @@ public class Bruiser : BasicEnemy
     void chosenAction()
     {
         if (fight) attackPlayer();
-        else patrol();
+        else
+        {
+            agent.speed = agent.speed * 1.5f;
+            patrol();
+        }
     }
 
     void attackPlayer()//look at the player and punch them if it isnt on cooldown
