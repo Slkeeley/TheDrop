@@ -37,7 +37,6 @@ public class BasicEnemy : MonoBehaviour
     public Material damagedMat;
     public GameObject bar;
     public Image healthBar;
-    public Image healthImage;
     public Animator am;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
