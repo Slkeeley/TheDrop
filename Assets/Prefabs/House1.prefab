@@ -406,8 +406,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279143424
-  m_fontColor: {r: 0, g: 0.5471698, b: 0.054489937, a: 1}
+    rgba: 4279893760
+  m_fontColor: {r: 0, g: 1, b: 0.099999905, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -607,7 +607,7 @@ RectTransform:
   m_GameObject: {fileID: 8243474258469587443}
   m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 954504947639754977}

@@ -64,7 +64,7 @@ MonoBehaviour:
   open: 1
   player: {fileID: 0}
   streetLocation: {fileID: 0}
-  canvas: {fileID: 0}
+  canvas: {fileID: 977993824288381011}
   priceText: {fileID: 5201871853138924088}
   desiredItem: {fileID: 5906473235703433920}
   itemPriceMin: 30

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingInvis : MonoBehaviour
 {
     public bool intersecting = false;
-    public float invisRadius;
+    private float invisRadius=20;
     public Renderer rd; 
     Color ogColor; 
     Color transColor;

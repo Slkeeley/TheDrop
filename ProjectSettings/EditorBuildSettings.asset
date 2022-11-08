@@ -6,15 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/OldTutorial.unity
-    guid: c63ff3daf02866743870dcb9602a53b9
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Finalized Levels/TutorialLevel 1.unity
-    guid: 72fb5e43791c0b44eb15b5c3c8ac8200
+    path: Assets/Scenes/Menus/TitleScreen.unity
+    guid: 4e2d76244269a6d419a0aa87fea88fd5
   - enabled: 1
-    path: Assets/Scenes/VictoryScreenTemp.unity
+    path: Assets/Scenes/Menus/LevelSelect.unity
+    guid: c322e60c7592f31449089bfae6ff3e26
+  - enabled: 1
+    path: Assets/Scenes/Menus/VictoryScreenTemp.unity
     guid: abca053eddeaafe40b6d4e3382297ef7
   - enabled: 1
-    path: Assets/Scenes/DeathScreenTemp.unity
+    path: Assets/Scenes/Menus/DeathScreenTemp.unity
     guid: 71468a3e37b3e134cb6ebc269ecf45e6
+  - enabled: 1
+    path: Assets/Scenes/Finalized Levels/TutorialLevel.unity
+    guid: 72fb5e43791c0b44eb15b5c3c8ac8200
+  - enabled: 1
+    path: Assets/Scenes/Finalized Levels/Level1.unity
+    guid: 6e23a63d18829c94bb609806ad9e9bf4
   m_configObjects: {}

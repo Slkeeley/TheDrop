@@ -18,20 +18,6 @@ public class Phone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKey(KeyCode.M))
-        {
-            if(Time.timeScale==1.0)
-            {
-                phoneScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-                phoneScreen.SetActive(false);
-            }
-        }*/
 
         if (Input.GetKeyDown(KeyCode.M))
         {
