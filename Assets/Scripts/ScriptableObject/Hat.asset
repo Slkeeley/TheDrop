@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priceMin: 10
   priceMax: 40
-  priceCurr: 0
+  priceCurr: 20
   itemName: Hat
+  itemImage: {fileID: 21300000, guid: 05c28d9237bdfcb4589c25f54983cfe8, type: 3}
+  resellListingImage: {fileID: 21300000, guid: ac2b75f834892c34e8ae123ef4914028, type: 3}

@@ -16,3 +16,4 @@ MonoBehaviour:
   priceMax: 70
   priceCurr: 70
   itemName: Brick
+  itemImage: {fileID: 21300000, guid: cfbb96ae94374bd48be4eff30ca4faa6, type: 3}

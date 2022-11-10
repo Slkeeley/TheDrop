@@ -16,3 +16,5 @@ MonoBehaviour:
   priceMax: 50
   priceCurr: 0
   itemName: Sweater
+  itemImage: {fileID: 21300000, guid: 2717c64f3dfc7cb458f349a178cf3042, type: 3}
+  resellListingImage: {fileID: 21300000, guid: 54c3297a505159a47865e7c466cec72a, type: 3}

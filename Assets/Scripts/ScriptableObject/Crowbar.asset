@@ -16,3 +16,4 @@ MonoBehaviour:
   priceMax: 80
   priceCurr: 80
   itemName: Crowbar
+  itemImage: {fileID: 21300000, guid: 8b0703c380db23a4798c28afd61be1d3, type: 3}

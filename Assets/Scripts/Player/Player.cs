@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     [Header("Controller Variables")]//variables for player movement
     public CharacterController controller;
+    public Transform cam;
     public Animator am; 
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
@@ -54,6 +55,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+
+        cam = GameObject.Find("MainCamera").transform;
         am = GetComponent<Animator>();
     }
 
@@ -88,8 +91,8 @@ public class Player : MonoBehaviour
     void Move()//movement method for a 3D space
     {
         //Get Input Axes 
-        float vertAxis = Input.GetAxis("Vertical") * movementSpeed;
-        float horizontalAxis = Input.GetAxis("Horizontal") * movementSpeed;
+        float vertAxis = Input.GetAxis("Vertical");
+        float horizontalAxis = Input.GetAxis("Horizontal");
 
        //detect what direction the player is trying to move
         Vector3 direction = new Vector3(horizontalAxis, 0f, vertAxis).normalized;
@@ -97,21 +100,21 @@ public class Player : MonoBehaviour
         if (direction.magnitude >= 0.01f)
         {
             //rotate the player in the direction they are trying to move 
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
            // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             am.SetBool("Moving", true);
             //move the player with speed independent of frame rate
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                controller.Move(direction * (movementSpeed * 3) * Time.deltaTime);
+                controller.Move(moveDir * (movementSpeed * 3) * Time.deltaTime);
                 am.SetBool("Running", true);
                 am.SetBool("Walking", false);
             }
             else
             {
-                controller.Move(direction * movementSpeed * Time.deltaTime);
+                controller.Move(moveDir * movementSpeed * Time.deltaTime);
                 am.SetBool("Walking", true);
                 am.SetBool("Running", false);
             }

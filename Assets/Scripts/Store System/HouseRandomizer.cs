@@ -38,7 +38,7 @@ public class HouseRandomizer : MonoBehaviour
             if (houses[houseSelected].GetComponent<BuyerHouse>().open == false)//if the house was not already selected open it up 
             {
                 houses[houseSelected].GetComponent<BuyerHouse>().openHouse();
-                phone.GetComponent<Phone>().messages[i].text = "Looking to buy a " + houses[houseSelected].GetComponent<BuyerHouse>().itemSold + " for $" + houses[houseSelected].GetComponent<BuyerHouse>().itemPriceCurr + " on " + houses[houseSelected].GetComponent<BuyerHouse>().streetLocation.name;
+                phone.GetComponent<Phone>().messages[i].text = "Looking to buy a " + houses[houseSelected].GetComponent<BuyerHouse>().itemSold.itemName + " for $" + houses[houseSelected].GetComponent<BuyerHouse>().itemPriceCurr + " on " + houses[houseSelected].GetComponent<BuyerHouse>().streetLocation.name;
                 GameUI.GetComponent<GameUI>().msgNotifications++;
             }
             else//if the house was already selected keep iterating
