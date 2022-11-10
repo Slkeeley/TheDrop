@@ -242,7 +242,7 @@ MonoBehaviour:
   bar: {fileID: 6201255725954455422}
   healthBar: {fileID: 3290947771452760438}
   am: {fileID: 0}
-  projectile: {fileID: 4194070924308276971, guid: d25f530a7ad189741aa01919c09672a3, type: 3}
+  projectile: {fileID: 4194070924308276971, guid: 008505d6bab168d4db137eca145541eb, type: 3}
 --- !u!1 &5981469172781305996
 GameObject:
   m_ObjectHideFlags: 0

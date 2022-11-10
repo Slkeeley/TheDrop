@@ -39,17 +39,20 @@ public class RangedEnemy : BasicEnemy
         if (!alreadyAttacked)
             {
                 alreadyAttacked = true;
-                throwItem();
+            StartCoroutine(throwItem());
                 StartCoroutine(attackCoolDown());
             }
         
     }
 
 
-    void throwItem()//instantiate the projectile weapon
+        IEnumerator throwItem()//instantiate the projectile weapon
     {
-        //throw animation here
+        am.SetInteger("States", 1);
+        yield return new WaitForSeconds(0.25f);
         GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+        yield return new WaitForSeconds(0.25f);
+        am.SetInteger("States", 0);
     }
 
     bool checkLOS()//fire a raycast to determine if there is an object between the player and this enemy, returns false if player is not hit

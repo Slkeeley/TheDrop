@@ -161,7 +161,10 @@ public class Player : MonoBehaviour
 
         if(Input.GetKey(KeyCode.E))
         {
-            if (hasBrick) throwBrick(); 
+            if (hasBrick)
+            {
+                StartCoroutine(throwBrick());
+            }
         }
 
         if (Input.GetKey(KeyCode.Mouse2))
@@ -293,12 +296,17 @@ public class Player : MonoBehaviour
         crowbarOnCooldown = false; 
     }
 
-    void throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
+    IEnumerator throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
     {
+        am.SetInteger("States", 1);
+        hasBrick = false;
+        yield return new WaitForSeconds(0.25f);
         GameObject.Instantiate(brick, brickThrowLocation.position, this.transform.rotation);
-        hasBrick = false; 
+        yield return new WaitForSeconds(0.25f);
+        am.SetInteger("States", 0);
     }
 
+  
     void block()
     {
         isBlocking = true;

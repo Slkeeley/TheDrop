@@ -70,6 +70,12 @@ public class BasicEnemy : MonoBehaviour
             if (!enemyInAggro && !enemyInAttackRange) patrol();
             if (enemyInAggro && !enemyInAttackRange) chasePlayer();
         }
+
+        if(dead)
+        {
+            enemyInAggro = false;
+            enemyInAttackRange = false; 
+        }
     }
 
 
@@ -165,6 +171,7 @@ public class BasicEnemy : MonoBehaviour
     {
 
         transform.rotation = Quaternion.Euler(90, 0, 0);
+        am.SetInteger("States", 2);
         while (billsDropped > 0)
         {
             GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
@@ -176,7 +183,7 @@ public class BasicEnemy : MonoBehaviour
 
     IEnumerator fadeOut()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(2.0f);
         Destroy(this.gameObject);
     }
 }
