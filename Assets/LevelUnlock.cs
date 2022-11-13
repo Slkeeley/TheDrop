@@ -8,7 +8,7 @@ public class LevelUnlock : MonoBehaviour
     public Button levelButton;
     public static void unlockLevel()
     {
-        this.turnOnButton();
+        //this.turnOnButton();
     }
 
     public void turnOnButton()
