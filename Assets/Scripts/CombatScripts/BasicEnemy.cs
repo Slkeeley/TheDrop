@@ -74,7 +74,7 @@ public class BasicEnemy : MonoBehaviour
         if(dead)
         {
             enemyInAggro = false;
-            enemyInAttackRange = false; 
+            enemyInAttackRange = false;
         }
     }
 

@@ -10,14 +10,14 @@ public class Player : MonoBehaviour
     [Header("Controller Variables")]//variables for player movement
     public CharacterController controller;
     public Transform cam;
-    public Animator am; 
+    public Animator am;
     public float turnSmoothTime = 0.5f;
     float turnSmoothVelocity;
     public float movementSpeed = 15;
     float defaultSpeed = 15;
 
     [Header("Gameplay Variables")]//variables for player-game interaction
-    public float money=0;
+    public float money = 0;
     public float clout = 100;
     public float MaxHealth = 100;
     public bool canBeDamaged = true;
@@ -29,24 +29,24 @@ public class Player : MonoBehaviour
 
     [Header("Attacks")]//data for player attacks, cooldown, models, 
     bool rightArmNext = true;//punch attacks
-    bool canPunch = true; 
-    public GameObject punchHitbox; 
+    bool canPunch = true;
+    public GameObject punchHitbox;
     //kick attack
     bool canKick = true;//kick attack
     public GameObject Leg;
     public bool hasCrowbar = false;//crowbar attack
-    bool crowbarOnCooldown = false; 
+    bool crowbarOnCooldown = false;
     public GameObject Crowbar;
     public float crowBarCooldown;
     public GameObject brick;//brick attack
     public Transform brickThrowLocation;//position that the brick should spawn in
     public bool hasBrick = false;
-    bool canBlock = true; 
+    bool canBlock = true;
 
     [Header("Attack Statuses")]
     public bool isPunching;
     public bool isKicking;
-    public bool isBlocking=false;
+    public bool isBlocking = false;
     bool spinning = false;
 
 
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (clout <= 0) SceneManager.LoadScene("DeathScreenTemp");
+        if (clout <= 0) StartCoroutine(Die());
         Move();//always check if the player is moving
         attackInputs();//always check if the player is trying to attack; 
         if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
@@ -94,14 +94,14 @@ public class Player : MonoBehaviour
         float vertAxis = Input.GetAxis("Vertical");
         float horizontalAxis = Input.GetAxis("Horizontal");
 
-       //detect what direction the player is trying to move
+        //detect what direction the player is trying to move
         Vector3 direction = new Vector3(horizontalAxis, 0f, vertAxis).normalized;
 
         if (direction.magnitude >= 0.01f)
         {
             //rotate the player in the direction they are trying to move 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-           // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             am.SetBool("Moving", true);
@@ -118,8 +118,8 @@ public class Player : MonoBehaviour
                 am.SetBool("Walking", true);
                 am.SetBool("Running", false);
             }
- 
-            
+
+
         }
         else
         {
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             if (hasBrick)
             {
@@ -170,31 +170,31 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse2))
         {
             Debug.Log("mouse 2");
-            if(canBlock)
+            if (canBlock)
             {
                 canBlock = false;
                 block();
             }
         }
     }
- 
+
     void readAttacks()//script for "animation" Canceling player attacks 
     {
-        if(isPunching)//punch attack
+        if (isPunching)//punch attack
         {
             isKicking = false;
             isBlocking = false;
             Leg.SetActive(false);
         }
 
-        if(isKicking)
+        if (isKicking)
         {
             isPunching = false;
             isBlocking = false;
             punchHitbox.SetActive(false);
         }
 
-        if(isBlocking)
+        if (isBlocking)
         {
             isPunching = false;
             isKicking = false;
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
             Leg.SetActive(false);
         }
 
-        if(spinning)
+        if (spinning)
         {
             isPunching = false;
             isKicking = false;
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Car")
+        if (other.tag == "Car")
         {
             clout = clout - 20;
         }
@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
     //ATTACK METHODS
     void Punch()//punch attack alternates between left and right arms
     {
-        if(rightArmNext)//punch with right arm 
+        if (rightArmNext)//punch with right arm 
         {
 
             rightArmNext = false;
@@ -251,13 +251,13 @@ public class Player : MonoBehaviour
         am.SetBool("Right", false);
         canPunch = true;
         isPunching = false;
-       
+
     }
 
     void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way
     {
-      
-        am.SetBool("Kicking",true);
+
+        am.SetBool("Kicking", true);
         StartCoroutine(movementPause());
         StartCoroutine(kickCoolDown());
     }
@@ -273,15 +273,15 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         am.SetBool("Kicking", false);
         canKick = true;
-        isKicking = false; 
-      
+        isKicking = false;
+
     }
 
     void crowBarAttack()//brings out the crowbar model and has the character spin around hitting everythign around it for half a second
     {
         Crowbar.SetActive(true);
         spinning = true;
-        movementSpeed = 0; 
+        movementSpeed = 0;
         crowbarOnCooldown = true;
         StartCoroutine(crowbarAttackCooldown());
     }
@@ -293,7 +293,7 @@ public class Player : MonoBehaviour
         spinning = false;
         movementSpeed = 10;
         yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
-        crowbarOnCooldown = false; 
+        crowbarOnCooldown = false;
     }
 
     IEnumerator throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
@@ -306,7 +306,7 @@ public class Player : MonoBehaviour
         am.SetInteger("States", 0);
     }
 
-  
+
     void block()
     {
         isBlocking = true;
@@ -321,7 +321,7 @@ public class Player : MonoBehaviour
         am.SetBool("Blocking", false);
         isBlocking = false;
         yield return new WaitForSeconds(1.0f);
-        canBlock = true; 
+        canBlock = true;
     }
 
     //GAME INTERACTION 
@@ -361,4 +361,12 @@ public class Player : MonoBehaviour
 
     }
 
+    IEnumerator Die()
+    {
+        movementSpeed = 0;
+        am.SetInteger("States", 2);
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("DeathScreenTemp");
+
+    }
 }
