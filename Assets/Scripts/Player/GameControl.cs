@@ -8,23 +8,14 @@ public class GameControl : MonoBehaviour
 {
     [Header("Win Conditions")]//how much of each thing does a player need to beat the level 
     public float moneyThreshold;
-   /* public int sweaterThreshold; 
-    public int shoesThreshold; 
-    public int hatsThreshold;
-    public int enemiesNeeded;
-    public int cloutThreshold;
-    */
+
     [Header("Data")]//where is the player currently at in terms of progress
     public GameObject player;
     public float playerMoney;
-    public GameObject winText; //placeholder, this will appear once a player has won
-                               /*   public int sweatersSold;
-                                  public int shoesSold;
-                                  public int hatsSold;
-                                  public int enemiesDefeated;
-                                  public int cloutTotal;*/
+    public GameObject winText; 
     public static int enemiesInPlay;
-    public int maxEnenmies; 
+    public int maxEnenmies;
+    public int LvlValue; 
 
   void Start()
     {
@@ -41,6 +32,7 @@ public class GameControl : MonoBehaviour
         if(playerMoney>=moneyThreshold)//if the player has enough of something they win
         {
             winText.SetActive(true);
+            LevelUnlock.unlockLevel(LvlValue);
          SceneManager.LoadScene("VictoryScreenTemp");
         }
     }
