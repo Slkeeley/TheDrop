@@ -1039,7 +1039,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 37.496193
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -2633,7 +2633,7 @@ Transform:
   - {fileID: 9219106600537038385}
   - {fileID: 8566848790997695446}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4050556427519769724
 Animator:
