@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour
         if(playerMoney>=moneyThreshold)//if the player has enough of something they win
         {
             winText.SetActive(true);
-            //LevelUnlock.unlockLevel(LvlValue);
+            LevelUnlock.unlockLvl(LvlValue);
          SceneManager.LoadScene("VictoryScreenTemp");
         }
     }

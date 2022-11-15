@@ -586,6 +586,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6255161405774278069, guid: cb2ae0999aaa3454eb35ce3b4b5b3722, type: 3}
+      propertyPath: LvlValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255161405774278069, guid: cb2ae0999aaa3454eb35ce3b4b5b3722, type: 3}
       propertyPath: moneyThreshold
       value: 100
       objectReference: {fileID: 0}
