@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 8273075921731392639}
   - component: {fileID: 8273075921731392634}
   - component: {fileID: 8273075921731392638}
+  - component: {fileID: 7848378853423560016}
   m_Layer: 0
   m_Name: Store_2
   m_TagString: Untagged
@@ -885,6 +886,22 @@ MonoBehaviour:
   waitingTime: 5
   crowBarChance: 0
   brickChance: 0
+--- !u!114 &7848378853423560016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273075921731392635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8779420640259281712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intersecting: 0
-  invisRadius: 10
   rd: {fileID: 0}
 --- !u!4 &6902968286649667591 stripped
 Transform:

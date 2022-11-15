@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 578468269772864600}
   - component: {fileID: 8840729543453222921}
+  - component: {fileID: 1341949321066526475}
   m_Layer: 0
   m_Name: ConstructionSign_Unity (1)
   m_TagString: Untagged
@@ -47,6 +48,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.7098532, y: 4.068128, z: 4.4627094}
   m_Center: {x: 0.5980282, y: 2.0763867, z: 0.078662395}
+--- !u!114 &1341949321066526475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237830408359978722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &668051268539349694
 GameObject:
   m_ObjectHideFlags: 0
