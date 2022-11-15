@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa44496f712808409541f02c80b1524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currLevel: 2
 --- !u!1 &450066769
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Restart
+  m_text: 'Level Select
 
 '
   m_isRightToLeft: 0
@@ -662,7 +661,7 @@ GameObject:
   - component: {fileID: 573947781}
   - component: {fileID: 573947784}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: BackToLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +734,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 573947784}
         m_TargetAssemblyTypeName: SceneSelector, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: toLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -795,7 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa44496f712808409541f02c80b1524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currLevel: 2
 --- !u!1 &682112541
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682112543}
   - component: {fileID: 682112542}
+  - component: {fileID: 682112544}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -890,6 +889,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &682112544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682112541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &775259774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1347,7 @@ GameObject:
   - component: {fileID: 1208247414}
   - component: {fileID: 1208247413}
   - component: {fileID: 1208247412}
-  - component: {fileID: 1208247411}
+  - component: {fileID: 1208247415}
   m_Layer: 5
   m_Name: Next Level
   m_TagString: Untagged
@@ -1357,19 +1376,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -98}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1208247411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208247409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa44496f712808409541f02c80b1524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currLevel: 2
 --- !u!114 &1208247412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,8 +1420,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1208247411}
-        m_TargetAssemblyTypeName: SceneSelector, Assembly-CSharp
+      - m_Target: {fileID: 1208247415}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: nextLevel
         m_Mode: 1
         m_Arguments:
@@ -1464,3 +1470,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208247409}
   m_CullTransparentMesh: 1
+--- !u!114 &1208247415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208247409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a0da94e9be7f343a2d87f61e679220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

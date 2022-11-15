@@ -6,17 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneSelector : MonoBehaviour
 {
-    public static int currLevel = 4; 
-    public void restart()
-    {
-        SceneManager.LoadScene(currLevel);
-    }
-
-    public void nextLevel()
-    {
-        currLevel++;
-        SceneManager.LoadScene(currLevel);
-    }
 
     public void toLevelSelect()
     {
@@ -39,13 +28,5 @@ public class SceneSelector : MonoBehaviour
         Application.OpenURL("https://forms.gle/zSoBa5fP9Ncf6eu19");
     }
 
-    public void tutorial()
-    {
-        SceneManager.LoadScene("TutorialLevel");
-    }
 
-    public void lvl1()
-    {
-        SceneManager.LoadScene("Level1");
-    }
 }

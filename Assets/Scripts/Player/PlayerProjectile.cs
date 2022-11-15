@@ -29,7 +29,7 @@ public class PlayerProjectile : MonoBehaviour
             other.GetComponent<Player>().hasBrick = true; 
             Destroy(this.gameObject);
         }
-        Debug.Log("collided");
+
     }
     
     IEnumerator stopProj()

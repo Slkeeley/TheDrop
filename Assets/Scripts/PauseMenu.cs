@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseObjs; 
+    public GameObject pauseObjs;
+    public GameObject controlScreen;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +27,18 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseObjs.SetActive(false);
+        }
+    }
+
+    public void showControls()
+    {
+        if(!controlScreen.activeInHierarchy)
+        {
+            controlScreen.SetActive(true);
+        }
+        else
+        {
+            controlScreen.SetActive(false);
         }
     }
 }
