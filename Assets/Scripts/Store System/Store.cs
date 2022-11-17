@@ -37,6 +37,7 @@ public class Store : MonoBehaviour
     public float waitingTime;
     public int crowBarChance; 
     public int brickChance;
+    public bool scalped = false; 
 
     private void Awake()//turn off everything before opening
     {
@@ -60,6 +61,7 @@ public class Store : MonoBehaviour
             else
             {
                 items.SetActive(false);
+                
             }
             openItems.SetActive(true);
             waitingCube.SetActive(false);
@@ -77,6 +79,16 @@ public class Store : MonoBehaviour
     private void OnTriggerStay(Collider other)//if the player remains in front of the store they have entered
     {
         if (other.tag == "Player") playerEntered = true; 
+        if(other.tag=="Buyer")
+        {
+            
+            Debug.Log("Scalper is trying to buy from the store");
+            if(!scalped)
+            {               
+                StartCoroutine(sellToEnemies());
+                other.GetComponent<BuyerEnemy>().itemsBought++;
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)//if a player moves away from the store they hav not entered
@@ -228,4 +240,11 @@ public class Store : MonoBehaviour
         canBuy = true;
     }
 
+    IEnumerator sellToEnemies()
+    {
+        scalped = true;
+        itemsLeft--;
+        yield return new WaitForSeconds(3);
+        scalped = false; 
+    }
 }
