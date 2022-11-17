@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5332405603109399145}
   - component: {fileID: 7918583706157293219}
   - component: {fileID: 6050952742775067293}
+  - component: {fileID: 2816124150288680574}
   m_Layer: 0
   m_Name: fireHyrant
   m_TagString: Untagged
@@ -98,3 +99,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7047284529626437468, guid: bdc8481089f71d94d8ef33a4739e3e87, type: 3}
+--- !u!114 &2816124150288680574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567123698956124022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

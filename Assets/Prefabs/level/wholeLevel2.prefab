@@ -6640,7 +6640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4257169122051045444}
   m_Layer: 0
-  m_Name: wholeLevel
+  m_Name: wholeLevel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6658,13 +6658,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5592192000784677230}
   - {fileID: 4257169120988742888}
   - {fileID: 4257169121835408924}
   - {fileID: 1978634083800843172}
   - {fileID: 4257169122135574131}
   - {fileID: 4257169121851268293}
   - {fileID: 4257169120927149922}
+  - {fileID: 5592192000784677230}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28365,15 +28365,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5535834785249198313, guid: e9d6cdbcf863bbe4789cc9fbfddfb2d9, type: 3}
       propertyPath: deepColor.g
-      value: 0.4273224
+      value: 0.42732096
       objectReference: {fileID: 0}
     - target: {fileID: 5535834785249198313, guid: e9d6cdbcf863bbe4789cc9fbfddfb2d9, type: 3}
       propertyPath: shoreColor.b
-      value: 0.30183217
+      value: 0.30183074
       objectReference: {fileID: 0}
     - target: {fileID: 5535834785249198313, guid: e9d6cdbcf863bbe4789cc9fbfddfb2d9, type: 3}
       propertyPath: horizonColor.g
-      value: 0.22732237
+      value: 0.22732097
       objectReference: {fileID: 0}
     - target: {fileID: 6711293992144807297, guid: e9d6cdbcf863bbe4789cc9fbfddfb2d9, type: 3}
       propertyPath: m_RootOrder
@@ -28512,7 +28512,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c54e541c0a6e2f74fb421b01ea73b04e, type: 3}
 --- !u!4 &5592192000784677230 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 210475025214828118, guid: c54e541c0a6e2f74fb421b01ea73b04e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1707881516464674675, guid: c54e541c0a6e2f74fb421b01ea73b04e, type: 3}
   m_PrefabInstance: {fileID: 6496699534424944157}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6895313293252191353
