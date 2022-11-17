@@ -17,18 +17,19 @@ public class BuyerEnemy : MonoBehaviour
     public bool enemyInAttackRange;
     public bool dead = false;
     public GameObject knockbackLocation;
-    bool spinning = false; 
+    public bool spinning = false; 
 
     [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
-    public float attackDelay;
     public float health;
     public float maxHealth;
     public GameObject money;
     public int billsDropped;
     bool canBeDamaged = true;
     public bool storeFound = false;
-    public GameObject targetStore; 
+    public bool doneShopping = false;
+    public GameObject targetStore;
+    public int itemsBought;
 
     [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
@@ -52,7 +53,7 @@ public class BuyerEnemy : MonoBehaviour
         maxHealth = health;
         bar.SetActive(false);
         normalBody.SetActive(true);
-        attackPos.SetActive(true);
+        attackPos.SetActive(false);
     }
 
 
@@ -67,22 +68,26 @@ public class BuyerEnemy : MonoBehaviour
                 fading = true;
                 dead = true;
                 agent.speed = 0;
-                //  Die();
+                Die();
             }
 
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
 
             if (!storeFound&& !enemyInAttackRange)//if there is a store open, then go to a store to buy items, if not patrol 
             {
                 if(findStore())
                 {
-                    goToStore();
+                    storeFound = true;
                 }
                 else
                 {
-                    patrol(); 
+                    storeFound = false; 
                 }
             }
+
+            if (storeFound&&!doneShopping) goToStore();
+            else patrol(); 
 
             if(enemyInAttackRange)
             {
@@ -95,7 +100,9 @@ public class BuyerEnemy : MonoBehaviour
             enemyInAttackRange = false;
         }
 
-        if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
+        if (spinning) transform.Rotate(0f, 100f, 0f);//rotate the player if they are doing the spinning crowbar attack
+        if (itemsBought >= 5) doneShopping = true;
+
     }
 
     private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
@@ -191,11 +198,29 @@ public class BuyerEnemy : MonoBehaviour
         }
     }
     
+
+    void Die()
+    {
+        int givenItem = Random.Range(1, 4);
+        switch(givenItem)
+        {
+            case 1:
+                player.GetComponent<Player>().sweatersHeld++;
+                break;
+            case 2:
+                player.GetComponent<Player>().hatsHeld++;
+                break;
+            case 3:
+                player.GetComponent<Player>().shoesHeld++;
+                break;
+        }
+        Destroy(this.gameObject);
+    }
     IEnumerator crowBarAttack()
     {
         alreadyAttacked = true;
         spinning = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         spinning = false;
         attackPos.SetActive(false);
         normalBody.SetActive(true);

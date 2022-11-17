@@ -11,7 +11,7 @@ public class StoreRandomization : MonoBehaviour
     public float timeOpen; //how long do the stores stay open
     public float timeClosed; //how long do the stores stay closed
     public static bool crowBarSold = false; 
-    public static bool brickSold = false; 
+    public static bool brickSold = false;
 
 
     void Start()
@@ -56,6 +56,12 @@ public class StoreRandomization : MonoBehaviour
     IEnumerator waitToOpen()//stores is closed, but waiting to open 
     {
         dropsActive = false;
+        BuyerEnemy[] scalpers = GameObject.FindObjectsOfType<BuyerEnemy>();
+        for (int i = 0; i < scalpers.Length; i++)
+        {
+            scalpers[i].doneShopping= true;
+            scalpers[i].itemsBought = 0; 
+        }
         yield return new WaitForSeconds(timeClosed);
         dropsActive = true;
         chooseStore();
@@ -64,6 +70,12 @@ public class StoreRandomization : MonoBehaviour
 
     IEnumerator waitToClose()//stores are open, but waitind to close 
     {
+        BuyerEnemy[] scalpers = GameObject.FindObjectsOfType<BuyerEnemy>();
+        for (int i = 0; i < scalpers.Length; i++)
+        {
+            scalpers[i].doneShopping = false;
+            scalpers[i].itemsBought = 0;
+        }
         yield return new WaitForSeconds(timeOpen);
         dropsActive = false;
         GameUI.GetComponent<GameUI>().socialNotifications = 0;
