@@ -333,13 +333,13 @@ Transform:
   m_GameObject: {fileID: 7988280661339019203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.7, y: 0.38, z: -2.65}
-  m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
+  m_LocalScale: {x: 0.35675672, y: 0.35675672, z: 0.35675672}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 915274413860352164}
   - {fileID: 2506340202953063024}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8996024854467230070
 CapsuleCollider:
