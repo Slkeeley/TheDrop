@@ -11,16 +11,18 @@ public class Store : MonoBehaviour
     public bool open; //is the store open and selling items
     public GameObject player;
     public GameObject UI;
-    public GameObject streetLocation; 
+    public GameObject streetLocation;
+    public GameObject front; 
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
     public GameObject items;
     public TMP_Text item1Text;
     public TMP_Text item2Text;
+    public TMP_Text itemsLeftText;
     public Image item1Image; 
     public Image item2Image; 
     public GameObject waitingCube; 
-    public GameObject openCube; 
+    public GameObject openItems; 
 
     [Header("Store Items")]//prices for each item should be within different ranges
     public int itemsLeft;
@@ -40,7 +42,7 @@ public class Store : MonoBehaviour
     {
         playerEntered = false;
         items.SetActive(false);
-        openCube.SetActive(false);
+        openItems.SetActive(false);
         waitingCube.SetActive(false);
         player = GameObject.FindObjectOfType<Player>().gameObject;
         UI = GameObject.FindObjectOfType<GameUI>().gameObject;
@@ -59,16 +61,16 @@ public class Store : MonoBehaviour
             {
                 items.SetActive(false);
             }
-            openCube.SetActive(true);
+            openItems.SetActive(true);
             waitingCube.SetActive(false);
         }
         else//if the store is not open do not show items and show that the store is closed
         {
             items.SetActive(false);
-            openCube.SetActive(false);
+            openItems.SetActive(false);
         }
 
-
+        checkInv(); 
         if (itemsLeft <= 0) open = false; //if all of the stores inventory has been bought shut it down
     }
 
@@ -91,6 +93,12 @@ public class Store : MonoBehaviour
         item2Image.GetComponent<Image>().sprite = item2.itemImage;
         item1Text.text = "$" + item1.priceCurr.ToString(); 
         item2Text.text =  "$" +item2.priceCurr.ToString();
+        
+    }
+
+    void checkInv()
+    {
+        itemsLeftText.text = "Items Left: " + itemsLeft.ToString();
     }
 
     void buyItems()//if player is able to let them buy items

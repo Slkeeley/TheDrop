@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class BasicEnemy : MonoBehaviour
+public class BuyerEnemy : MonoBehaviour
 {
-
     [Header("AI Variables")]//variables for the enemy to be able to use the NavMesh
     public NavMeshAgent agent; //allows enemy to move
     public Transform player;//What enemy is the monster targetting
@@ -14,10 +13,11 @@ public class BasicEnemy : MonoBehaviour
     public LayerMask whatIsPlayer;
     public Vector3 walkPoint;//where will the enemy go to 
     bool walkPointSet;
-    public float walkPointRange, aggroRange, attackRange; 
-    public bool enemyInAggro, enemyInAttackRange;
-   public bool dead = false;
-    public GameObject knockbackLocation; 
+    public float walkPointRange, attackRange;
+    public bool enemyInAttackRange;
+    public bool dead = false;
+    public GameObject knockbackLocation;
+    bool spinning = false; 
 
     [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
@@ -26,33 +26,40 @@ public class BasicEnemy : MonoBehaviour
     public float maxHealth;
     public GameObject money;
     public int billsDropped;
-    public bool isBlocking;
     bool canBeDamaged = true;
+    public bool storeFound = false;
+    public GameObject targetStore; 
 
     [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
-   public bool fading = false;
-    MeshRenderer mr; 
-    public Material skin; 
+    public bool fading = false;
+    MeshRenderer mr;
+    public Material skin;
     public Material damagedMat;
     public GameObject bar;
     public Image healthBar;
     public Animator am;
+    public GameObject normalBody;
+    public GameObject attackPos; 
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
         player = GameObject.Find("Player").transform;//find the object named player ,
         am = GetComponent<Animator>();
         //   mr = GetComponent<MeshRenderer>();
-       // mr.material = skin;
+        // mr.material = skin;
         alpha.a = 0;
         maxHealth = health;
         bar.SetActive(false);
+        normalBody.SetActive(true);
+        attackPos.SetActive(true);
     }
 
-   
-    void Update()//check if the enemy is dead and allow it to move around the map
+
+    // Update is called once per frame
+    void Update()
     {
+
         if (!dead)//if the enemy is not dead move around
         {
             if (health <= 0)
@@ -60,24 +67,36 @@ public class BasicEnemy : MonoBehaviour
                 fading = true;
                 dead = true;
                 agent.speed = 0;
-                Die();
+                //  Die();
             }
 
+            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
-         
+            if (!storeFound&& !enemyInAttackRange)//if there is a store open, then go to a store to buy items, if not patrol 
+            {
+                if(findStore())
+                {
+                    goToStore();
+                }
+                else
+                {
+                    patrol(); 
+                }
+            }
 
-            if (!enemyInAggro && !enemyInAttackRange) patrol();
-            if (enemyInAggro && !enemyInAttackRange) chasePlayer();
+            if(enemyInAttackRange)
+            {
+                attackPlayer();
+            }
         }
 
-        if(dead)
+        if (dead)
         {
-            enemyInAggro = false;
             enemyInAttackRange = false;
         }
-    }
 
+        if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
+    }
 
     private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {
@@ -85,14 +104,9 @@ public class BasicEnemy : MonoBehaviour
         {
             if (other.tag == "PlayerPunch")
             {
-                if (!isBlocking)
-                {
-                    health = health - 2;
-                    transform.position = knockbackLocation.transform.position;
-                    StartCoroutine(damaged());
-                    
-                }
-                else return;
+                health = health - 2;
+                transform.position = knockbackLocation.transform.position;
+                StartCoroutine(damaged());
             }
             if (other.tag == "PlayerKick")
             {
@@ -104,30 +118,57 @@ public class BasicEnemy : MonoBehaviour
             {
                 health = health - 10;
             }
-            if(other.tag=="brick"||other.tag=="Car")
+            if (other.tag == "brick" || other.tag == "Car")
             {
                 health = 0;
             }
         }
     }
-
-
-   public void patrol()//move to a predetermined point on the map
+        IEnumerator damaged()
+        {
+            canBeDamaged = false;
+            //    mr.material = damagedMat;
+            bar.SetActive(true);
+            healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
+            yield return new WaitForSeconds(0.25f);
+            //   mr.material = skin;
+            yield return new WaitForSeconds(0.25f);
+            bar.SetActive(false);
+            canBeDamaged = true;
+        }
+    
+    bool findStore()
     {
-        am.SetBool("Moving", true);
-        am.SetBool("Running", false);
-        am.SetBool("Walking", true);
+        Store[] stores = GameObject.FindObjectsOfType<Store>();
+        for (int i = 0; i < stores.Length; i++)
+        {
+            if(stores[i].open)
+            {
+                targetStore = stores[i].gameObject;
+                return true;
+            }
+        }
+        return false; 
+    }
+
+    void goToStore()
+    {
+        agent.SetDestination(targetStore.GetComponent<Store>().front.transform.position);
+    }
+
+    public void patrol()//move to a predetermined point on the map
+    {
+    //Animation Here
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
         Vector3 distToPoint = transform.position - walkPoint;
-        if(distToPoint.magnitude <1.0f)
+        if (distToPoint.magnitude < 1.0f)
         {
             walkPointSet = false;
         }
 
     }
-
     void setWalkPoint()//if there is no point to wak to select a random point
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -138,52 +179,28 @@ public class BasicEnemy : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
     }
 
-    public void chasePlayer()//move towards the player if they are close enough
+    void attackPlayer()
     {
+        agent.SetDestination(transform.position);
         transform.LookAt(player);
-        agent.SetDestination(player.position);
-        am.SetBool("Moving", true);
-        am.SetBool("Walking", false);
-        am.SetBool("Running", true);
-    }
-
-   public IEnumerator attackCoolDown()//cooldown to make sure that the enemy isn't constantly attacking
-    {
-        yield return new WaitForSeconds(attackDelay);
-        alreadyAttacked = false;
-
-    }
-
-    IEnumerator damaged()
-    {
-        canBeDamaged = false;
-    //    mr.material = damagedMat;
-        bar.SetActive(true);
-        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
-        yield return new WaitForSeconds(0.25f);
-     //   mr.material = skin;
-        yield return new WaitForSeconds(0.25f);
-        bar.SetActive(false);
-        canBeDamaged = true; 
-    }
-
-  public void Die()//falls to the ground and instantiates money
-    {
-
-        transform.rotation = Quaternion.Euler(90, 0, 0);
-        am.SetInteger("States", 2);
-        while (billsDropped > 0)
+        if (!alreadyAttacked)
         {
-            GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
-            billsDropped--;
+            normalBody.SetActive(false);
+            attackPos.SetActive(true);
+            StartCoroutine(crowBarAttack());
         }
-        GameControl.enemiesInPlay--;
-        StartCoroutine(fadeOut()); 
     }
-
-    IEnumerator fadeOut()
+    
+    IEnumerator crowBarAttack()
     {
-        yield return new WaitForSeconds(2.0f);
-        Destroy(this.gameObject);
+        alreadyAttacked = true;
+        spinning = true;
+        yield return new WaitForSeconds(0.5f);
+        spinning = false;
+        attackPos.SetActive(false);
+        normalBody.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        alreadyAttacked = false; 
+
     }
 }

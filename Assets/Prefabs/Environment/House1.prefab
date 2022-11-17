@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 954504946752631787}
   m_Layer: 0
   m_Name: House1
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intersecting: 0
-  invisRadius: 10
   rd: {fileID: 0}
 --- !u!1 &8243474258469587443
 GameObject:
