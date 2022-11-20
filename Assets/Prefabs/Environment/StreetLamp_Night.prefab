@@ -44,9 +44,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9622642, g: 0.83696294, b: 0.49474904, a: 1}
   m_Intensity: 100
-  m_Range: 4.5548472
+  m_Range: 5.48
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 1168716989967556426}
   - component: {fileID: 4996192421706240414}
   m_Layer: 0
-  m_Name: StreetLamp
+  m_Name: StreetLamp_Night
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

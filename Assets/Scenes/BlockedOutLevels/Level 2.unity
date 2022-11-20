@@ -1358,15 +1358,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: deepColor.g
-      value: 0.4273225
+      value: 0.42731366
       objectReference: {fileID: 0}
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: shoreColor.b
-      value: 0.3018323
+      value: 0.30182347
       objectReference: {fileID: 0}
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: horizonColor.g
-      value: 0.22732252
+      value: 0.22731367
       objectReference: {fileID: 0}
     - target: {fileID: 4257169122051045444, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_RootOrder
