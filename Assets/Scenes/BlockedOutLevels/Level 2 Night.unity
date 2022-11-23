@@ -1602,21 +1602,25 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 682442626969477890, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 5a3ba9a4cb7dd7145ab8300e02c6d059, type: 2}
     - target: {fileID: 5339801601930092545, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 570e802a3f1445b4e8434597c3ae7752, type: 2}
     - target: {fileID: 6242523564906644868, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
       propertyPath: deepColor.g
-      value: 0.4273136
+      value: 0.42731008
       objectReference: {fileID: 0}
     - target: {fileID: 6242523564906644868, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
       propertyPath: shoreColor.b
-      value: 0.3018234
+      value: 0.30181986
       objectReference: {fileID: 0}
     - target: {fileID: 6242523564906644868, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
       propertyPath: horizonColor.g
-      value: 0.22731361
+      value: 0.22731009
       objectReference: {fileID: 0}
     - target: {fileID: 7435603331629114915, guid: c5f39c63081bdbf4aa97604cd8342f99, type: 3}
       propertyPath: timeOpen

@@ -950,7 +950,7 @@ Transform:
   - {fileID: 2592085943771751724}
   - {fileID: 7952110562383523263}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &6680209173873358283
 MonoBehaviour:
@@ -5281,6 +5281,7 @@ GameObject:
   - component: {fileID: 1406011016495729521}
   - component: {fileID: 7520952724607448417}
   - component: {fileID: 3060537089718308053}
+  - component: {fileID: 3360138690873812867}
   m_Layer: 0
   m_Name: pCylinder1_low
   m_TagString: Untagged
@@ -5369,3 +5370,17 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &3360138690873812867
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128403738508759235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6855391880423864426, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
