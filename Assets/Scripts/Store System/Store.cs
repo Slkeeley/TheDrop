@@ -188,13 +188,16 @@ public class Store : MonoBehaviour
         switch (item1.itemName)
         {
             case "Sweater":
-                player.GetComponent<Player>().sweatersHeld++; 
+                player.GetComponent<Player>().sweatersHeld++;
+                player.GetComponent<Player>().sweaterAcquired();
                 break;
             case "Shoes":
                 player.GetComponent<Player>().shoesHeld++;
+                player.GetComponent<Player>().shoeAcquired();
                 break;
             case "Hat":
                 player.GetComponent<Player>().hatsHeld++;
+                player.GetComponent<Player>().hatAcquired();
                 break;
             case "Crowbar":
                 player.GetComponent<Player>().hasCrowbar = true;
@@ -208,12 +211,15 @@ public class Store : MonoBehaviour
         {
             case "Sweater":
                 player.GetComponent<Player>().sweatersHeld++;
+                player.GetComponent<Player>().sweaterAcquired();
                 break;
             case "Shoes":
                 player.GetComponent<Player>().shoesHeld++;
+                player.GetComponent<Player>().shoeAcquired();
                 break;
             case "Hat":
                 player.GetComponent<Player>().hatsHeld++;
+                player.GetComponent<Player>().hatAcquired();
                 break;
             case "Brick":
                 player.GetComponent<Player>().hasBrick = true;

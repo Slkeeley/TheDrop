@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
         defaultSpeed = movementSpeed;
         punchHitbox.SetActive(false);
         Leg.SetActive(false);
-        shoeAcquired();
     }
 
 

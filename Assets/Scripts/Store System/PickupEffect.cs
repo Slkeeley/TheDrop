@@ -13,12 +13,12 @@ public class PickupEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pickUpModel.transform.Rotate(0f, 5f, 0f);
+        pickUpModel.transform.Rotate(0f, 4f, 0f);
     }
 
     IEnumerator waitToDestroy()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.3f);
         Destroy(this.gameObject);
     }
 }
