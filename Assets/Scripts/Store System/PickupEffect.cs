@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyEffect : MonoBehaviour
+public class PickupEffect : MonoBehaviour
 {
-    public GameObject moneyModel;
+    public GameObject pickUpModel;
 
     private void Start()
     {
@@ -13,12 +13,12 @@ public class MoneyEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyModel.transform.Rotate(0f, 3f, 0f);
+        pickUpModel.transform.Rotate(0f, 5f, 0f);
     }
 
     IEnumerator waitToDestroy()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
     }
 }

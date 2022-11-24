@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
 
     [Header("UI Elements")]//data for player UI s
     public GameObject moneyEffect;
+    public GameObject sweaterEffect;
+    public GameObject shoeEffect;
+    public GameObject hatEffect;
+    public GameObject effectLocation;
 
     private void Awake()
     {
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
         defaultSpeed = movementSpeed;
         punchHitbox.SetActive(false);
         Leg.SetActive(false);
+        shoeAcquired();
     }
 
 
@@ -74,6 +79,7 @@ public class Player : MonoBehaviour
         Move();//always check if the player is moving
         attackInputs();//always check if the player is trying to attack; 
         if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
+
     }
 
     private void FixedUpdate()
@@ -348,7 +354,23 @@ public class Player : MonoBehaviour
 
     public void moneyUp()//instantiates the money effect 
     {
-        GameObject.Instantiate(moneyEffect, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
+        GameObject.Instantiate(moneyEffect, effectLocation.transform.position, Quaternion.identity);
+    }
+
+    public void hatAcquired()//instantiates the money effect 
+    {
+        GameObject.Instantiate(hatEffect, effectLocation.transform.position, Quaternion.identity);
+    }
+
+    public void sweaterAcquired()//instantiates the money effect 
+    {
+        GameObject.Instantiate(sweaterEffect, effectLocation.transform.position, Quaternion.identity);
+    }
+
+
+    public void shoeAcquired()//instantiates the money effect 
+    {
+        GameObject.Instantiate(shoeEffect, effectLocation.transform.position, Quaternion.identity);
     }
 
 

@@ -159,6 +159,7 @@ Transform:
   - {fileID: 6086583420921888591}
   - {fileID: 4892592183359986301}
   - {fileID: 2076122968736673567}
+  - {fileID: 6162476969837286084}
   m_Father: {fileID: 6523078508781278540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -821,6 +822,37 @@ Transform:
   m_Children:
   - {fileID: 3650388049679899661}
   m_Father: {fileID: 529958765679907030}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2899054935265196626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6162476969837286084}
+  m_Layer: 7
+  m_Name: MoneySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6162476969837286084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899054935265196626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1040983971967218619}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2924721264894706937
@@ -1741,6 +1773,10 @@ MonoBehaviour:
   isKicking: 0
   isBlocking: 0
   moneyEffect: {fileID: 4165332761293404274, guid: 5d7ad0442b919194591f29887575e8b3, type: 3}
+  sweaterEffect: {fileID: 4165332761293404274, guid: d1e6f1dd6fd5fd74f8842efcc4739d97, type: 3}
+  shoeEffect: {fileID: 4165332761293404274, guid: a76f2be32a6c67a40aa597cebc74f28d, type: 3}
+  hatEffect: {fileID: 4165332761293404274, guid: 5f2a573bd9e04aa458bd1df3c64b0e57, type: 3}
+  effectLocation: {fileID: 2899054935265196626}
 --- !u!1 &6242064899662304474
 GameObject:
   m_ObjectHideFlags: 0
