@@ -13,9 +13,6 @@ public class GameUI : MonoBehaviour
     [Header("Status")]//data for player UI s
     public TMP_Text moneyText;
     public TMP_Text healthText;
-    public TMP_Text sweaterText;
-    public TMP_Text shoesText;
-    public TMP_Text hatsText;
     public Image healthBar;
     public Image healthImage;
     public Image moneyMeter;
@@ -23,7 +20,6 @@ public class GameUI : MonoBehaviour
     public GameObject brick;
 
     [Header("Notification System")]
-    public TMP_Text currLocationText;
     public TMP_Text dropText;
     public Image phone;
     public GameObject messages;
@@ -64,9 +60,7 @@ public class GameUI : MonoBehaviour
     {
         moneyText.text = "Bread: " + playerScript.money.ToString();
         healthText.text = "Clout: " + playerScript.clout.ToString();
-        sweaterText.text = "Sweaters: " + playerScript.sweatersHeld.ToString();
-        shoesText.text = "Shoes: " + playerScript.shoesHeld.ToString();
-        hatsText.text = "Hats: " + playerScript.hatsHeld.ToString();
+
         healthBar.fillAmount = Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f);
         moneyMeter.fillAmount = Mathf.Clamp(playerScript.money / 500, 0, 1f);
         float hatPos = -500 - (Mathf.Clamp(playerScript.clout / playerScript.MaxHealth, 0, 1f) * -500);

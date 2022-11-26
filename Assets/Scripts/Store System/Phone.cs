@@ -7,10 +7,20 @@ using TMPro;
 public class Phone : MonoBehaviour
 {
     public GameObject phoneScreen;
-    public TMP_Text[] messages;  
+    public TMP_Text[] messages;
+    public GameObject player;
+    Player playerScript;
+
+    [Header("Inventory")]
+    public TMP_Text hatsText;
+    public TMP_Text sweaterText;
+    public TMP_Text shoesText;
+    public TMP_Text streetName;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
         phoneScreen.SetActive(false);
         clearMessages(); 
     }
@@ -30,6 +40,9 @@ public class Phone : MonoBehaviour
                 phoneScreen.SetActive(true);
             }
         }
+        sweaterText.text = playerScript.sweatersHeld.ToString();
+        shoesText.text = playerScript.shoesHeld.ToString();
+        hatsText.text = playerScript.hatsHeld.ToString();
     }
 
     public void clearMessages()
@@ -39,5 +52,6 @@ public class Phone : MonoBehaviour
             messages[i].text = "";
         }
     }
+
 
 }

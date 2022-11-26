@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Street : MonoBehaviour
 {
-    GameObject gameUI;
+    GameObject Phone;
 
     private void Start()
     {
-        gameUI = GameObject.FindObjectOfType<GameUI>().gameObject;
+        Phone = GameObject.FindObjectOfType<Phone>().gameObject;
     }
 
     private void OnTriggerStay(Collider other)
@@ -16,7 +16,7 @@ public class Street : MonoBehaviour
         if(other.tag=="Player")
         {
             Debug.Log("Collided");
-            gameUI.GetComponent<GameUI>().currLocationText.text = this.name;
+            Phone.GetComponent<Phone>().streetName.text = this.name;
         }
     }
 }
