@@ -65,7 +65,7 @@ public class BasicEnemy : MonoBehaviour
 
 
             enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
-         
+            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
             if (!enemyInAggro && !enemyInAttackRange) patrol();
             if (enemyInAggro && !enemyInAttackRange) chasePlayer();
@@ -111,19 +111,47 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-
-   public void patrol()//move to a predetermined point on the map
+  public  void animationInput(int state)
     {
-        am.SetBool("Moving", true);
-        am.SetBool("Running", false);
-        am.SetBool("Walking", true);
+        switch (state)
+        {
+
+            case 1:
+                am.SetInteger("States", 1); //death
+                break;
+            case 2:
+                am.SetInteger("States", 2); //running
+                break;
+            case 3:
+                am.SetInteger("States", 3); //throwing
+                break;
+            case 4:
+                Debug.Log("Attempting to Animate Block");
+                am.SetInteger("States", 0); //idle
+                am.SetInteger("States", 4); //blocking
+                break;
+            case 5:
+                am.SetInteger("States", 5); //walking
+                break;
+            default:
+                am.SetInteger("States", 0); //idle
+                break;
+        }
+
+    }
+
+    public void patrol()//move to a predetermined point on the map
+    {
+        
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
         Vector3 distToPoint = transform.position - walkPoint;
+        animationInput(5);
         if(distToPoint.magnitude <1.0f)
         {
             walkPointSet = false;
+            animationInput(0);
         }
 
     }
@@ -140,11 +168,10 @@ public class BasicEnemy : MonoBehaviour
 
     public void chasePlayer()//move towards the player if they are close enough
     {
+        Debug.Log("Chasing Player");
         transform.LookAt(player);
         agent.SetDestination(player.position);
-        am.SetBool("Moving", true);
-        am.SetBool("Walking", false);
-        am.SetBool("Running", true);
+        animationInput(2);
     }
 
    public IEnumerator attackCoolDown()//cooldown to make sure that the enemy isn't constantly attacking
@@ -171,7 +198,8 @@ public class BasicEnemy : MonoBehaviour
     {
 
         transform.rotation = Quaternion.Euler(90, 0, 0);
-        am.SetInteger("States", 2);
+        animationInput(0);
+        animationInput(1);
         while (billsDropped > 0)
         {
             GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);

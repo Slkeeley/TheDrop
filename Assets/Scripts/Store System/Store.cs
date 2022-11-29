@@ -143,7 +143,7 @@ public class Store : MonoBehaviour
 
     public void beginOpening()//function to tell the player that the drop is about to happen
     {
-        Debug.Log("beginning to open");
+      //  Debug.Log("beginning to open");
         itemsLeft = itemsMax;
         itemRandomizer();
         StartCoroutine(waitToOpen());

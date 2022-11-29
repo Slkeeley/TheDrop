@@ -8,9 +8,13 @@ public class Bruiser : BasicEnemy
     public bool blockOnCooldown = false;
     bool fight;
 
+    [Header("Visuals")]
+    public GameObject blockEffect;
+
     void Start()
     {
         fightOrFlight();
+        blockEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,12 +73,11 @@ public class Bruiser : BasicEnemy
 
     void attackPlayer()//look at the player and punch them if it isnt on cooldown
     {
+        Debug.Log("attempting to attack player");
+        animationInput(0);
         transform.LookAt(player);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
         agent.SetDestination(transform.position);
-        am.SetBool("Moving", false);
-        am.SetBool("Running", false);
-        am.SetBool("Walking", false);
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
@@ -89,7 +92,7 @@ public class Bruiser : BasicEnemy
         am.SetBool("Right", true);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange+.25f))
         {
             Player player = hit.transform.GetComponent<Player>();
             if (player != null)
@@ -111,25 +114,28 @@ public class Bruiser : BasicEnemy
 
     void block()//show visually that this enemy is blocking
     {
-        am.SetBool("Moving", false);
-        am.SetBool("Blocking", true);
+        
         transform.LookAt(player);
         agent.SetDestination(transform.position);
+        animationInput(4);
         isBlocking = true;
+        blockEffect.SetActive(true);
+
     }
 
     void blockDown()
     {
-        am.SetBool("Moving", true);
-        am.SetBool("Blocking", false);
-        isBlocking = false;
+        blockEffect.SetActive(false);
+       isBlocking = false;
     }
 
 
     IEnumerator blockCooldown()//cooldown for when enemy is/isnt blocking
     {
         block();
+
         yield return new WaitForSeconds(3);
+        animationInput(0);
         blockDown();
         yield return new WaitForSeconds(3);
         blockOnCooldown = false;

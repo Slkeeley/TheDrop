@@ -30,15 +30,14 @@ public class RangedEnemy : BasicEnemy
 
     void attackPlayer()//face the player and throw the weapon at them 
     {
+        animationInput(0);
         transform.LookAt(player);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
         agent.SetDestination(transform.position);
-        am.SetBool("Moving", false);
-        am.SetBool("Running", false);
-        am.SetBool("Walking", false);
         if (!alreadyAttacked)
             {
-                alreadyAttacked = true;
+            animationInput(3);
+            alreadyAttacked = true;
             StartCoroutine(throwItem());
                 StartCoroutine(attackCoolDown());
             }
@@ -48,11 +47,11 @@ public class RangedEnemy : BasicEnemy
 
         IEnumerator throwItem()//instantiate the projectile weapon
     {
-        am.SetInteger("States", 1);
+
         yield return new WaitForSeconds(0.25f);
-        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+        GameObject.Instantiate(projectile, new Vector3(transform.position.x+1f, transform.position.y + 1f, transform.position.z+1f), Quaternion.identity);
         yield return new WaitForSeconds(0.25f);
-        am.SetInteger("States", 0);
+        animationInput(0);
     }
 
     bool checkLOS()//fire a raycast to determine if there is an object between the player and this enemy, returns false if player is not hit

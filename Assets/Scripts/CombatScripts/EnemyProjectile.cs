@@ -36,10 +36,11 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(other.tag=="Player")//if player is hit tell player to be damaged
         {
-            Debug.Log("Collided With Player");
+          //  Debug.Log("Collided With Player");
             other.GetComponent<Player>().takeProjDamage();
             Destroy(this.gameObject);
         }
+        Debug.Log("Destroying Enemy Proj");
         Destroy(this.gameObject); //if projectile collided with anything that isn't the player tell it to be destroyed
     }
 
