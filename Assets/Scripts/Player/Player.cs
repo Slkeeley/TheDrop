@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float clout = 100;
     public float MaxHealth = 100;
     public bool canBeDamaged = true;
+    public bool dead = false; 
 
     [Header("Inventory")]//how much of each item does the player own
     public int sweatersHeld;
@@ -74,11 +75,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (clout <= 0) StartCoroutine(Die());
-        Move();//always check if the player is moving
-        attackInputs();//always check if the player is trying to attack; 
-        if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
-
+        if (clout <= 0)
+        {
+            dead = true; 
+            StartCoroutine(Die());
+        }
+        if (!dead)
+        {
+            Move();//always check if the player is moving
+            attackInputs();//always check if the player is trying to attack; 
+            if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
+        }
     }
 
     private void FixedUpdate()
@@ -89,7 +96,6 @@ public class Player : MonoBehaviour
             Vector3 groundCheck = new Vector3(transform.position.x, 0f, transform.position.z);
             transform.position = groundCheck;
         }
-        if (movementSpeed == 0) am.SetBool("Moving", false);
 
     }
 
@@ -109,29 +115,39 @@ public class Player : MonoBehaviour
             // float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            am.SetBool("Moving", true);
             //move the player with speed independent of frame rate
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                controller.Move(moveDir * (movementSpeed * 3) * Time.deltaTime);
-                am.SetBool("Running", true);
-                am.SetBool("Walking", false);
-            }
-            else
-            {
                 controller.Move(moveDir * movementSpeed * Time.deltaTime);
-                am.SetBool("Walking", true);
-                am.SetBool("Running", false);
-            }
-
-
+                animationInput(2);
         }
         else
         {
-            am.SetBool("Moving", false);
-            am.SetBool("Running", false);
-            am.SetBool("Walking", false);
+            animationInput(0);
         }
+
+    }
+//USE THIS TO SWITCH ANIMATIONS 
+    void animationInput(int state)
+    {
+        switch (state)
+        {
+
+            case 1:
+                am.SetInteger("States", 1); //death
+                break;
+            case 2:
+                am.SetInteger("States", 2); //running
+                break;
+            case 3:
+                am.SetInteger("States", 3); //throwing
+                break;
+            case 4:
+                am.SetInteger("States", 4); //blocking
+                break;
+            default:
+                am.SetInteger("States", 0); //idle
+                break;
+        }
+    
     }
 
     void attackInputs()//attack methods 
@@ -168,6 +184,7 @@ public class Player : MonoBehaviour
         {
             if (hasBrick)
             {
+                animationInput(0);
                 StartCoroutine(throwBrick());
             }
         }
@@ -238,7 +255,6 @@ public class Player : MonoBehaviour
         }
         else//punch with left arm
         {
-
             rightArmNext = true;
             am.SetBool("Left", true);
             StartCoroutine(punchCoolDown());
@@ -246,14 +262,14 @@ public class Player : MonoBehaviour
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
-
-        yield return new WaitForSeconds(.25f);
         punchHitbox.SetActive(true);
+        movementSpeed = 0; 
         yield return new WaitForSeconds(.25f);
         punchHitbox.SetActive(false);
-        yield return new WaitForSeconds(.25f);
         am.SetBool("Left", false);
         am.SetBool("Right", false);
+        movementSpeed = defaultSpeed;
+        yield return new WaitForSeconds(.25f);
         canPunch = true;
         isPunching = false;
 
@@ -263,20 +279,21 @@ public class Player : MonoBehaviour
     {
 
         am.SetBool("Kicking", true);
-        StartCoroutine(movementPause());
         StartCoroutine(kickCoolDown());
     }
 
 
     IEnumerator kickCoolDown()//slightly longer cooldown for kick attack since it is strongers
     {
-        yield return new WaitForSeconds(.25f);
+
         isKicking = true;
+        movementSpeed = 0;
         Leg.SetActive(true);
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.5f);
         Leg.SetActive(false);
-        yield return new WaitForSeconds(1.0f);
         am.SetBool("Kicking", false);
+        movementSpeed = defaultSpeed;
+        yield return new WaitForSeconds(1.0f);
         canKick = true;
         isKicking = false;
 
@@ -303,27 +320,30 @@ public class Player : MonoBehaviour
 
     IEnumerator throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
     {
-        am.SetInteger("States", 1);
+
+        animationInput(3);
         hasBrick = false;
         yield return new WaitForSeconds(0.25f);
         GameObject.Instantiate(brick, brickThrowLocation.position, this.transform.rotation);
         yield return new WaitForSeconds(0.25f);
-        am.SetInteger("States", 0);
+        animationInput(0);
     }
 
 
     void block()
     {
         isBlocking = true;
-        am.SetBool("Blocking", true);
-        StartCoroutine(movementPause());
+        canBlock = false;
+        animationInput(4);
+        movementSpeed = 0;
         StartCoroutine(blockCooldown());
     }
 
     IEnumerator blockCooldown()
     {
         yield return new WaitForSeconds(1.0f);
-        am.SetBool("Blocking", false);
+        movementSpeed = defaultSpeed;
+        animationInput(0);
         isBlocking = false;
         yield return new WaitForSeconds(1.0f);
         canBlock = true;
@@ -373,19 +393,11 @@ public class Player : MonoBehaviour
     }
 
 
-    IEnumerator movementPause()
-    {
-        movementSpeed = 0;
-        am.SetBool("Moving", false);
-        yield return new WaitForSeconds(.25f);
-        movementSpeed = defaultSpeed;
-
-    }
 
     IEnumerator Die()
     {
         movementSpeed = 0;
-        am.SetInteger("States", 2);
+        animationInput(1);
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("DeathScreenTemp");
 

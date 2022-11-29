@@ -1059,8 +1059,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0002594, y: 1, z: 0.9992313}
-  m_Center: {x: 1.0001299, y: 0, z: -0.00038475991}
+  m_Size: {x: 3, y: 1, z: 1.2}
+  m_Center: {x: 1, y: 0, z: 0.3}
 --- !u!54 &6868796713826223619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1753,11 +1753,12 @@ MonoBehaviour:
   cam: {fileID: 0}
   am: {fileID: 0}
   turnSmoothTime: 0.5
-  movementSpeed: 15
+  movementSpeed: 25
   money: 0
   clout: 100
   MaxHealth: 100
   canBeDamaged: 1
+  dead: 0
   sweatersHeld: 0
   shoesHeld: 0
   hatsHeld: 0
@@ -2559,7 +2560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8849060971177751760}
   m_LocalRotation: {x: -0.2588186, y: -0, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 0, y: 0.8749998, z: 0.7165065}
+  m_LocalPosition: {x: 0, y: 1.0749998, z: 1.1165065}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.8556}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2578,7 +2579,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.4003956, y: 1.8940443, z: 0.85671943}
-  m_Center: {x: -0.015099145, y: -0.4470222, z: -0.07164489}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2569143491818203282
 Rigidbody:
   m_ObjectHideFlags: 0
