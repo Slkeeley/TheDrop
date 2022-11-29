@@ -57,9 +57,8 @@ public class BasicEnemy : MonoBehaviour
         {
             if (health <= 0)
             {
-                fading = true;
                 dead = true;
-                agent.speed = 0;
+                agent.SetDestination(transform.position);
                 Die();
             }
 
@@ -126,8 +125,6 @@ public class BasicEnemy : MonoBehaviour
                 am.SetInteger("States", 3); //throwing
                 break;
             case 4:
-                Debug.Log("Attempting to Animate Block");
-                am.SetInteger("States", 0); //idle
                 am.SetInteger("States", 4); //blocking
                 break;
             case 5:
@@ -196,9 +193,8 @@ public class BasicEnemy : MonoBehaviour
 
   public void Die()//falls to the ground and instantiates money
     {
-
+        agent.speed = 0;
         transform.rotation = Quaternion.Euler(90, 0, 0);
-        animationInput(0);
         animationInput(1);
         while (billsDropped > 0)
         {

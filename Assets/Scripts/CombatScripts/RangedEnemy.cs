@@ -49,7 +49,7 @@ public class RangedEnemy : BasicEnemy
     {
 
         yield return new WaitForSeconds(0.25f);
-        GameObject.Instantiate(projectile, new Vector3(transform.position.x+1f, transform.position.y + 1f, transform.position.z+1f), Quaternion.identity);
+        GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
         yield return new WaitForSeconds(0.25f);
         animationInput(0);
     }

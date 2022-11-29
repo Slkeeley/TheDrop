@@ -34,7 +34,11 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Player")//if player is hit tell player to be damaged
+        if(other.tag=="RangedEnemy")
+        {
+            return; 
+        }
+        if (other.tag=="Player")//if player is hit tell player to be damaged
         {
           //  Debug.Log("Collided With Player");
             other.GetComponent<Player>().takeProjDamage();
