@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Bruiser : BasicEnemy
 {
+    /*
     public bool defensive = false;
     public bool blockOnCooldown = false;
     bool fight;
-
+    
     [Header("Visuals")]
     public GameObject blockEffect;
 
@@ -70,6 +71,35 @@ public class Bruiser : BasicEnemy
             patrol();
         }
     }
+    */
+
+
+    void Update()//check if the enemy is dead and allow it to move around the map
+    {
+        if (!dead)//if the enemy is not dead move around
+        {
+            if (health <= 0)
+            {
+                dead = true;
+                agent.SetDestination(transform.position);
+                Die();
+            }
+
+
+            enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
+            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            Debug.Log(enemyInAttackRange);
+            if (!enemyInAggro && !enemyInAttackRange) patrol();
+            if (enemyInAggro && !enemyInAttackRange) chasePlayer();
+            if (enemyInAggro && enemyInAttackRange) attackPlayer();
+        }
+
+        if (dead)
+        {
+            enemyInAggro = false;
+            enemyInAttackRange = false;
+        }
+    }
 
     void attackPlayer()//look at the player and punch them if it isnt on cooldown
     {
@@ -111,7 +141,7 @@ public class Bruiser : BasicEnemy
         am.SetBool("Right", false);
     }
 
-
+    /*
     void block()//show visually that this enemy is blocking
     {
         
@@ -140,4 +170,5 @@ public class Bruiser : BasicEnemy
         yield return new WaitForSeconds(3);
         blockOnCooldown = false;
     }
+    */
 }

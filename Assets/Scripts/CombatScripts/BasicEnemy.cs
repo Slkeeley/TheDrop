@@ -38,6 +38,7 @@ public class BasicEnemy : MonoBehaviour
     public GameObject bar;
     public Image healthBar;
     public Animator am;
+    public GameObject explosionEffect; 
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
@@ -48,33 +49,6 @@ public class BasicEnemy : MonoBehaviour
         alpha.a = 0;
         maxHealth = health;
         bar.SetActive(false);
-    }
-
-   
-    void Update()//check if the enemy is dead and allow it to move around the map
-    {
-        if (!dead)//if the enemy is not dead move around
-        {
-            if (health <= 0)
-            {
-                dead = true;
-                agent.SetDestination(transform.position);
-                Die();
-            }
-
-
-            enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
-            enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-            if (!enemyInAggro && !enemyInAttackRange) patrol();
-            if (enemyInAggro && !enemyInAttackRange) chasePlayer();
-        }
-
-        if(dead)
-        {
-            enemyInAggro = false;
-            enemyInAttackRange = false;
-        }
     }
 
 
@@ -196,18 +170,15 @@ public class BasicEnemy : MonoBehaviour
         agent.speed = 0;
         transform.rotation = Quaternion.Euler(90, 0, 0);
         animationInput(1);
+        GameObject.Instantiate(explosionEffect, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
         while (billsDropped > 0)
         {
             GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
             billsDropped--;
         }
         GameControl.enemiesInPlay--;
-        StartCoroutine(fadeOut()); 
-    }
-
-    IEnumerator fadeOut()
-    {
-        yield return new WaitForSeconds(2.0f);
         Destroy(this.gameObject);
     }
+
+
 }
