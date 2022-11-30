@@ -85,10 +85,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920271616850822471}
-  - component: {fileID: 4920271616850822474}
+  - component: {fileID: 2071918041812579728}
   - component: {fileID: 4920271616850822469}
   - component: {fileID: 2936400414983208075}
   - component: {fileID: 8795856423926898167}
+  - component: {fileID: 3318316540702346673}
   m_Layer: 0
   m_Name: Buyer
   m_TagString: Buyer
@@ -115,20 +116,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4920271616850822474
-CapsuleCollider:
+--- !u!65 &2071918041812579728
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4920271616850822475}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.7, z: 1.5}
+  m_Center: {x: -0.06342115, y: 0.53802055, z: 0}
 --- !u!195 &4920271616850822469
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0.9
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!95 &2936400414983208075
@@ -197,14 +197,16 @@ MonoBehaviour:
   enemyInAttackRange: 0
   dead: 0
   knockbackLocation: {fileID: 6067832988478702950}
+  spinning: 0
   alreadyAttacked: 0
-  attackDelay: 5
   health: 15
   maxHealth: 15
   money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
   billsDropped: 10
   storeFound: 0
+  doneShopping: 0
   targetStore: {fileID: 0}
+  itemsBought: 0
   fading: 0
   skin: {fileID: 0}
   damagedMat: {fileID: 0}
@@ -213,6 +215,23 @@ MonoBehaviour:
   am: {fileID: 2936400414983208075}
   normalBody: {fileID: 7823333331597108048}
   attackPos: {fileID: 5349545050766052744}
+  explosionEffect: {fileID: 4131049213377113900, guid: 0e8dd956db837aa44b6f7b92805b2a91, type: 3}
+--- !u!54 &3318316540702346673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920271616850822475}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!1 &6067832988478702950
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6067832988478702950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

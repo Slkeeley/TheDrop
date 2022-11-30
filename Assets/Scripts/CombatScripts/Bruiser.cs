@@ -103,7 +103,6 @@ public class Bruiser : BasicEnemy
 
     void attackPlayer()//look at the player and punch them if it isnt on cooldown
     {
-        Debug.Log("attempting to attack player");
         animationInput(0);
         transform.LookAt(player);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));

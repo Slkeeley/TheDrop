@@ -88,10 +88,6 @@ public class BasicEnemy : MonoBehaviour
     {
         switch (state)
         {
-
-            case 1:
-                am.SetInteger("States", 1); //death
-                break;
             case 2:
                 am.SetInteger("States", 2); //running
                 break;
@@ -139,7 +135,6 @@ public class BasicEnemy : MonoBehaviour
 
     public void chasePlayer()//move towards the player if they are close enough
     {
-        Debug.Log("Chasing Player");
         transform.LookAt(player);
         agent.SetDestination(player.position);
         animationInput(2);
@@ -168,8 +163,6 @@ public class BasicEnemy : MonoBehaviour
   public void Die()//falls to the ground and instantiates money
     {
         agent.speed = 0;
-        transform.rotation = Quaternion.Euler(90, 0, 0);
-        animationInput(1);
         GameObject.Instantiate(explosionEffect, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
         while (billsDropped > 0)
         {

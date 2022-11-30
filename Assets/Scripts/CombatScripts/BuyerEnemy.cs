@@ -41,7 +41,8 @@ public class BuyerEnemy : MonoBehaviour
     public Image healthBar;
     public Animator am;
     public GameObject normalBody;
-    public GameObject attackPos; 
+    public GameObject attackPos;
+    public GameObject explosionEffect;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
@@ -54,6 +55,7 @@ public class BuyerEnemy : MonoBehaviour
         bar.SetActive(false);
         normalBody.SetActive(true);
         attackPos.SetActive(false);
+        animationInput(0);
     }
 
 
@@ -105,7 +107,25 @@ public class BuyerEnemy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
+
+    public void animationInput(int state)//use this to animate the enemy 
+    {
+        switch (state)
+        {
+            case 2:
+                am.SetInteger("States", 2); //running
+                break;
+            case 5:
+                am.SetInteger("States", 5); //walking
+                break;
+            case 0:
+                Debug.Log("trying to go back to idle");
+                am.SetInteger("States", 0); //idle
+                break;
+        }
+    }
+
+        private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {
         if (canBeDamaged)
         {
@@ -161,18 +181,30 @@ public class BuyerEnemy : MonoBehaviour
     void goToStore()
     {
         agent.SetDestination(targetStore.GetComponent<Store>().front.transform.position);
+        Vector3 distToPoint = transform.position - targetStore.GetComponent<Store>().front.transform.position;
+        if (distToPoint.magnitude < 1.0f)
+        {
+            animationInput(0);
+        }
+        else
+        {
+            animationInput(2);
+        }
+
     }
 
     public void patrol()//move to a predetermined point on the map
     {
-    //Animation Here
+        Debug.Log("Patrolling");
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
+        animationInput(5);
         Vector3 distToPoint = transform.position - walkPoint;
         if (distToPoint.magnitude < 1.0f)
         {
             walkPointSet = false;
+            animationInput(0);
         }
 
     }
@@ -188,6 +220,7 @@ public class BuyerEnemy : MonoBehaviour
 
     void attackPlayer()
     {
+        animationInput(0);
         agent.SetDestination(transform.position);
         transform.LookAt(player);
         if (!alreadyAttacked)
@@ -206,16 +239,28 @@ public class BuyerEnemy : MonoBehaviour
         {
             case 1:
                 player.GetComponent<Player>().sweatersHeld++;
+                player.GetComponent<Player>().sweaterAcquired();
                 break;
             case 2:
                 player.GetComponent<Player>().hatsHeld++;
+                player.GetComponent<Player>().hatAcquired();
                 break;
             case 3:
                 player.GetComponent<Player>().shoesHeld++;
+                player.GetComponent<Player>().shoeAcquired();
                 break;
         }
+        GameObject.Instantiate(explosionEffect, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+        while (billsDropped > 0)
+        {
+            GameObject.Instantiate(money, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+            billsDropped--;
+        }
+        GameControl.enemiesInPlay--;
         Destroy(this.gameObject);
     }
+
+
     IEnumerator crowBarAttack()
     {
         alreadyAttacked = true;
