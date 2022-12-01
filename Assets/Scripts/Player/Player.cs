@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public bool hasCrowbar = false;//crowbar attack
     bool crowbarOnCooldown = false;
     public GameObject Crowbar;
+    public GameObject playerBody;
     public float crowBarCooldown;
     public GameObject brick;//brick attack
     public Transform brickThrowLocation;//position that the brick should spawn in
@@ -63,6 +64,8 @@ public class Player : MonoBehaviour
 
         cam = GameObject.Find("MainCamera").transform;
         am = GetComponent<Animator>();
+        playerBody.SetActive(true);
+        Crowbar.SetActive(false);
     }
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
@@ -301,6 +304,7 @@ public class Player : MonoBehaviour
 
     void crowBarAttack()//brings out the crowbar model and has the character spin around hitting everythign around it for half a second
     {
+        playerBody.SetActive(false);
         Crowbar.SetActive(true);
         spinning = true;
         movementSpeed = 0;
@@ -312,6 +316,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);//the crowbar attack ast for half a second, after that passes put everything away
         Crowbar.SetActive(false);
+        playerBody.SetActive(true);
         spinning = false;
         movementSpeed = 10;
         yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
