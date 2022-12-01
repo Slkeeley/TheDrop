@@ -453,7 +453,7 @@ PrefabInstance:
     - target: {fileID: 330668253372653567, guid: 2b63666474b207341bd6b91ae4b833ac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d08d545b73757494f868098fd5881622, type: 2}
+      objectReference: {fileID: 2100000, guid: 239f89fb0ba1d884baa723206de97800, type: 2}
     - target: {fileID: 5894492811613753334, guid: 2b63666474b207341bd6b91ae4b833ac, type: 3}
       propertyPath: m_Name
       value: MainCharacter_rig

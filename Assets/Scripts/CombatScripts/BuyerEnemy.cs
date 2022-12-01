@@ -119,6 +119,7 @@ public class BuyerEnemy : MonoBehaviour
                 am.SetInteger("States", 5); //walking
                 break;
             case 0:
+                Debug.Log("trying to go back to idle");
                 am.SetInteger("States", 0); //idle
                 break;
         }
@@ -181,7 +182,7 @@ public class BuyerEnemy : MonoBehaviour
     {
         agent.SetDestination(targetStore.GetComponent<Store>().front.transform.position);
         Vector3 distToPoint = transform.position - targetStore.GetComponent<Store>().front.transform.position;
-        if (distToPoint.magnitude < 1.1f)
+        if (distToPoint.magnitude < 1.0f)
         {
             animationInput(0);
         }
@@ -194,6 +195,7 @@ public class BuyerEnemy : MonoBehaviour
 
     public void patrol()//move to a predetermined point on the map
     {
+        Debug.Log("Patrolling");
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
