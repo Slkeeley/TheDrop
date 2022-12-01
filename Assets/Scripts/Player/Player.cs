@@ -403,7 +403,7 @@ public class Player : MonoBehaviour
     {
         timeBlockCD = 0.0f;
         BlockCoolDownImage.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.0f);
         movementSpeed = defaultSpeed;
         animationInput(0);
         isBlocking = false;
