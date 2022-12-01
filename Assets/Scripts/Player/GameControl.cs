@@ -15,7 +15,8 @@ public class GameControl : MonoBehaviour
     public GameObject winText; 
     public static int enemiesInPlay;
     public int maxEnenmies;
-    public int LvlValue; 
+    public int LvlValue;
+    bool loadingNext = false;
 
   void Start()
     {
@@ -31,9 +32,10 @@ public class GameControl : MonoBehaviour
         linkData();
         if(playerMoney>=moneyThreshold)//if the player has enough of something they win
         {
-            winText.SetActive(true);
-            LevelUnlock.unlockLvl(LvlValue);
-         SceneManager.LoadScene("VictoryScreenTemp");
+            if(!loadingNext)
+            {
+                StartCoroutine(loadNext());
+            }
         }
     }
 
@@ -42,5 +44,29 @@ public class GameControl : MonoBehaviour
         playerMoney = player.GetComponent<Player>().money;
     }
 
-
+    IEnumerator loadNext()
+    {
+        loadingNext = true; 
+        winText.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        winText.SetActive(false);
+        LevelUnlock.unlockLvl(LvlValue);
+        SceneManager.LoadScene("VictoryScreenTemp");
+    }
 }
