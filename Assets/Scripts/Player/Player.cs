@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public float clout = 100;
     public float MaxHealth = 100;
     public bool canBeDamaged = true;
-    public bool dead = false; 
+    public bool dead = false;
 
     [Header("Inventory")]//how much of each item does the player own
     public int sweatersHeld;
@@ -50,7 +50,10 @@ public class Player : MonoBehaviour
     public bool isKicking;
     public bool isBlocking = false;
     bool spinning = false;
-
+    //COOLDOWN CHECks
+    float timeLeftKickCD=0.0f; 
+    float timeLeftCrowbarCD=0.0f; 
+    float timeBlockCD=0.0f; 
 
     [Header("UI Elements")]//data for player UI s
     public GameObject moneyEffect;
@@ -59,6 +62,13 @@ public class Player : MonoBehaviour
     public GameObject hatEffect;
     public GameObject effectLocation;
 
+    [Header("Cooldown Bars")]
+    public GameObject KickCoolDownImage;
+    public Image KickCooldownBar;
+    public GameObject CBCoolDownImage;
+    public Image CBCooldownBar; 
+    public GameObject BlockCoolDownImage;
+    public Image BlockCooldownBar;
     private void Awake()
     {
 
@@ -66,6 +76,9 @@ public class Player : MonoBehaviour
         am = GetComponent<Animator>();
         playerBody.SetActive(true);
         Crowbar.SetActive(false);
+        KickCoolDownImage.SetActive(false);
+        CBCoolDownImage.SetActive(false);
+        BlockCoolDownImage.SetActive(false);
     }
 
     void Start()//put the players weapons away and make sure that the UI reflects default values
@@ -80,7 +93,7 @@ public class Player : MonoBehaviour
     {
         if (clout <= 0)
         {
-            dead = true; 
+            dead = true;
             StartCoroutine(Die());
         }
         if (!dead)
@@ -99,7 +112,39 @@ public class Player : MonoBehaviour
             Vector3 groundCheck = new Vector3(transform.position.x, 0f, transform.position.z);
             transform.position = groundCheck;
         }
-
+        //KICK COOLDOWN CHECKS
+        if(timeLeftKickCD >=2.0f)
+        {
+            canKick = true; 
+        }
+        else
+        {
+            timeLeftKickCD+= Time.deltaTime;
+            timeLeftKickCD = Mathf.Clamp(timeLeftKickCD, 0.0f, 2.0f);
+        }
+        if(KickCoolDownImage.activeInHierarchy) KickCooldownBar.fillAmount = Mathf.Clamp(timeLeftKickCD / 2.0f, 0, 1f);
+        //Crowbar COOLDOWN CHECKS
+        if (timeLeftCrowbarCD>=crowBarCooldown)
+        {
+            crowbarOnCooldown = false; 
+        }
+        else
+        {
+            timeLeftCrowbarCD += Time.deltaTime;
+            timeLeftCrowbarCD = Mathf.Clamp(timeLeftCrowbarCD, 0.0f, crowBarCooldown);
+        }
+        if (CBCoolDownImage.activeInHierarchy) CBCooldownBar.fillAmount = Mathf.Clamp(timeLeftCrowbarCD / crowBarCooldown, 0, 1f);
+        //Block COOLDOWN CHECKS
+        if (timeBlockCD >= 3.0f)
+        {
+            canBlock = true;
+        }
+        else
+        {
+            timeBlockCD+= Time.deltaTime;
+            timeBlockCD= Mathf.Clamp(timeBlockCD, 0.0f, 3.0f);
+        }
+        if (BlockCoolDownImage.activeInHierarchy) BlockCooldownBar.fillAmount = Mathf.Clamp(timeBlockCD / 3.0f, 0, 1f);
     }
 
     void Move()//movement method for a 3D space
@@ -119,8 +164,8 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //move the player with speed independent of frame rate
-                controller.Move(moveDir * movementSpeed * Time.deltaTime);
-                animationInput(2);
+            controller.Move(moveDir * movementSpeed * Time.deltaTime);
+            animationInput(2);
         }
         else
         {
@@ -128,7 +173,7 @@ public class Player : MonoBehaviour
         }
 
     }
-//USE THIS TO SWITCH ANIMATIONS 
+    //USE THIS TO SWITCH ANIMATIONS 
     void animationInput(int state)
     {
         switch (state)
@@ -150,7 +195,7 @@ public class Player : MonoBehaviour
                 am.SetInteger("States", 0); //idle
                 break;
         }
-    
+
     }
 
     void attackInputs()//attack methods 
@@ -270,7 +315,7 @@ public class Player : MonoBehaviour
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
         punchHitbox.SetActive(true);
-        movementSpeed = 0; 
+        movementSpeed = 0;
         yield return new WaitForSeconds(.25f);
         punchHitbox.SetActive(false);
         am.SetBool("Left", false);
@@ -296,13 +341,16 @@ public class Player : MonoBehaviour
         isKicking = true;
         movementSpeed = 0;
         Leg.SetActive(true);
+        timeLeftKickCD = 0.0f; 
+        KickCoolDownImage.SetActive(true);
         yield return new WaitForSeconds(.5f);
         Leg.SetActive(false);
         am.SetBool("Kicking", false);
         movementSpeed = defaultSpeed;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         canKick = true;
         isKicking = false;
+        KickCoolDownImage.SetActive(false);
 
     }
 
@@ -323,8 +371,11 @@ public class Player : MonoBehaviour
         playerBody.SetActive(true);
         spinning = false;
         movementSpeed = 10;
+        timeLeftCrowbarCD = 0.0f;
+        CBCoolDownImage.SetActive(true);
         yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
         crowbarOnCooldown = false;
+        CBCoolDownImage.SetActive(false); 
     }
 
     IEnumerator throwBrick()//brick attack instantiates a rigidbody projectile that falls to the ground and needs to be picked up again. 
@@ -350,12 +401,15 @@ public class Player : MonoBehaviour
 
     IEnumerator blockCooldown()
     {
-        yield return new WaitForSeconds(1.0f);
+        timeBlockCD = 0.0f;
+        BlockCoolDownImage.SetActive(true);
+        yield return new WaitForSeconds(2f);
         movementSpeed = defaultSpeed;
         animationInput(0);
         isBlocking = false;
         yield return new WaitForSeconds(1.0f);
         canBlock = true;
+        BlockCoolDownImage.SetActive(false);
     }
 
     //GAME INTERACTION 
