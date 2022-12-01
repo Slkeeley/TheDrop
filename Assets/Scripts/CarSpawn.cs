@@ -5,27 +5,76 @@ using UnityEngine;
 public class CarSpawn : MonoBehaviour
 {
     public GameObject[] cars;
+    public GameObject carNotif;
     bool onCooldown = false;
     public float spawnCooldown;
 
+    private void Start()
+    {
+        carNotif.SetActive(false);
+    }
 
     void Update()
     {
         if (!onCooldown)//if more enemies can still spawn, bring in a new enemy
         {
-            spawnEnemy();
+            StartCoroutine(spawnCar());
         }
     }
 
-    void spawnEnemy()//add a new enemy to the map from whatever is slotted into this object
+
+    IEnumerator spawnCar()
     {
+        onCooldown = true; 
+        //car rev sound here
+        //CAR NOTIFICATION BEFORE CAR SPAWNS
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        carNotif.SetActive(false);
+        //SPAWN CAR
+        //car go sound here
         int carToSpawn = Random.Range(0, cars.Length);
         GameObject.Instantiate(cars[carToSpawn], new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        onCooldown = true;
         StartCoroutine(cooldown());
     }
 
-    IEnumerator cooldown()//make sure that enemies are not constantly spawning 
+    IEnumerator cooldown()//make sure that cars are not constantly spawning 
     {
         yield return new WaitForSeconds(spawnCooldown);
         onCooldown = false;
