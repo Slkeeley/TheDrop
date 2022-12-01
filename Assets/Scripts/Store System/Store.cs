@@ -81,8 +81,6 @@ public class Store : MonoBehaviour
         if (other.tag == "Player") playerEntered = true; 
         if(other.tag=="Buyer")
         {
-            
-            Debug.Log("Scalper is trying to buy from the store");
             if(!scalped)
             {               
                 StartCoroutine(sellToEnemies());

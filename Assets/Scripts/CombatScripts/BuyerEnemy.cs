@@ -17,7 +17,7 @@ public class BuyerEnemy : MonoBehaviour
     public bool enemyInAttackRange;
     public bool dead = false;
     public GameObject knockbackLocation;
-    public bool spinning = false; 
+
 
     [Header("Object Variables")]//variables that allow the enemy to interact with the player
     public bool alreadyAttacked = false;
@@ -89,24 +89,24 @@ public class BuyerEnemy : MonoBehaviour
             }
 
             if (storeFound&&!doneShopping) goToStore();
-            else patrol(); 
+            else patrol();
 
-            if(enemyInAttackRange)
+            if (enemyInAttackRange && !alreadyAttacked)
             {
                 attackPlayer();
             }
+            else patrol(); 
         }
 
         if (dead)
         {
             enemyInAttackRange = false;
         }
-
-        if (spinning) transform.Rotate(0f, 100f, 0f);//rotate the player if they are doing the spinning crowbar attack
+        
+        
         if (itemsBought >= 5) doneShopping = true;
 
     }
-
 
     public void animationInput(int state)//use this to animate the enemy 
     {
@@ -194,7 +194,7 @@ public class BuyerEnemy : MonoBehaviour
 
     public void patrol()//move to a predetermined point on the map
     {
-        Debug.Log("Patrolling");
+
         if (!walkPointSet) setWalkPoint();
         if (walkPointSet) agent.SetDestination(walkPoint);
         transform.LookAt(walkPoint);
@@ -221,7 +221,6 @@ public class BuyerEnemy : MonoBehaviour
     {
         animationInput(0);
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
         if (!alreadyAttacked)
         {
             normalBody.SetActive(false);
@@ -263,9 +262,7 @@ public class BuyerEnemy : MonoBehaviour
     IEnumerator crowBarAttack()
     {
         alreadyAttacked = true;
-        spinning = true;
-        yield return new WaitForSeconds(1.5f);
-        spinning = false;
+        yield return new WaitForSeconds(1f);
         attackPos.SetActive(false);
         normalBody.SetActive(true);
         yield return new WaitForSeconds(0.5f);

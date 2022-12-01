@@ -243,6 +243,10 @@ public class Player : MonoBehaviour
         {
             clout = clout - 20;
         }
+        if (other.tag == "EnemyCrowbar")
+        {
+            clout = clout - 10;
+        }
     }
 
 
@@ -314,7 +318,7 @@ public class Player : MonoBehaviour
 
     IEnumerator crowbarAttackCooldown()//cooldown for crowbar attack
     {
-        yield return new WaitForSeconds(0.5f);//the crowbar attack ast for half a second, after that passes put everything away
+        yield return new WaitForSeconds(0.75f);//the crowbar attack ast for half a second, after that passes put everything away
         Crowbar.SetActive(false);
         playerBody.SetActive(true);
         spinning = false;
