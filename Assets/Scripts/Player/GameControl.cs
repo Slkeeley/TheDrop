@@ -67,6 +67,6 @@ public class GameControl : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         winText.SetActive(false);
         LevelUnlock.unlockLvl(LvlValue);
-        SceneManager.LoadScene("VictoryScreenTemp");
+        SceneManager.LoadScene("VictoryScreen");
     }
 }
