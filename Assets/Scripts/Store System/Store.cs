@@ -19,9 +19,9 @@ public class Store : MonoBehaviour
     public TMP_Text item1Text;
     public TMP_Text item2Text;
     public TMP_Text itemsLeftText;
+    public TMP_Text openCloseText;
     public Image item1Image; 
     public Image item2Image; 
-    public GameObject waitingCube; 
     public GameObject openItems; 
 
     [Header("Store Items")]//prices for each item should be within different ranges
@@ -44,7 +44,7 @@ public class Store : MonoBehaviour
         playerEntered = false;
         items.SetActive(false);
         openItems.SetActive(false);
-        waitingCube.SetActive(false);
+        openCloseText.text = "Closed";
         player = GameObject.FindObjectOfType<Player>().gameObject;
         UI = GameObject.FindObjectOfType<GameUI>().gameObject;
     }
@@ -53,6 +53,8 @@ public class Store : MonoBehaviour
     {
         if (open)//if open show items and their prices
         {
+            openCloseText.color = new Color32(0, 255, 0, 255);
+            openCloseText.text = "Open";
             if (playerEntered)
             {
                 items.SetActive(true);
@@ -64,10 +66,11 @@ public class Store : MonoBehaviour
                 
             }
             openItems.SetActive(true);
-            waitingCube.SetActive(false);
         }
         else//if the store is not open do not show items and show that the store is closed
         {
+            openCloseText.color = new Color32(255, 0, 0, 255);
+            openCloseText.text = "Closed";
             items.SetActive(false);
             openItems.SetActive(false);
         }
@@ -228,7 +231,6 @@ public class Store : MonoBehaviour
 
     IEnumerator waitToOpen()//store is closed but waiting to begin opening up
     {
-        waitingCube.SetActive(true);
         waitingTime = GetComponentInParent<StoreRandomization>().timeOpen / 3;
         UI.GetComponent<GameUI>().dropText.text = "The next drop is happening on " + streetLocation.name + " in " + waitingTime.ToString() + " seconds";
         UI.GetComponent<GameUI>().dropAnnouncement();

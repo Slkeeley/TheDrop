@@ -265,7 +265,7 @@ public class BuyerEnemy : MonoBehaviour
         yield return new WaitForSeconds(1f);
         attackPos.SetActive(false);
         normalBody.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(6f);
         alreadyAttacked = false; 
 
     }
