@@ -13,8 +13,19 @@ public class StreetLamp : MonoBehaviour
 
     void Start()
     {
-        parrallelStreetSign.text = parrallelStreet.name;
-        perpendicularStreetSign.text = perpendicularStreet.name;
+        //parrallelStreetSign.text = parrallelStreet.name;
+        //perpendicularStreetSign.text = perpendicularStreet.name;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("street"))
+        {
+            parrallelStreetSign.text = other.gameObject.name;
+            perpendicularStreetSign.text = other.gameObject.name;
+        }
+    }
+    
+    
 
 }

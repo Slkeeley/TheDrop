@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2396860838148319798}
   - component: {fileID: 3449754237761665915}
   - component: {fileID: 4011718606561261788}
+  - component: {fileID: 755524575790572358}
+  - component: {fileID: 1158110833724851285}
   m_Layer: 0
-  m_Name: StreetBlock_Base20
-  m_TagString: Untagged
+  m_Name: 4th St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &755524575790572358
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382572229864560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3456211884048090678, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &1158110833724851285
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382572229864560}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &47401337286463714
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,9 +126,11 @@ GameObject:
   - component: {fileID: 2246217469502314169}
   - component: {fileID: 3191968066388151942}
   - component: {fileID: 577441618782975875}
+  - component: {fileID: 6968075140713528428}
+  - component: {fileID: 4295480263185658759}
   m_Layer: 0
-  m_Name: StreetBlock_Base39
-  m_TagString: Untagged
+  m_Name: 2nd Ave_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +200,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6968075140713528428
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47401337286463714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5670339771462061852, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &4295480263185658759
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47401337286463714}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &205337720898568210
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,9 +339,11 @@ GameObject:
   - component: {fileID: 4814453430609235925}
   - component: {fileID: 7126701848736413544}
   - component: {fileID: 3930251218406624087}
+  - component: {fileID: 5368524439946251800}
+  - component: {fileID: 877811614718022505}
   m_Layer: 0
-  m_Name: StreetBlock_Base37
-  m_TagString: Untagged
+  m_Name: 2nd Ave_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +413,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5368524439946251800
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445342506861081529}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &877811614718022505
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445342506861081529}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6516913297684038361, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &608812031190931049
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +454,11 @@ GameObject:
   - component: {fileID: 965489341214930557}
   - component: {fileID: 5378289428152863888}
   - component: {fileID: 2093033306470738815}
+  - component: {fileID: 5095249974817896294}
+  - component: {fileID: 4769991321891857956}
   m_Layer: 0
-  m_Name: StreetBlock_Base35
-  m_TagString: Untagged
+  m_Name: C St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,6 +528,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5095249974817896294
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608812031190931049}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &4769991321891857956
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608812031190931049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5867421926398110135, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &656649355714827085
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,9 +569,11 @@ GameObject:
   - component: {fileID: 6135535840066469546}
   - component: {fileID: 88155632674143914}
   - component: {fileID: 8660800512939653312}
+  - component: {fileID: 3015897100850067562}
+  - component: {fileID: 7755759371460973004}
   m_Layer: 0
-  m_Name: StreetBlock_Base13
-  m_TagString: Untagged
+  m_Name: 3rd St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -513,6 +643,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3015897100850067562
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656649355714827085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1899413857391144501, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &7755759371460973004
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656649355714827085}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &786116367181914435
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,9 +684,11 @@ GameObject:
   - component: {fileID: 8341279593908413184}
   - component: {fileID: 4883235891750074324}
   - component: {fileID: 5571576852927487075}
+  - component: {fileID: 8198490404012536912}
+  - component: {fileID: 2633608438447713096}
   m_Layer: 0
-  m_Name: StreetBlock_Base4
-  m_TagString: Untagged
+  m_Name: B St_04
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,6 +758,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &8198490404012536912
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786116367181914435}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2633608438447713096
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786116367181914435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3886599879658933184, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &833856948587256148
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,9 +799,11 @@ GameObject:
   - component: {fileID: 4804840142447469201}
   - component: {fileID: 8652866901733130910}
   - component: {fileID: 3882035154504440313}
+  - component: {fileID: 707479975137450933}
+  - component: {fileID: 3174302092802918313}
   m_Layer: 0
-  m_Name: StreetBlock_Base40
-  m_TagString: Untagged
+  m_Name: B St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -679,6 +873,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &707479975137450933
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833856948587256148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6630103450651544905, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &3174302092802918313
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833856948587256148}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &978244211633680764
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,9 +965,11 @@ GameObject:
   - component: {fileID: 2281021737159223964}
   - component: {fileID: 7691754348754172303}
   - component: {fileID: 1371616143650845409}
+  - component: {fileID: 3728882995696506470}
+  - component: {fileID: 5175810213906942512}
   m_Layer: 0
-  m_Name: StreetBlock_Base16
-  m_TagString: Untagged
+  m_Name: 4th St_04
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,6 +1039,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3728882995696506470
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199353434454060737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3663307853613874517, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &5175810213906942512
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199353434454060737}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1633313873616276205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,9 +1347,11 @@ GameObject:
   - component: {fileID: 8716612786562035248}
   - component: {fileID: 8501077121289147116}
   - component: {fileID: 2890305690610572715}
+  - component: {fileID: 4114971760856007469}
+  - component: {fileID: 5011248120065581001}
   m_Layer: 0
-  m_Name: StreetBlock_Base36
-  m_TagString: Untagged
+  m_Name: 1st St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1163,6 +1421,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4114971760856007469
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668752316439459203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7908849629412147998, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &5011248120065581001
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668752316439459203}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2699831873412302431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,9 +1462,11 @@ GameObject:
   - component: {fileID: 6827400875066416721}
   - component: {fileID: 1165349870255756786}
   - component: {fileID: 2056099740349095707}
+  - component: {fileID: 8999420830114167628}
+  - component: {fileID: 52075950463715936}
   m_Layer: 0
-  m_Name: StreetBlock_Base19
-  m_TagString: Untagged
+  m_Name: 3rd St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,6 +1536,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8999420830114167628
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699831873412302431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8101749013098546067, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &52075950463715936
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699831873412302431}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2813537162632279467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,9 +1577,11 @@ GameObject:
   - component: {fileID: 5714897047616108555}
   - component: {fileID: 3046032192236519590}
   - component: {fileID: 5634570742480631294}
+  - component: {fileID: 4257583568751629361}
+  - component: {fileID: 1393694907446660138}
   m_Layer: 0
-  m_Name: StreetBlock_Base38
-  m_TagString: Untagged
+  m_Name: A St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1329,6 +1651,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4257583568751629361
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813537162632279467}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1393694907446660138
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813537162632279467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 188871113673122044, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &3300030105411641936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,9 +1806,11 @@ GameObject:
   - component: {fileID: 1526535211276924566}
   - component: {fileID: 2943323645064625278}
   - component: {fileID: 4680050014281884954}
+  - component: {fileID: 6058775240673215652}
+  - component: {fileID: 2721119434800829866}
   m_Layer: 0
-  m_Name: StreetBlock_Base34
-  m_TagString: Untagged
+  m_Name: 1st St_06
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1526,6 +1880,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &6058775240673215652
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567474445261651474}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2721119434800829866
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567474445261651474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 731080846046599397, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &3612291270921114746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,9 +1921,11 @@ GameObject:
   - component: {fileID: 4496800149005288694}
   - component: {fileID: 887250854637272644}
   - component: {fileID: 1572266171678355958}
+  - component: {fileID: 5790424917650523689}
+  - component: {fileID: 7237262714925771278}
   m_Layer: 0
-  m_Name: StreetBlock_Base49
-  m_TagString: Untagged
+  m_Name: 4th St_07
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1551,12 +1937,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3612291270921114746}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.196733, y: 2, z: -3.2792647}
-  m_LocalScale: {x: 0.02146218, y: 0.005365545, z: 0.02146218}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.196733, y: 2, z: -3.279265}
+  m_LocalScale: {x: 0.021462178, y: 0.0053655445, z: 0.021462178}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5358160151737844421}
+  m_Father: {fileID: 3809584860404851663}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &887250854637272644
@@ -1609,6 +1995,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5790424917650523689
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612291270921114746}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &7237262714925771278
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612291270921114746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6310246576154339882, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &3689064497568501320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,9 +2036,11 @@ GameObject:
   - component: {fileID: 1917637567398081906}
   - component: {fileID: 6644304350670610644}
   - component: {fileID: 2853822983950063715}
+  - component: {fileID: 308176024821905549}
+  - component: {fileID: 143438555082472906}
   m_Layer: 0
-  m_Name: StreetBlock_Base32
-  m_TagString: Untagged
+  m_Name: A and B St
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,6 +2110,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &308176024821905549
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689064497568501320}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &143438555082472906
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689064497568501320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3004130996244455279, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &3889629706176935428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,9 +2151,11 @@ GameObject:
   - component: {fileID: 7062226693826201617}
   - component: {fileID: 4468011370536465531}
   - component: {fileID: 8974946269972041541}
+  - component: {fileID: 545462573716243728}
+  - component: {fileID: 3813350995487039063}
   m_Layer: 0
-  m_Name: StreetBlock_Base42
-  m_TagString: Untagged
+  m_Name: 2nd St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1775,6 +2225,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &545462573716243728
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889629706176935428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3921379947024155563, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &3813350995487039063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889629706176935428}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3899146776395451960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,9 +2266,11 @@ GameObject:
   - component: {fileID: 1764911270796655616}
   - component: {fileID: 6581108619286656983}
   - component: {fileID: 1342026414863053272}
+  - component: {fileID: 7593065497305575138}
+  - component: {fileID: 4768485180280347822}
   m_Layer: 0
-  m_Name: StreetBlock_Base27
-  m_TagString: Untagged
+  m_Name: 1st St _04
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1858,6 +2340,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7593065497305575138
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899146776395451960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7728757253081213103, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &4768485180280347822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899146776395451960}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3903884286524788475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,9 +2381,11 @@ GameObject:
   - component: {fileID: 6195926932851842962}
   - component: {fileID: 7522990712691154984}
   - component: {fileID: 5842263916573018414}
+  - component: {fileID: 6693764201178680225}
+  - component: {fileID: 2590329145890245842}
   m_Layer: 0
-  m_Name: StreetBlock_Base25
-  m_TagString: Untagged
+  m_Name: 2nd St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1941,6 +2455,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6693764201178680225
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903884286524788475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 843368092167298188, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &2590329145890245842
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903884286524788475}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4126612231337912034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,9 +2496,11 @@ GameObject:
   - component: {fileID: 1400623610955498688}
   - component: {fileID: 6207169354827509944}
   - component: {fileID: 9004529372140219554}
+  - component: {fileID: 2871571480900002233}
+  - component: {fileID: 5339393474553976435}
   m_Layer: 0
-  m_Name: StreetBlock_Base18
-  m_TagString: Untagged
+  m_Name: 3rd St_04
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2024,6 +2570,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2871571480900002233
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126612231337912034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5577404051505673795, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &5339393474553976435
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126612231337912034}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4439619127093234978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,9 +2611,11 @@ GameObject:
   - component: {fileID: 1220933729499442044}
   - component: {fileID: 2343293370065536965}
   - component: {fileID: 1443622006347545623}
+  - component: {fileID: 9152771344185972489}
+  - component: {fileID: 8143283576878466090}
   m_Layer: 0
-  m_Name: StreetBlock_Base28
-  m_TagString: Untagged
+  m_Name: 1st St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2107,6 +2685,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9152771344185972489
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4439619127093234978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4335724183743810398, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &8143283576878466090
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4439619127093234978}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4551205007233117573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,9 +2726,11 @@ GameObject:
   - component: {fileID: 6976960431094122768}
   - component: {fileID: 5663143929217887056}
   - component: {fileID: 6174018649102737525}
+  - component: {fileID: 5018670043910223054}
+  - component: {fileID: 1537723878809095977}
   m_Layer: 0
-  m_Name: StreetBlock_Base45
-  m_TagString: Untagged
+  m_Name: 1st St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2190,6 +2800,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5018670043910223054
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551205007233117573}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1537723878809095977
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551205007233117573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6389400223005143600, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &4557182085924549395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,7 +2860,6 @@ Transform:
   m_Children:
   - {fileID: 1684354628936415428}
   - {fileID: 3809584860404851663}
-  - {fileID: 4496800149005288694}
   - {fileID: 8296857006402431398}
   - {fileID: 6767740132860179943}
   m_Father: {fileID: 1453425826635505617}
@@ -2237,9 +2876,11 @@ GameObject:
   - component: {fileID: 2868005492213631281}
   - component: {fileID: 4694377405591073559}
   - component: {fileID: 1053204457165112982}
+  - component: {fileID: 3978065388394425859}
+  - component: {fileID: 4584987912852737400}
   m_Layer: 0
-  m_Name: StreetBlock_Base3
-  m_TagString: Untagged
+  m_Name: B St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2309,6 +2950,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3978065388394425859
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739356040954505235}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &4584987912852737400
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739356040954505235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2079788444527584732, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &4795377435403228585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,9 +2991,11 @@ GameObject:
   - component: {fileID: 5534910868337867236}
   - component: {fileID: 2606880314597218537}
   - component: {fileID: 8929270896301991598}
+  - component: {fileID: 1962144742766727729}
+  - component: {fileID: 6929513061356612476}
   m_Layer: 0
-  m_Name: StreetBlock_Base33
-  m_TagString: Untagged
+  m_Name: A St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2392,6 +3065,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &1962144742766727729
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795377435403228585}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &6929513061356612476
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795377435403228585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2516366369976163011, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &4838924557837544211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,9 +3106,11 @@ GameObject:
   - component: {fileID: 1282393062943431390}
   - component: {fileID: 4169025622886367874}
   - component: {fileID: 3170277976182822812}
+  - component: {fileID: 7680876193588519983}
+  - component: {fileID: 5008325593205095028}
   m_Layer: 0
-  m_Name: StreetBlock_Base29
-  m_TagString: Untagged
+  m_Name: C St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2475,6 +3180,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &7680876193588519983
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838924557837544211}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &5008325593205095028
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838924557837544211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3673346056929891800, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &4928798293424929725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,9 +3221,11 @@ GameObject:
   - component: {fileID: 3698601668438015809}
   - component: {fileID: 4669377348578633476}
   - component: {fileID: 5512539396514419182}
+  - component: {fileID: 5859815104688780373}
+  - component: {fileID: 7855322891383017881}
   m_Layer: 0
-  m_Name: StreetBlock_Base9
-  m_TagString: Untagged
+  m_Name: 3rd St_07
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2558,6 +3295,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5859815104688780373
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928798293424929725}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &7855322891383017881
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928798293424929725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4971024333532828779, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &4946323010283676885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,9 +3548,11 @@ GameObject:
   - component: {fileID: 4336313127650764710}
   - component: {fileID: 2805286492807586992}
   - component: {fileID: 4142056606511017354}
+  - component: {fileID: 8358961033030450680}
+  - component: {fileID: 2341349806213192903}
   m_Layer: 0
-  m_Name: StreetBlock_Base48
-  m_TagString: Untagged
+  m_Name: 1st Ave_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2853,6 +3622,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &8358961033030450680
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196587590729979187}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2341349806213192903
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196587590729979187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2641264176256333445, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &5231272147288340789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,9 +3663,11 @@ GameObject:
   - component: {fileID: 3005968149641779931}
   - component: {fileID: 1414458420509162165}
   - component: {fileID: 4144061736996145300}
+  - component: {fileID: 4786751382642161196}
+  - component: {fileID: 3390378476224944640}
   m_Layer: 0
-  m_Name: StreetBlock_Base17
-  m_TagString: Untagged
+  m_Name: B St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2936,6 +3737,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4786751382642161196
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231272147288340789}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &3390378476224944640
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231272147288340789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7148355594443536250, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &5270113419043353787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,9 +3778,11 @@ GameObject:
   - component: {fileID: 8112578959532547706}
   - component: {fileID: 3182662554361189203}
   - component: {fileID: 8125509200470397622}
+  - component: {fileID: 877682876604772306}
+  - component: {fileID: 1071298584398777123}
   m_Layer: 0
-  m_Name: StreetBlock_Base24
-  m_TagString: Untagged
+  m_Name: 4th St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3019,6 +3852,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &877682876604772306
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270113419043353787}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1071298584398777123
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270113419043353787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3175385756990994994, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &5270170926545637400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,9 +3893,11 @@ GameObject:
   - component: {fileID: 5640234917731776809}
   - component: {fileID: 8717640373581647376}
   - component: {fileID: 4084379742202916599}
+  - component: {fileID: 8089026667784817059}
+  - component: {fileID: 5409326973125345258}
   m_Layer: 0
-  m_Name: StreetBlock_Base5
-  m_TagString: Untagged
+  m_Name: 3rd St_06
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3102,6 +3967,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8089026667784817059
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270170926545637400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -248310875679355144, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &5409326973125345258
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270170926545637400}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5399293009141275055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,9 +4122,11 @@ GameObject:
   - component: {fileID: 3036789094614074466}
   - component: {fileID: 5848393313728458477}
   - component: {fileID: 8529322557758870663}
+  - component: {fileID: 5547456638031911257}
+  - component: {fileID: 2244126185883116402}
   m_Layer: 0
-  m_Name: StreetBlock_Base43
-  m_TagString: Untagged
+  m_Name: 2nd St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3299,6 +4196,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5547456638031911257
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533995841373811055}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2244126185883116402
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533995841373811055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1308365912544907730, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &5639773418569211535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,9 +4237,11 @@ GameObject:
   - component: {fileID: 6161558615487227243}
   - component: {fileID: 1757419622792819413}
   - component: {fileID: 3387778447249647412}
+  - component: {fileID: 3798226376207703552}
+  - component: {fileID: 6167944532924258069}
   m_Layer: 0
-  m_Name: StreetBlock_Base22
-  m_TagString: Untagged
+  m_Name: 3rd St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3382,6 +4311,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3798226376207703552
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639773418569211535}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6567243768092074768, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &6167944532924258069
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639773418569211535}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5715144330542533172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,9 +4352,11 @@ GameObject:
   - component: {fileID: 2306772020258132093}
   - component: {fileID: 7113766408149073675}
   - component: {fileID: 7830780121082428467}
+  - component: {fileID: 3322021858865720077}
+  - component: {fileID: 2973466926104068354}
   m_Layer: 0
-  m_Name: StreetBlock_Base23
-  m_TagString: Untagged
+  m_Name: 3rd St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3465,6 +4426,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3322021858865720077
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5715144330542533172}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2973466926104068354
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5715144330542533172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4857737983198648295, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &5840060142066846562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,9 +4786,11 @@ GameObject:
   - component: {fileID: 5317988698475015622}
   - component: {fileID: 4398040563318810230}
   - component: {fileID: 6633041356983167327}
+  - component: {fileID: 537447738215078941}
+  - component: {fileID: 35849361021514034}
   m_Layer: 0
-  m_Name: StreetBlock_Base31
-  m_TagString: Untagged
+  m_Name: 2nd St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3867,6 +4860,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &537447738215078941
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279538469777918039}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &35849361021514034
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279538469777918039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 22153371300006654, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &6358509620213603497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,6 +4937,7 @@ Transform:
   - {fileID: 6976960431094122768}
   - {fileID: 4426533048954030875}
   - {fileID: 600641921471695337}
+  - {fileID: 4496800149005288694}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4026,9 +5050,11 @@ GameObject:
   - component: {fileID: 8431815594612565489}
   - component: {fileID: 2184330100045782064}
   - component: {fileID: 732435655738498428}
+  - component: {fileID: 1821141904770582614}
+  - component: {fileID: 2185471930808969860}
   m_Layer: 0
-  m_Name: StreetBlock_Base21
-  m_TagString: Untagged
+  m_Name: 4th St_03
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4098,6 +5124,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1821141904770582614
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580761696135797590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7266259450915663628, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &2185471930808969860
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580761696135797590}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6693417080473800155
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,9 +5165,11 @@ GameObject:
   - component: {fileID: 600641921471695337}
   - component: {fileID: 1861539271456243611}
   - component: {fileID: 3461937013921394237}
+  - component: {fileID: 4665120434854008140}
+  - component: {fileID: 1579077441283126018}
   m_Layer: 0
-  m_Name: StreetBlock_Base47
-  m_TagString: Untagged
+  m_Name: A St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4181,6 +5239,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4665120434854008140
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693417080473800155}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1579077441283126018
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693417080473800155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5837667178103057540, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &6739170235209626187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4275,9 +5363,11 @@ GameObject:
   - component: {fileID: 4099154912013477680}
   - component: {fileID: 3690054315175247838}
   - component: {fileID: 761902864007255341}
+  - component: {fileID: 8674406852549404307}
+  - component: {fileID: 3104649297452091603}
   m_Layer: 0
-  m_Name: StreetBlock_Base10
-  m_TagString: Untagged
+  m_Name: 4th St_06
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4347,6 +5437,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8674406852549404307
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6786720760027247490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4922946396463167370, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &3104649297452091603
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6786720760027247490}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6933349003169793285
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,9 +5592,11 @@ GameObject:
   - component: {fileID: 594104408446366529}
   - component: {fileID: 8104053382376154582}
   - component: {fileID: 5621387044513610172}
+  - component: {fileID: 6494291469022228743}
+  - component: {fileID: 9203006807916797979}
   m_Layer: 0
-  m_Name: StreetBlock_Base15
-  m_TagString: Untagged
+  m_Name: 4th St_05
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4544,6 +5666,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6494291469022228743
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009313703263982216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 714149855943944139, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &9203006807916797979
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009313703263982216}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7213065530772396477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4669,9 +5821,11 @@ GameObject:
   - component: {fileID: 1176509675434050370}
   - component: {fileID: 813887497817830987}
   - component: {fileID: 4087266009502283595}
+  - component: {fileID: 8364225961774824614}
+  - component: {fileID: 2566846008057834073}
   m_Layer: 0
-  m_Name: StreetBlock_Base41
-  m_TagString: Untagged
+  m_Name: B St_01
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4741,6 +5895,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &8364225961774824614
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7481026169773627999}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2566846008057834073
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7481026169773627999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 905420209610029549, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &7495760742038864020
 GameObject:
   m_ObjectHideFlags: 0
@@ -4850,9 +6034,11 @@ GameObject:
   - component: {fileID: 6827645451687493241}
   - component: {fileID: 7728584140723956753}
   - component: {fileID: 6542352510975926227}
+  - component: {fileID: 8611632508918696925}
+  - component: {fileID: 6246599394847231395}
   m_Layer: 0
-  m_Name: StreetBlock_Base
-  m_TagString: Untagged
+  m_Name: 3rd St_08
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4922,6 +6108,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8611632508918696925
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185037157755498959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1979057286150484864, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &6246599394847231395
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185037157755498959}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8378870846599113246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5031,9 +6247,11 @@ GameObject:
   - component: {fileID: 8503859750888846492}
   - component: {fileID: 7578853219714302924}
   - component: {fileID: 8277140729191562195}
+  - component: {fileID: 6790200668608564691}
+  - component: {fileID: 259700320852209313}
   m_Layer: 0
-  m_Name: StreetBlock_Base30
-  m_TagString: Untagged
+  m_Name: 2nd St_04
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5103,6 +6321,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6790200668608564691
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542476724595973163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6671051996988106509, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &259700320852209313
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542476724595973163}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8689523990269070769
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,9 +6362,11 @@ GameObject:
   - component: {fileID: 8558002621522858645}
   - component: {fileID: 1749296618886851743}
   - component: {fileID: 5130531155715579894}
+  - component: {fileID: 2502219621096096813}
+  - component: {fileID: 485833087855634607}
   m_Layer: 0
-  m_Name: StreetBlock_Base44
-  m_TagString: Untagged
+  m_Name: 1st St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5186,6 +6436,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2502219621096096813
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689523990269070769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5231016438538010130, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
+--- !u!54 &485833087855634607
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689523990269070769}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &9083403936650641612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,9 +6477,11 @@ GameObject:
   - component: {fileID: 4426533048954030875}
   - component: {fileID: 8406516563113386049}
   - component: {fileID: 3802777134204549116}
+  - component: {fileID: 3805179937923284399}
+  - component: {fileID: 5617183443712289003}
   m_Layer: 0
-  m_Name: StreetBlock_Base46
-  m_TagString: Untagged
+  m_Name: A St_02
+  m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5269,6 +6551,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3805179937923284399
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083403936650641612}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &5617183443712289003
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083403936650641612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4414792995513130650, guid: 1dac0d20cb14d7b4d9513a8187c0e011, type: 3}
 --- !u!1 &9128403738508759235
 GameObject:
   m_ObjectHideFlags: 0
