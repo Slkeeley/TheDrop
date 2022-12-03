@@ -16,12 +16,18 @@ public class SceneSelector : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScreen");
     }
+    public void Tocredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 
     public void quitGame()
     {
         Debug.Log("Quitting Application");
         Application.Quit();
     }
+
+
 
     public void toFeedback()
     {
