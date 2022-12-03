@@ -27,10 +27,15 @@ public class GameUI : MonoBehaviour
     public int msgNotifications;
     public int socialNotifications;
     public TMP_Text messagesText; 
-    public TMP_Text dmText; 
-    
+    public TMP_Text dmText;
+    public AudioClip vibrate;
+    AudioSource source;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -78,14 +83,39 @@ public class GameUI : MonoBehaviour
 
     IEnumerator phoneVibrate()//slightly rotate the phone object when a drop is announced
     {
+        source.PlayOneShot(vibrate, 1);
         phone.rectTransform.Rotate(0, 0, -15);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.2f);
         phone.rectTransform.Rotate(0, 0, 30);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.2f);
         phone.rectTransform.Rotate(0, 0, -30);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.2f);
         phone.rectTransform.Rotate(0, 0, 15);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -15);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 15);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -15);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 15);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -15);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, -30);
+        yield return new WaitForSeconds(.2f);
+        phone.rectTransform.Rotate(0, 0, 15);
+        yield return new WaitForSeconds(.2f);
         phone.rectTransform.Rotate(0, 0, 0);
     }
     IEnumerator hideDropText()//change the drop text shortly after the announcement 

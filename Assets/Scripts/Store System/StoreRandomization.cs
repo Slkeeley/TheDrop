@@ -16,6 +16,7 @@ public class StoreRandomization : MonoBehaviour
 
     void Start()
     {
+        GameUI = GameObject.Find("GameUI");
         crowBarSold = false;
         brickSold = false;
         StartCoroutine(waitToOpen());//begin opening stores at the start of the level

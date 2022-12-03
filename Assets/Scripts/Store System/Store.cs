@@ -12,7 +12,9 @@ public class Store : MonoBehaviour
     public GameObject player;
     public GameObject UI;
     public GameObject streetLocation;
-    public GameObject front; 
+    public GameObject front;
+    public AudioClip buySound;
+    AudioSource source; 
 
     [Header("Store UI")]//display what items aare being sold and for hwow much
     public GameObject items;
@@ -45,6 +47,7 @@ public class Store : MonoBehaviour
         items.SetActive(false);
         openItems.SetActive(false);
         openCloseText.text = "Closed";
+        source = GetComponent<AudioSource>(); 
         player = GameObject.FindObjectOfType<Player>().gameObject;
         UI = GameObject.FindObjectOfType<GameUI>().gameObject;
     }
@@ -122,6 +125,7 @@ public class Store : MonoBehaviour
             {
                 if (player.GetComponent<Player>().money >= item1.priceCurr)
                 {
+                    source.PlayOneShot(buySound, 1);
                     player.GetComponent<Player>().money = player.GetComponent<Player>().money - item1.priceCurr;
                     giveItem1();
                     StartCoroutine(waitToBuy());
@@ -132,6 +136,7 @@ public class Store : MonoBehaviour
             {
                 if (player.GetComponent<Player>().money >= item2.priceCurr)
                 {
+                    source.PlayOneShot(buySound, 1);
                     player.GetComponent<Player>().money = player.GetComponent<Player>().money - item2.priceCurr;
                     giveItem2(); 
                     StartCoroutine(waitToBuy());

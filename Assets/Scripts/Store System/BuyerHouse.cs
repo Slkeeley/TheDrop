@@ -24,10 +24,13 @@ public class BuyerHouse : MonoBehaviour
     public StoreItem[] potentialItems; 
     public StoreItem itemSold;
     public string item;
+    AudioSource source;
+    public AudioClip sellSound; 
 
 
     private void Awake()
     {
+        source = GetComponent<AudioSource>(); 
         player = GameObject.FindObjectOfType<Player>().gameObject;
     }
 
@@ -112,6 +115,7 @@ public class BuyerHouse : MonoBehaviour
                 {
                     if (player.GetComponent<Player>().sweatersHeld>0)//sell sweaters if the player has any 
                     {
+                        source.PlayOneShot(sellSound, 1);
                         player.GetComponent<Player>().sweatersHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
                         player.GetComponent<Player>().clout = player.GetComponent<Player>().clout+10;
@@ -124,6 +128,7 @@ public class BuyerHouse : MonoBehaviour
                 {
                     if (player.GetComponent<Player>().shoesHeld > 0)//sell shoes if the player has any 
                     {
+                        source.PlayOneShot(sellSound, 1);
                         player.GetComponent<Player>().shoesHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
                         player.GetComponent<Player>().clout = player.GetComponent<Player>().clout + 10;
@@ -136,6 +141,7 @@ public class BuyerHouse : MonoBehaviour
                 {
                     if (player.GetComponent<Player>().hatsHeld > 0)//sell shoes if the player has any 
                     {
+                        source.PlayOneShot(sellSound, 1);
                         player.GetComponent<Player>().hatsHeld--;
                         player.GetComponent<Player>().money = player.GetComponent<Player>().money + itemPriceCurr;
                         player.GetComponent<Player>().clout = player.GetComponent<Player>().clout + 10;
