@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - REFRACTION: 1
-    - _QueueControl: -1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _RefractionStrength: 0.014
     m_Colors:

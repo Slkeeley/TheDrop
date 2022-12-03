@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &98095131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7351017099847028107, guid: ab4822f271e92e847ac6d01afda439ff, type: 3}
+  m_PrefabInstance: {fileID: 2996943546702531320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &153921275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1454,11 +1459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2467678076559584918, guid: 3fe262465e8711546b7d23eb5fc065d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.39
+      value: 11.95
       objectReference: {fileID: 0}
     - target: {fileID: 2467678076559584918, guid: 3fe262465e8711546b7d23eb5fc065d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.72
+      value: -18.78
       objectReference: {fileID: 0}
     - target: {fileID: 2467678076559584918, guid: 3fe262465e8711546b7d23eb5fc065d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2100,6 +2105,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9147909084501943200, guid: ab4822f271e92e847ac6d01afda439ff, type: 3}
+      propertyPath: parrallelStreet
+      value: 
+      objectReference: {fileID: 98095131}
+    - target: {fileID: 9147909084501943200, guid: ab4822f271e92e847ac6d01afda439ff, type: 3}
+      propertyPath: perpendicularStreet
+      value: 
+      objectReference: {fileID: 98095131}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4298101252900552514, guid: ab4822f271e92e847ac6d01afda439ff, type: 3}
