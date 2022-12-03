@@ -90,7 +90,7 @@ public class GameUI : MonoBehaviour
     }
     IEnumerator hideDropText()//change the drop text shortly after the announcement 
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
         dropText.text = "";
     }
 }
