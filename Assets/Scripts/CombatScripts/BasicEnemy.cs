@@ -31,21 +31,24 @@ public class BasicEnemy : MonoBehaviour
 
     [Header("Visuals")]//allows the enemy to fade out of the scene
     private Color alpha;
-   public bool fading = false;
+    public bool fading = false;
     MeshRenderer mr; 
     public Material skin; 
     public Material damagedMat;
     public GameObject bar;
     public Image healthBar;
     public Animator am;
-    public GameObject explosionEffect; 
+    public GameObject explosionEffect;
+
+    [Header("Audio")]
+    AudioSource source;
+    public AudioClip takeDamage;
 
     private void Awake()//find the player the enemy should be chasing and make sure that it is visible
     {
+        source = GetComponent<AudioSource>(); 
         player = GameObject.Find("Player").transform;//find the object named player ,
         am = GetComponent<Animator>();
-        //   mr = GetComponent<MeshRenderer>();
-       // mr.material = skin;
         alpha.a = 0;
         maxHealth = health;
         bar.SetActive(false);
@@ -58,33 +61,31 @@ public class BasicEnemy : MonoBehaviour
         {
             if (other.tag == "PlayerPunch")
             {
-                if (!isBlocking)
-                {
-                    health = health - 2;
-                    transform.position = knockbackLocation.transform.position;
-                    StartCoroutine(damaged());
-                    
-                }
-                else return;
+                source.PlayOneShot(takeDamage, 1);
+                health = health - 2;
+                transform.position = knockbackLocation.transform.position;
+                StartCoroutine(damaged());
             }
             if (other.tag == "PlayerKick")
             {
+                source.PlayOneShot(takeDamage, 1);
                 health = health - 5;
                 transform.position = knockbackLocation.transform.position;
                 StartCoroutine(damaged());
             }
             if (other.tag == "Crowbar")
             {
+                source.PlayOneShot(takeDamage, 1);
                 health = health - 10;
             }
-            if(other.tag=="brick"||other.tag=="Car")
+            if (other.tag == "brick" || other.tag == "Car")
             {
+                source.PlayOneShot(takeDamage, 1);
                 health = 0;
             }
         }
     }
-
-  public  void animationInput(int state)
+        public  void animationInput(int state)
     {
         switch (state)
         {
@@ -143,6 +144,7 @@ public class BasicEnemy : MonoBehaviour
    public IEnumerator attackCoolDown()//cooldown to make sure that the enemy isn't constantly attacking
     {
         yield return new WaitForSeconds(attackDelay);
+        Debug.Log("Exiting attack cooldown");
         alreadyAttacked = false;
 
     }
@@ -150,12 +152,9 @@ public class BasicEnemy : MonoBehaviour
     IEnumerator damaged()
     {
         canBeDamaged = false;
-    //    mr.material = damagedMat;
         bar.SetActive(true);
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
-        yield return new WaitForSeconds(0.25f);
-     //   mr.material = skin;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         bar.SetActive(false);
         canBeDamaged = true; 
     }

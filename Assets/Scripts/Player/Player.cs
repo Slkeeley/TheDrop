@@ -69,9 +69,13 @@ public class Player : MonoBehaviour
     public Image CBCooldownBar; 
     public GameObject BlockCoolDownImage;
     public Image BlockCooldownBar;
+
+    [Header("Audio")]
+    public AudioClip[] soundEffects;
+    AudioSource source; 
     private void Awake()
     {
-
+        source = GetComponent<AudioSource>(); 
         cam = GameObject.Find("MainCamera").transform;
         am = GetComponent<Animator>();
         playerBody.SetActive(true);
@@ -286,10 +290,12 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Car")
         {
+            source.PlayOneShot(soundEffects[1], 2);
             clout = clout - 20;
         }
         if (other.tag == "EnemyCrowbar")
         {
+            source.PlayOneShot(soundEffects[1], 2);
             clout = clout - 10;
         }
     }
@@ -314,6 +320,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator punchCoolDown()//put the players fist away after the attack is over and allow the player to be able to punch again
     {
+        source.PlayOneShot(soundEffects[0], 1);
         punchHitbox.SetActive(true);
         movementSpeed = 0;
         yield return new WaitForSeconds(.25f);
@@ -330,6 +337,7 @@ public class Player : MonoBehaviour
     void Kick()//kick attack uses right leg only, but brings in a hitbox in the same way
     {
 
+        source.PlayOneShot(soundEffects[0], 1);
         am.SetBool("Kicking", true);
         StartCoroutine(kickCoolDown());
     }
@@ -366,6 +374,8 @@ public class Player : MonoBehaviour
 
     IEnumerator crowbarAttackCooldown()//cooldown for crowbar attack
     {
+        source.loop = true;
+        source.PlayOneShot(soundEffects[1]);
         yield return new WaitForSeconds(0.75f);//the crowbar attack ast for half a second, after that passes put everything away
         Crowbar.SetActive(false);
         playerBody.SetActive(true);
@@ -373,6 +383,7 @@ public class Player : MonoBehaviour
         movementSpeed = 10;
         timeLeftCrowbarCD = 0.0f;
         CBCoolDownImage.SetActive(true);
+        source.loop = false; 
         yield return new WaitForSeconds(crowBarCooldown);//after the attack ends the cooldown begins
         crowbarOnCooldown = false;
         CBCoolDownImage.SetActive(false); 
@@ -416,6 +427,7 @@ public class Player : MonoBehaviour
 
     public void takePunch()//method for player to take damage from an enemy punching them 
     {
+        source.PlayOneShot(soundEffects[1], 2);
         clout = clout - 2;
         canBeDamaged = false;
         StartCoroutine(invincibility());
@@ -423,6 +435,7 @@ public class Player : MonoBehaviour
 
     public void takeProjDamage()//method for the player to take damage from an enemy projectile
     {
+        source.PlayOneShot(soundEffects[1], 2);
         clout = clout - 5;
         canBeDamaged = false;
         StartCoroutine(invincibility());
