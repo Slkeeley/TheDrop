@@ -8,7 +8,12 @@ public class CarSpawn : MonoBehaviour
     public GameObject carNotif;
     bool onCooldown = false;
     public float spawnCooldown;
-
+    AudioSource source;
+    public AudioClip carRev; 
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>(); 
+    }
     private void Start()
     {
         carNotif.SetActive(false);
@@ -25,8 +30,8 @@ public class CarSpawn : MonoBehaviour
 
     IEnumerator spawnCar()
     {
-        onCooldown = true; 
-        //car rev sound here
+        onCooldown = true;
+        source.PlayOneShot(carRev, 1); 
         //CAR NOTIFICATION BEFORE CAR SPAWNS
         carNotif.SetActive(true);
         yield return new WaitForSeconds(.1f);

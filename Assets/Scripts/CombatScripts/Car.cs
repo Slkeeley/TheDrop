@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    public int speed; 
+    public int speed;
+    AudioSource source;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>(); 
+    }
     void Start()
     {
-        
+        source.Play(); 
     }
 
     // Update is called once per frame
