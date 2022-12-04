@@ -23,13 +23,14 @@ public class PauseMenu : MonoBehaviour
 
     public void resumeGame()
     {
+        Debug.Log("Clicked");
         if(Time.timeScale==0)
         {
             Time.timeScale = 1;
             pauseObjs.SetActive(false);
         }
     }
-
+    
     public void showControls()
     {
         if(!controlScreen.activeInHierarchy)

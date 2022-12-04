@@ -15,6 +15,7 @@ public class HouseRandomizer : MonoBehaviour
     void Start()
     {
         GameUI = GameObject.Find("GameUI");
+        phone = GameObject.FindObjectOfType<Phone>().gameObject;
         StartCoroutine(waitToOpen());//begin by waiting to open the houses
     }
 

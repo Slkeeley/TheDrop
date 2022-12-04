@@ -31,7 +31,7 @@ public class CarSpawn : MonoBehaviour
     IEnumerator spawnCar()
     {
         onCooldown = true;
-        source.PlayOneShot(carRev, 1); 
+        source.PlayOneShot(carRev, .5f); 
         //CAR NOTIFICATION BEFORE CAR SPAWNS
         carNotif.SetActive(true);
         yield return new WaitForSeconds(.1f);

@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         readAttacks();
         if (transform.position.y != 1.0f)
         {
-            Vector3 groundCheck = new Vector3(transform.position.x, 0f, transform.position.z);
+            Vector3 groundCheck = new Vector3(transform.position.x, -.5f, transform.position.z);
             transform.position = groundCheck;
         }
         //KICK COOLDOWN CHECKS
@@ -323,12 +323,12 @@ public class Player : MonoBehaviour
         source.PlayOneShot(soundEffects[0], 1);
         punchHitbox.SetActive(true);
         movementSpeed = 0;
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.2f);
         punchHitbox.SetActive(false);
         am.SetBool("Left", false);
         am.SetBool("Right", false);
         movementSpeed = defaultSpeed;
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.1f);
         canPunch = true;
         isPunching = false;
 

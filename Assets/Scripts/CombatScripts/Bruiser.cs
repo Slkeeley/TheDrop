@@ -4,75 +4,7 @@ using UnityEngine;
 
 public class Bruiser : BasicEnemy
 {
-    /*
-    public bool defensive = false;
-    public bool blockOnCooldown = false;
-    bool fight;
     
-    [Header("Visuals")]
-    public GameObject blockEffect;
-
-    void Start()
-    {
-        fightOrFlight();
-        blockEffect.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        if (health <= maxHealth / 2) defensive = true;//if the enemy has half of its health or less begin to act defensiely
-
-
-        if (!defensive)//if the enemy is not low on health than behave normally
-        {
-            if (enemyInAggro && enemyInAttackRange) attackPlayer();//attack is in child script as a unique behavior
-        }
-        else
-        {
-            if (!enemyInAggro) defensive = false;//if the player chooses to run away then enemies no longer should continue to block
-            if (!blockOnCooldown)//if they are not blocking then block
-            {
-                blockOnCooldown = true;
-                StartCoroutine(blockCooldown());
-            }
-            else
-            {
-                walkPointRange = 10;
-                chosenAction();//do other action if the enemies block is on cooldown
-            }
-        }
-
-
-    }
-
-    void fightOrFlight()//behavior chosen at the beggining of the scene whether enemies flee or keep fighting when in defense mode
-    {
-        int behavior = Random.Range(0, 2);
-        switch (behavior)
-        {
-            case 0:
-                fight = true; 
-                break;
-            case 1:
-                fight = false;
-                break;
-            default:
-                break;
-        }
-    }
-
-    void chosenAction()
-    {
-        if (fight) attackPlayer();
-        else
-        {
-            agent.speed = agent.speed * 1.5f;
-            patrol();
-        }
-    }
-    */
-
 
     void Update()//check if the enemy is dead and allow it to move around the map
     {
@@ -140,34 +72,6 @@ public class Bruiser : BasicEnemy
         am.SetBool("Right", false);
     }
 
-    /*
-    void block()//show visually that this enemy is blocking
-    {
-        
-        transform.LookAt(player);
-        agent.SetDestination(transform.position);
-        animationInput(4);
-        isBlocking = true;
-        blockEffect.SetActive(true);
-
-    }
-
-    void blockDown()
-    {
-        blockEffect.SetActive(false);
-       isBlocking = false;
-    }
-
-
-    IEnumerator blockCooldown()//cooldown for when enemy is/isnt blocking
-    {
-        block();
-
-        yield return new WaitForSeconds(3);
-        animationInput(0);
-        blockDown();
-        yield return new WaitForSeconds(3);
-        blockOnCooldown = false;
-    }
-    */
+ 
+  
 }

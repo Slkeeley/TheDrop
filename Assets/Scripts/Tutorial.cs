@@ -21,16 +21,16 @@ public class Tutorial : MonoBehaviour
             switch (tip)
             {
                 case 1:
-                    tutorialText.text = "Left Click to Punch, Middle Mouse to block";
+                    tutorialText.text = "Left Click to Punch, Right Click to Kick";
                     break;
                 case 2:
-                    tutorialText.text = "Right Click to kick, kicking can be used to break enemy blocks";
+                    tutorialText.text = "Middle Mouse to Block";
                     break;
                 case 3:
-                    tutorialText.text = "After stacking your bread you can spend it at stores like this one when drops happen";
+                    tutorialText.text = "Spend money at stores like this one when drops happen";
                     break;
                 case 4:
-                    tutorialText.text = "Press M to open your messages, now find those buyers and sell to them";
+                    tutorialText.text = "Press M to open your phone";
                     break;
             }
 

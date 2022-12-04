@@ -202,7 +202,7 @@ MonoBehaviour:
   health: 15
   maxHealth: 15
   money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
-  billsDropped: 10
+  billsDropped: 25
   storeFound: 0
   doneShopping: 0
   targetStore: {fileID: 0}

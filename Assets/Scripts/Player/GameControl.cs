@@ -15,15 +15,18 @@ public class GameControl : MonoBehaviour
     public GameObject winText; 
     public static int enemiesInPlay;
     public int maxEnenmies;
-    public int LvlValue;
     bool loadingNext = false;
 
   void Start()
     {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         player = GameObject.FindObjectOfType<Player>().gameObject;
         enemiesInPlay = 0; 
         winText.SetActive(false);
-        linkData(); 
+
     }
 
     // Update is called once per frame
@@ -66,7 +69,6 @@ public class GameControl : MonoBehaviour
         winText.SetActive(true);
         yield return new WaitForSeconds(.2f);
         winText.SetActive(false);
-        LevelUnlock.unlockLvl(LvlValue);
         SceneManager.LoadScene("VictoryScreen");
     }
 }

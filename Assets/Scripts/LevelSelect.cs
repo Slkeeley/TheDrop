@@ -24,6 +24,48 @@ public class LevelSelect : MonoBehaviour
 
     public void lvl1()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(6);
     }
+
+    public void lvl2()
+    {
+        SceneManager.LoadScene(7);
+    }
+
+
+public void lv3()
+{
+    SceneManager.LoadScene("Level2Day");
 }
+
+
+    public void lvl4()
+{
+    SceneManager.LoadScene("Level2Night");
+}
+
+
+    public void lvl5()
+{
+    SceneManager.LoadScene("Level3Day");
+}
+
+public void lvl6()
+{
+    SceneManager.LoadScene("Level3Night");
+}
+
+
+public void lvl7()
+{
+    SceneManager.LoadScene("Level4Day");
+}
+
+    public void lvl8()
+    {
+        SceneManager.LoadScene("Level4Da");
+    }
+
+
+}
+

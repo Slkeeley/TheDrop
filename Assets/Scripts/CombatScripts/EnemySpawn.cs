@@ -19,6 +19,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if(!onCooldown && GameControl.enemiesInPlay < controller.GetComponent<GameControl>().maxEnenmies)//if more enemies can still spawn, bring in a new enemy
         {
+            onCooldown = true;
             spawnEnemy();
         }
     }
@@ -26,8 +27,7 @@ public class EnemySpawn : MonoBehaviour
     void spawnEnemy()//add a new enemy to the map from whatever is slotted into this object
     {
         GameObject.Instantiate(enemy, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        GameControl.enemiesInPlay++;
-        onCooldown = true;
+        GameControl.enemiesInPlay++;     
         StartCoroutine(cooldown());
     }
 

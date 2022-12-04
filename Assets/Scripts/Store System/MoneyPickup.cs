@@ -7,7 +7,7 @@ public class MoneyPickup : MonoBehaviour
 
     public int cashValue; //how much is this bill worth
     public Transform player;
-    bool inRadius = false;
+    public bool inRadius = false;
     public float grabRadius; 
 
     void Start()

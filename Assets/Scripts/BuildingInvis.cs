@@ -9,14 +9,14 @@ public class BuildingInvis : MonoBehaviour
     public Renderer rd; 
     Color ogColor; 
     Color transColor;
-    Transform camera;
+    Transform Camera;
     // Start is called before the first frame update
     void Start()
     {
         rd = GetComponent<Renderer>();
         ogColor = rd.material.color;
         transColor = new Color(ogColor.r, ogColor.g, ogColor.b, 0.3f);
-        camera = GameObject.Find("MainCamera").transform;
+        Camera = GameObject.Find("MainCamera").transform;
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class BuildingInvis : MonoBehaviour
 
     void checkDistance()
     {
-        Vector3 distToPoint = transform.position - camera.position;
+        Vector3 distToPoint = transform.position - Camera.position;
         if (distToPoint.magnitude < invisRadius)
         {
    //         rd.material.SetFloat("_Mode", 3);

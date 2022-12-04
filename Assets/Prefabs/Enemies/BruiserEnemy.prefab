@@ -371,7 +371,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
+  walkPointRange: 15
   aggroRange: 10
   attackRange: 1.5
   enemyInAggro: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 0
   money: {fileID: 2849373529660125540, guid: f3a3ae9b9fddb7342a53a25f1c5be5aa, type: 3}
-  billsDropped: 5
+  billsDropped: 10
   isBlocking: 0
   fading: 0
   skin: {fileID: 2100000, guid: fc86b0fb8df73ae4b9e099d31f88c13b, type: 2}

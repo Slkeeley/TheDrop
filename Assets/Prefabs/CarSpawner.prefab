@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 7474316129595910918, guid: cbed788970d928348943584fa33ce273, type: 3}
   - {fileID: 7474316129595910918, guid: aab43a08f4d6f1640a001b9b300f4aff, type: 3}
   carNotif: {fileID: 6324311170122240728}
-  spawnCooldown: 5
+  spawnCooldown: 10
   carRev: {fileID: 8300000, guid: 542a8e204f0cbf74987e44e31d1e5ec4, type: 3}
 --- !u!82 &2799472245834455521
 AudioSource:
@@ -65,13 +65,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 542a8e204f0cbf74987e44e31d1e5ec4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 120
+  Priority: 231
   DopplerLevel: 1
   MinDistance: 84.99099
   MaxDistance: 500

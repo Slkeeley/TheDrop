@@ -21,9 +21,9 @@ public class RangedEnemy : BasicEnemy
             enemyInAggro = Physics.CheckSphere(transform.position, aggroRange, whatIsPlayer);
             enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
             if (!enemyInAggro && !enemyInAttackRange) patrol();            
-            if (checkLOS()&&enemyInAggro && !enemyInAttackRange) chasePlayer();//check if the player is also in the line of sight before chasing or attacking them
-            if (checkLOS()&&enemyInAggro && enemyInAttackRange) attackPlayer();
-            if (!checkLOS()) patrol(); 
+            if (enemyInAggro && !enemyInAttackRange) chasePlayer();//check if the player is also in the line of sight before chasing or attacking them
+            if (enemyInAggro && enemyInAttackRange) attackPlayer();
+            
         }
     }
 
@@ -54,21 +54,5 @@ public class RangedEnemy : BasicEnemy
         animationInput(0);
     }
 
-    bool checkLOS()//fire a raycast to determine if there is an object between the player and this enemy, returns false if player is not hit
-    {
-        transform.LookAt(player);
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
-        {
-            if(hit.transform.GetComponent<Player>())
-            {
-                return true; 
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return false; 
-    }
+
 }
