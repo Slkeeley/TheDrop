@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         {
             Move();//always check if the player is moving
             attackInputs();//always check if the player is trying to attack; 
-            if (spinning) transform.Rotate(0f, 2.8f, 0f);//rotate the player if they are doing the spinning crowbar attack
+            if (spinning) transform.Rotate(0f, 8f, 0f);//rotate the player if they are doing the spinning crowbar attack
         }
     }
 

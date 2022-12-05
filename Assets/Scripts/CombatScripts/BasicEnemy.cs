@@ -54,6 +54,10 @@ public class BasicEnemy : MonoBehaviour
         bar.SetActive(false);
     }
 
+    private void Start()
+    {
+        patrol(); 
+    }
 
     private void OnTriggerEnter(Collider other)//check if the player is hitting this enemy
     {
