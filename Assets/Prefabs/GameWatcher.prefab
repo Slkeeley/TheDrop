@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Money Up! '
+  m_text: Bag Secured!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfc18aa9f919bbf43aa6f079c95e6d02, type: 2}
   m_sharedMaterial: {fileID: 2894371931465040219, guid: cfc18aa9f919bbf43aa6f079c95e6d02, type: 2}
@@ -287,4 +287,3 @@ MonoBehaviour:
   playerMoney: 0
   winText: {fileID: 6255161405311282463}
   maxEnenmies: 10
-  LvlValue: 0

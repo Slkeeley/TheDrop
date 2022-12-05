@@ -33,15 +33,15 @@ public class LevelSelect : MonoBehaviour
     }
 
 
-public void lv3()
+public void lvl3()
 {
-    SceneManager.LoadScene("Level2Day");
+    SceneManager.LoadScene(8);
 }
 
 
     public void lvl4()
 {
-    SceneManager.LoadScene("Level2Night");
+    SceneManager.LoadScene(9);
 }
 
 
