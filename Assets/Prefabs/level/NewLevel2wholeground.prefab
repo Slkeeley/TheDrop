@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 755524575790572358}
   - component: {fileID: 1158110833724851285}
   m_Layer: 0
-  m_Name: 4th St_02
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 5095249974817896294}
   - component: {fileID: 4769991321891857956}
   m_Layer: 0
-  m_Name: C Street
+  m_Name: B Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ Transform:
   m_LocalScale: {x: 0.025997479, y: 0.0064993696, z: 0.025997479}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7747876581157478776}
+  m_Father: {fileID: 7383662345604538945}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5378289428152863888
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 707479975137450933}
   - component: {fileID: 3174302092802918313}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: 0 Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +820,7 @@ Transform:
   m_LocalScale: {x: 0.017104007, y: 0.0042760028, z: 0.017104007}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3447492477472499158}
+  m_Father: {fileID: 3812224482237114934}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8652866901733130910
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 3728882995696506470}
   - component: {fileID: 5175810213906942512}
   m_Layer: 0
-  m_Name: 4th St_04
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1097,11 +1097,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1917637567398081906}
   - {fileID: 5714897047616108555}
-  - {fileID: 4426533048954030875}
-  - {fileID: 600641921471695337}
-  - {fileID: 5534910868337867236}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1228,20 +1224,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956482811353365161}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6195926932851842962}
-  - {fileID: 8503859750888846492}
   - {fileID: 2246217469502314169}
   - {fileID: 7062226693826201617}
-  - {fileID: 5317988698475015622}
   - {fileID: 4814453430609235925}
   - {fileID: 3036789094614074466}
-  - {fileID: 1176509675434050370}
-  - {fileID: 4804840142447469201}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1426,7 +1417,7 @@ GameObject:
   - component: {fileID: 4114971760856007469}
   - component: {fileID: 5011248120065581001}
   m_Layer: 0
-  m_Name: 1st St_03
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1924,7 +1915,7 @@ GameObject:
   - component: {fileID: 6058775240673215652}
   - component: {fileID: 2721119434800829866}
   m_Layer: 0
-  m_Name: 1st St_06
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2039,7 +2030,7 @@ GameObject:
   - component: {fileID: 5790424917650523689}
   - component: {fileID: 7237262714925771278}
   m_Layer: 0
-  m_Name: 4th St_07
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2168,6 +2159,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 965489341214930557}
+  - {fileID: 5317988698475015622}
+  - {fileID: 6195926932851842962}
   - {fileID: 2868005492213631281}
   - {fileID: 8341279593908413184}
   - {fileID: 3005968149641779931}
@@ -2188,7 +2182,7 @@ GameObject:
   - component: {fileID: 308176024821905549}
   - component: {fileID: 143438555082472906}
   m_Layer: 0
-  m_Name: A B Street Cross
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2206,7 +2200,7 @@ Transform:
   m_LocalScale: {x: 0.025997479, y: 0.0064993696, z: 0.025997479}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4573079862321679221}
+  m_Father: {fileID: 287406794264465861}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6644304350670610644
@@ -2303,7 +2297,7 @@ GameObject:
   - component: {fileID: 545462573716243728}
   - component: {fileID: 3813350995487039063}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: 2nd and A
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2418,7 +2412,7 @@ GameObject:
   - component: {fileID: 7593065497305575138}
   - component: {fileID: 4768485180280347822}
   m_Layer: 0
-  m_Name: 1st St _04
+  m_Name: 1st and B
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2533,7 +2527,7 @@ GameObject:
   - component: {fileID: 6693764201178680225}
   - component: {fileID: 2590329145890245842}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: B Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2548,10 +2542,10 @@ Transform:
   m_GameObject: {fileID: 3903884286524788475}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 1.2706943, y: 2, z: -3.1847644}
-  m_LocalScale: {x: 0.022183642, y: 0.005545912, z: 0.022183642}
+  m_LocalScale: {x: 0.02218364, y: 0.005545912, z: 0.02218364}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3447492477472499158}
+  m_Father: {fileID: 7383662345604538945}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7522990712691154984
@@ -2778,7 +2772,41 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1282393062943431390}
-  - {fileID: 965489341214930557}
+  - {fileID: 8503859750888846492}
+  m_Father: {fileID: 5358160151737844421}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4415079340040050561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3812224482237114934}
+  m_Layer: 0
+  m_Name: 0 Street
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3812224482237114934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415079340040050561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4336313127650764710}
+  - {fileID: 4804840142447469201}
+  - {fileID: 1176509675434050370}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2796,7 +2824,7 @@ GameObject:
   - component: {fileID: 9152771344185972489}
   - component: {fileID: 8143283576878466090}
   m_Layer: 0
-  m_Name: 1st St_05
+  m_Name: 1st and B
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2911,7 +2939,7 @@ GameObject:
   - component: {fileID: 5018670043910223054}
   - component: {fileID: 1537723878809095977}
   m_Layer: 0
-  m_Name: 1st St_01
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3022,7 +3050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5358160151737844421}
   m_Layer: 0
-  m_Name: newGround
+  m_Name: Streets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3040,8 +3068,9 @@ Transform:
   m_LocalScale: {x: 1.1499687, y: 1.1499687, z: 1.1499687}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4781538550734044733}
   - {fileID: 3447492477472499158}
+  - {fileID: 3812224482237114934}
+  - {fileID: 4781538550734044733}
   - {fileID: 8373444626196071928}
   - {fileID: 4573079862321679221}
   - {fileID: 7747876581157478776}
@@ -3197,9 +3226,10 @@ Transform:
   - {fileID: 1764911270796655616}
   - {fileID: 1220933729499442044}
   - {fileID: 8558002621522858645}
-  - {fileID: 4336313127650764710}
   - {fileID: 1526535211276924566}
   - {fileID: 6976960431094122768}
+  - {fileID: 4426533048954030875}
+  - {fileID: 600641921471695337}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3217,7 +3247,7 @@ GameObject:
   - component: {fileID: 1962144742766727729}
   - component: {fileID: 6929513061356612476}
   m_Layer: 0
-  m_Name: A Street
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3235,7 +3265,7 @@ Transform:
   m_LocalScale: {x: 0.025997479, y: 0.0064993696, z: 0.025997479}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4573079862321679221}
+  m_Father: {fileID: 287406794264465861}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2606880314597218537
@@ -3774,7 +3804,7 @@ GameObject:
   - component: {fileID: 8358961033030450680}
   - component: {fileID: 2341349806213192903}
   m_Layer: 0
-  m_Name: 1st Ave_02
+  m_Name: 0 Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3789,10 +3819,10 @@ Transform:
   m_GameObject: {fileID: 5196587590729979187}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 5.6227126, y: 2, z: 3.8417773}
-  m_LocalScale: {x: 0.013753946, y: 0.003438487, z: 0.013753946}
+  m_LocalScale: {x: 0.013753943, y: 0.003438487, z: 0.013753943}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4781538550734044733}
+  m_Father: {fileID: 3812224482237114934}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2805286492807586992
@@ -4004,7 +4034,7 @@ GameObject:
   - component: {fileID: 877682876604772306}
   - component: {fileID: 1071298584398777123}
   m_Layer: 0
-  m_Name: 4th St_01
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4119,7 +4149,7 @@ GameObject:
   - component: {fileID: 8089026667784817059}
   - component: {fileID: 5409326973125345258}
   m_Layer: 0
-  m_Name: 3rd Street
+  m_Name: 3rd and B
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5012,7 +5042,7 @@ GameObject:
   - component: {fileID: 537447738215078941}
   - component: {fileID: 35849361021514034}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: B Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5030,7 +5060,7 @@ Transform:
   m_LocalScale: {x: 0.034181423, y: 0.008545356, z: 0.034181423}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3447492477472499158}
+  m_Father: {fileID: 7383662345604538945}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4398040563318810230
@@ -5225,7 +5255,7 @@ GameObject:
   - component: {fileID: 1821141904770582614}
   - component: {fileID: 2185471930808969860}
   m_Layer: 0
-  m_Name: 4th St_03
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5340,7 +5370,7 @@ GameObject:
   - component: {fileID: 4665120434854008140}
   - component: {fileID: 1579077441283126018}
   m_Layer: 0
-  m_Name: A Street
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5355,10 +5385,10 @@ Transform:
   m_GameObject: {fileID: 6693417080473800155}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 7.714065, y: 2, z: 5.4520454}
-  m_LocalScale: {x: 0.021009011, y: 0.0052522533, z: 0.021009011}
+  m_LocalScale: {x: 0.02100901, y: 0.0052522533, z: 0.02100901}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4573079862321679221}
+  m_Father: {fileID: 4781538550734044733}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1861539271456243611
@@ -5538,7 +5568,7 @@ GameObject:
   - component: {fileID: 8674406852549404307}
   - component: {fileID: 3104649297452091603}
   m_Layer: 0
-  m_Name: 4th St_06
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5767,7 +5797,7 @@ GameObject:
   - component: {fileID: 6494291469022228743}
   - component: {fileID: 9203006807916797979}
   m_Layer: 0
-  m_Name: 4th St_05
+  m_Name: 4th Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5896,6 +5926,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1917637567398081906}
   - {fileID: 4099154912013477680}
   - {fileID: 594104408446366529}
   - {fileID: 2281021737159223964}
@@ -5903,6 +5934,7 @@ Transform:
   - {fileID: 8431815594612565489}
   - {fileID: 8112578959532547706}
   - {fileID: 4496800149005288694}
+  - {fileID: 5534910868337867236}
   m_Father: {fileID: 5358160151737844421}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5920,7 +5952,7 @@ GameObject:
   - component: {fileID: 8364225961774824614}
   - component: {fileID: 2566846008057834073}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: 0 Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5938,7 +5970,7 @@ Transform:
   m_LocalScale: {x: 0.02100901, y: 0.0052522533, z: 0.02100901}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3447492477472499158}
+  m_Father: {fileID: 3812224482237114934}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &813887497817830987
@@ -6346,7 +6378,7 @@ GameObject:
   - component: {fileID: 6790200668608564691}
   - component: {fileID: 259700320852209313}
   m_Layer: 0
-  m_Name: 2nd Street
+  m_Name: C Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6364,7 +6396,7 @@ Transform:
   m_LocalScale: {x: 0.017104011, y: 0.0042760028, z: 0.017104011}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3447492477472499158}
+  m_Father: {fileID: 7747876581157478776}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7578853219714302924
@@ -6461,7 +6493,7 @@ GameObject:
   - component: {fileID: 2502219621096096813}
   - component: {fileID: 485833087855634607}
   m_Layer: 0
-  m_Name: 1st St_02
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6576,7 +6608,7 @@ GameObject:
   - component: {fileID: 3805179937923284399}
   - component: {fileID: 5617183443712289003}
   m_Layer: 0
-  m_Name: A Street
+  m_Name: 1st Street
   m_TagString: street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6591,10 +6623,10 @@ Transform:
   m_GameObject: {fileID: 9083403936650641612}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 5.625171, y: 2, z: 5.4520454}
-  m_LocalScale: {x: 0.021009011, y: 0.0052522533, z: 0.021009011}
+  m_LocalScale: {x: 0.02100901, y: 0.0052522533, z: 0.02100901}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4573079862321679221}
+  m_Father: {fileID: 4781538550734044733}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8406516563113386049

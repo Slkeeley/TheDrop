@@ -11861,6 +11861,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9101776769945471360, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1edea00da6b18b4418ebb6a17f5a6863, type: 3}
@@ -12896,15 +12900,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: deepColor.g
-      value: 0.4274398
+      value: 0.42742753
       objectReference: {fileID: 0}
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: shoreColor.b
-      value: 0.3019496
+      value: 0.3019373
       objectReference: {fileID: 0}
     - target: {fileID: 758283745582687948, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: horizonColor.g
-      value: 0.22743982
+      value: 0.22742751
       objectReference: {fileID: 0}
     - target: {fileID: 1080064567621991904, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_Name
@@ -12924,6 +12928,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267476662612903439, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438292492063732976, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1727052695639502123, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
@@ -12984,6 +12992,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2380605169323898419, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405866593260556477, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2418685667363016539, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
@@ -13293,6 +13305,10 @@ PrefabInstance:
     - target: {fileID: 4130138123765329995, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_Name
       value: 1st Street
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219087307819444545, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4247574373595175459, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_Name
@@ -13657,6 +13673,10 @@ PrefabInstance:
     - target: {fileID: 4257169122229237873, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257169122241749098, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_Name
+      value: Houses
       objectReference: {fileID: 0}
     - target: {fileID: 4257169122264907510, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_IsActive
@@ -15370,6 +15390,10 @@ PrefabInstance:
       propertyPath: streetLocation
       value: 
       objectReference: {fileID: 1284240672}
+    - target: {fileID: 5380565540760637191, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5395713070821632125, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -15484,6 +15508,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835394457294496855, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025192461613840163, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8089698175863423976, guid: c3526978b03bfaf4a88f8150afa99d0a, type: 3}

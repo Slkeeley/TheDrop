@@ -240,7 +240,8 @@ public class Store : MonoBehaviour
         UI.GetComponent<GameUI>().dropText.text = "The next drop is happening on " + streetLocation.name + " in " + waitingTime.ToString() + " seconds";
         UI.GetComponent<GameUI>().dropAnnouncement();
         yield return new WaitForSeconds(waitingTime);
-        open = true; 
+        open = true;
+        UI.GetComponent<GameUI>().dropText.text = "The latest drop is on " + streetLocation.name;
     }
 
     IEnumerator waitToBuy()//short cooldown to prevent players from buying more than one item at a time

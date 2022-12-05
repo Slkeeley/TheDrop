@@ -80,6 +80,7 @@ public class StoreRandomization : MonoBehaviour
         yield return new WaitForSeconds(timeOpen);
         dropsActive = false;
         GameUI.GetComponent<GameUI>().socialNotifications = 0;
+        GameUI.GetComponent<GameUI>().dropText.text = "";
         StartCoroutine(waitToOpen());
     }
 }
